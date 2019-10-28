@@ -95,7 +95,7 @@ public class WireMeshGeneration : MonoBehaviour
             {
                 if (i != 0)
                 {
-                    y -= yStep;
+                    y += yStep;
                 }
 
                 Vector3 curvePoint = Mathf.Pow((1 - t), 3) * FirstPoint[j] + 3 * Mathf.Pow((1 - t), 2) * t * FirstControlPoint[j]
