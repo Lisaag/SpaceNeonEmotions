@@ -149,7 +149,7 @@ public class WireMeshGeneration : MonoBehaviour
         if (i == curvePointCount - cylinderDetail - 1)
         {
             GetComponent<MeshCollider>().sharedMesh = mesh;
-            Debug.Log("Mesh collider updated");
+
             yield break;
         }
 
