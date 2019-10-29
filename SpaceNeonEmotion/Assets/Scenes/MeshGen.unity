@@ -2026,8 +2026,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4acaaa90050f9f42a4fd6123ed7b04f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundsX: 7
-  boundsZ: 16
+  boundsX: 8
+  boundsZ: 8
   cylinderDetail: 20
 --- !u!1 &2040379020
 GameObject:

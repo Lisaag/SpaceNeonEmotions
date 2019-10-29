@@ -110,6 +110,8 @@ public class WireMeshGeneration : MonoBehaviour
 
     void CreateCircle()
     {
+        List<Vector3> normals = new List<Vector3>();
+
         for (int j = 0; j < curvePointCount - 1; j++)
         {
             if (j % curveDetail != curveDetail - 1 || j == 0)
@@ -136,12 +138,16 @@ public class WireMeshGeneration : MonoBehaviour
                 for (float i = 0; i < maxt; i += stept)
                 {
                     Vector3 p = center + radius * Mathf.Cos(i) * (center - secondPerp).normalized + radius * Mathf.Sin(i) * (center - firstPerp).normalized;
+                    Vector3 normal = Mathf.Cos(i) * (center - secondPerp).normalized + Mathf.Sin(i) * (center - firstPerp).normalized;
 
                     verts.Add(p);
+                    normals.Add(normal);
                 }
             }
         }
         mesh.vertices = verts.ToArray();
+
+        mesh.normals = normals.ToArray();
     }
 
     IEnumerator WaitDrawTriangle(int i)
