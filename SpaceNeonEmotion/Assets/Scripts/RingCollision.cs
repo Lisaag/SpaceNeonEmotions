@@ -29,16 +29,16 @@ public class RingCollision : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
-        if (!collisionBehaviour.hasCollided)
-        {
-            if (other.gameObject.CompareTag("Wire"))
+       // if (!collisionBehaviour.hasCollided)
+      //  {
+            if (other.CompareTag("Wire"))
             {
                 Debug.Log("BIEM!!1 collider");
                 Reset();
             }
-        }
+       // }
     }
 
     void Reset()
@@ -46,7 +46,7 @@ public class RingCollision : MonoBehaviour
         collisionBehaviour.hasCollided = true;
         audioSource.Play();
 
-        ring.transform.position = new Vector3(0, 2, 0);
+      //  ring.transform.position = new Vector3(0, 2, 0);
     }
 
     void Pickup()

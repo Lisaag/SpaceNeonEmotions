@@ -15,7 +15,7 @@ public class WireMeshGeneration : MonoBehaviour
 
     Mesh mesh;
 
-    const int curveCount = 6; //Amount of curves generated
+    const int curveCount = 8; //Amount of curves generated
     const int curveDetail = 15; //Amount of points on the curve calculated
     const int curvePointCount = curveCount * curveDetail;
     Vector3[] curvePoints = new Vector3[curvePointCount];
@@ -52,7 +52,7 @@ public class WireMeshGeneration : MonoBehaviour
 
         float tStep = 1.0f / (curveDetail - 1); //the amount that the position on the curve will go up each iteration
         float y = 0;
-        float yStep = 0.05f; //the amount every point will be offset on the y-asix
+        float yStep = 0.08f; //the amount every point will be offset on the y-asix
 
         Vector2 ContrPtMinMaxOffset = new Vector2(1.0f, 2.0f);
 
