@@ -2200,17 +2200,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 59600df50bca46e489edc2be82d2bf9d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.82
+      value: -0.162
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 59600df50bca46e489edc2be82d2bf9d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.07
+      value: 1.322
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 59600df50bca46e489edc2be82d2bf9d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.05
+      value: -6.047
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 59600df50bca46e489edc2be82d2bf9d,
         type: 3}
@@ -2607,7 +2607,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030386268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.35, y: 0.03, z: -8.92}
+  m_LocalPosition: {x: -0.86, y: 0.03, z: -8.92}
   m_LocalScale: {x: 0.34671, y: 0.34671, z: 0.34671}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2625,8 +2625,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4acaaa90050f9f42a4fd6123ed7b04f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundsX: 8
-  boundsZ: 8
+  boundsX: 4
+  boundsZ: 4
   cylinderDetail: 20
 --- !u!54 &2030386274
 Rigidbody:
@@ -2891,7 +2891,7 @@ PrefabInstance:
     - target: {fileID: 4498268407565883929, guid: 072f98a7ac5105b469377dd9663f174c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.175
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 072f98a7ac5105b469377dd9663f174c, type: 3}
