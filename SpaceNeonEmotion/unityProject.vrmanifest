@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.spaceneonemotion.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\User\\Documents\\SpaceNeonEmotions\\SpaceNeonEmotion\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "SpaceNeonEmotion [Testing]"
+        }
+      }
+    }
+  ]
+}
