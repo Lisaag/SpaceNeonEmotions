@@ -21,6 +21,8 @@ public class NonConvexMeshCollider : MonoBehaviour
 
     [Tooltip("Will create a child game object called 'Colliders' to store the generated colliders in. \n\rThis leads to a cleaner and more organized structure. \n\rPlease note that collisions will then report the child game object. So you may want to check for transform.parent.gameObject on your collision check.")]
     public bool createChildGameObject = true;
+    [Tooltip("Will place each collider on a seperate object. Only do this if you need a lot of objects' transform, rather than precise. collision boxes \n\rPlease note that collisions will then report the child game object. Don't forget to add a rigidbody to every child object")]
+    public bool collidersOnSeperateObjects = true;
     [Tooltip("Takes a bit more time to compute, but leads to more performance optimized colliders (less boxes).")]
     public bool avoidGapsInside = false;
     [Tooltip("Makes sure all box colliders are generated completely on the inside of the mesh. More expensive to compute, but desireable if you need to avoid false collisions of objects very close to another, like rings of a chain for example.")]
@@ -93,14 +95,41 @@ public class NonConvexMeshCollider : MonoBehaviour
                     ? MergeBoxes(boxes.ToArray())
                     : boxes;
 
-            foreach (var b in mergedBoxes)
+            for (int i = 0; i < mergedBoxes.Length; i++)
             {
-                var bc = (createChildGameObject ? collidersGo : go).AddComponent<BoxCollider>();
-                bc.size = b.Size;
-                bc.center = b.Center;
-                if (physicsMaterialForColliders != null)
-                    bc.material = physicsMaterialForColliders;
+                GameObject colliderParent;
+
+                if (createChildGameObject)
+                {
+                    colliderParent = collidersGo;
+                }
+                else
+                {
+                    colliderParent = go;
+                }
+
+                BoxCollider bc;
+
+                if (collidersOnSeperateObjects)
+                {
+                    GameObject colliderHolder = new GameObject("BoxColliderObject " + i);
+                    colliderHolder.transform.parent = colliderParent.transform;
+                    bc = colliderHolder.AddComponent<BoxCollider>();
+                    bc.size = mergedBoxes[i].Size;
+                    bc.center = mergedBoxes[i].Center;
+                    if (physicsMaterialForColliders != null)
+                        bc.material = physicsMaterialForColliders;
+                }
+                else
+                {
+                    bc = colliderParent.AddComponent<BoxCollider>();
+                    bc.size = mergedBoxes[i].Size;
+                    bc.center = mergedBoxes[i].Center;
+                    if (physicsMaterialForColliders != null)
+                        bc.material = physicsMaterialForColliders;
+                }
             }
+
             Debug.Log("NonConvexMeshCollider: " + mergedBoxes.Length + " box colliders created");
 
             //cleanup stuff not needed anymore on collider child obj

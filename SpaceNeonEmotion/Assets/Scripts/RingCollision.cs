@@ -29,11 +29,11 @@ public class RingCollision : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         if (!collisionBehaviour.hasCollided)
         {
-            if (other.gameObject.CompareTag("Wire"))
+            if (other.CompareTag("Wire"))
             {
                 Debug.Log("BIEM!!1 collider");
                 Reset();
