@@ -15,7 +15,7 @@ public class WireMeshGeneration : MonoBehaviour
 
     Mesh mesh;
 
-    const int curveCount = 15; //Amount of curves generated
+    const int curveCount = 6; //Amount of curves generated
     const int curveDetail = 15; //Amount of points on the curve calculated
     const int curvePointCount = curveCount * curveDetail;
     Vector3[] curvePoints = new Vector3[curvePointCount];
@@ -154,6 +154,7 @@ public class WireMeshGeneration : MonoBehaviour
     {
         if (i == curvePointCount - cylinderDetail - 1)
         {
+            Debug.Log("Wire mesh collider updated");
             GetComponent<MeshCollider>().sharedMesh = mesh;
 
             yield break;
