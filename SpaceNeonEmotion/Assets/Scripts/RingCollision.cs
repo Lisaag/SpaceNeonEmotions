@@ -5,7 +5,7 @@ using UnityEngine;
 public class RingCollision : MonoBehaviour
 {
     [SerializeField]
-    GameObject colliderParent;
+    GameObject colliderParent = null;
 
     [SerializeField]
     GameObject ring;

@@ -11,7 +11,7 @@ public class WireMeshGeneration : MonoBehaviour
     float boundsZ = 0;
 
     [SerializeField]
-    int cylinderDetail;
+    int cylinderDetail = 20;
 
     Mesh mesh;
 
