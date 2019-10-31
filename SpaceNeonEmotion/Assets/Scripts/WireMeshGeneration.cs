@@ -22,6 +22,8 @@ public class WireMeshGeneration : MonoBehaviour
     [SerializeField]
     GameObject checkpoint = null;
 
+    public Vector3 ringDir;
+
     Mesh mesh;
 
     const int curveCount = 6; //Amount of curves generated
@@ -61,6 +63,7 @@ public class WireMeshGeneration : MonoBehaviour
     void PlaceCheckPoints()
     {
         checkpoint.transform.localPosition = curvePoints[curvePoints.Length / 2];
+        ringDir = curvePoints[curvePoints.Length / 2 + 1];
     }
 
     void CaluclateCurve()
