@@ -11,7 +11,13 @@ public class WireMeshGeneration : MonoBehaviour
     float boundsZ = 0;
 
     [SerializeField]
-    int cylinderDetail;
+    int cylinderDetail = 20;
+
+    [SerializeField]
+    GameObject playerPosition = null;
+
+    [SerializeField]
+    float zOffsetPp = 0;
 
     Mesh mesh;
 
@@ -33,6 +39,8 @@ public class WireMeshGeneration : MonoBehaviour
         CreateCircle();
         int triangleIndex = 0;
         StartCoroutine(WaitDrawTriangle(triangleIndex));
+
+        Debug.Log("playerpos: " + playerPosition.transform.position);
     }
 
     void InitializeMesh()
@@ -52,9 +60,9 @@ public class WireMeshGeneration : MonoBehaviour
 
         float tStep = 1.0f / (curveDetail - 1); //the amount that the position on the curve will go up each iteration
         float y = 0;
-        float yStep = 0.05f; //the amount every point will be offset on the y-asix
+        float yStep = 0.08f; //the amount every point will be offset on the y-asix
 
-        Vector2 ContrPtMinMaxOffset = new Vector2(1.0f, 2.0f);
+        Vector2 ContrPtMinMaxOffset = new Vector2(.5f, 1.5f);
 
         for (int j = 0; j < curveCount; j++)
         {
@@ -63,8 +71,8 @@ public class WireMeshGeneration : MonoBehaviour
 
             if (j == 0) //The points of the first curve of the wire
             {
-                FirstPoint[j] = new Vector3(Random.Range(0, boundsX + 1), 0, Random.Range(0, boundsZ + 1));
-                SecondPoint[j] = new Vector3(0, 0, 3);
+                FirstPoint[j] = new Vector3(0, 0, -zOffsetPp);//(Random.Range(0, boundsX + 1), 0, Random.Range(0, boundsZ + 1));
+                SecondPoint[j] = new Vector3(Random.Range(0, -(boundsX + 1)), 0, Random.Range(-zOffsetPp, -(boundsZ + 1)));
 
                 FirstControlPoint[j] = FirstPoint[j] + ControlPointOffset;
 
@@ -81,7 +89,7 @@ public class WireMeshGeneration : MonoBehaviour
                 FirstControlPoint[j] = SecondPoint[j - 1] + dir * dist;
                 FirstPoint[j] = SecondPoint[j - 1]; //Set the coordinates of first point of the new curve equal to the second point of the previous curve
 
-                SecondPoint[j] = new Vector3(Random.Range(0, boundsX + 1), 0, Random.Range(0, boundsZ + 1));
+                SecondPoint[j] = new Vector3(Random.Range(0, -(boundsX + 1)), 0, Random.Range(-zOffsetPp, -(boundsZ + 1)));
 
                 ControlPointOffset = new Vector3(RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y),
                     0, RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y)); //Create new Random Value

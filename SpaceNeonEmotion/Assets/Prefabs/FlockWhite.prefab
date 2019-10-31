@@ -43,11 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22d2498c14192a245b66dd8944827f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentPrefab: {fileID: 1321069541302141281, guid: 4d33ca7e43e37ac478be215fa19ea6a9,
+  agentPrefab: {fileID: 7830846453481307147, guid: 51fa77245e16d1b479bd721fae39e4d9,
     type: 3}
   behaviour: {fileID: 11400000, guid: 05505584c7b8fe14fa24902608473983, type: 2}
-  startingCount: 75
-  driveFactor: 5
-  maxSpeed: 12.5
+  minimumSpeedChangeInterval: 3
+  maxSpeedChangeInterval: 10
+  startingCount: 25
+  driveFactor: 3
+  minDriveFactor: 3
+  maxDriveFactor: 8
+  maxSpeed: 25
   neighbourRadius: 5
   avoidanceRadiusMultiplier: 0.8

@@ -5,7 +5,7 @@ using UnityEngine;
 public class RingCollision : MonoBehaviour
 {
     [SerializeField]
-    GameObject colliderParent;
+    GameObject colliderParent = null;
 
     [SerializeField]
     GameObject ring;
@@ -31,14 +31,14 @@ public class RingCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (!collisionBehaviour.hasCollided)
-        {
+       // if (!collisionBehaviour.hasCollided)
+      //  {
             if (other.CompareTag("Wire"))
             {
                 Debug.Log("BIEM!!1 collider");
                 Reset();
             }
-        }
+       // }
     }
 
     void Reset()
@@ -46,7 +46,7 @@ public class RingCollision : MonoBehaviour
         collisionBehaviour.hasCollided = true;
         audioSource.Play();
 
-        ring.transform.position = new Vector3(0, 2, 0);
+      //  ring.transform.position = new Vector3(0, 2, 0);
     }
 
     void Pickup()
