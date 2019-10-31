@@ -8,11 +8,12 @@ public class HologramCube : MonoBehaviour
     {
         if (collision.transform.CompareTag("CubeLocation"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
             this.transform.rotation = collision.gameObject.transform.rotation;
             this.GetComponent<Rigidbody>().isKinematic = true;
             this.transform.position = collision.transform.position;
             gameObject.AddComponent<CubeRotator>();
+
         }
     }
 }
