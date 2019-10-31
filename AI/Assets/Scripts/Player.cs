@@ -60,24 +60,18 @@ public class Player : MonoBehaviour
             if (transform.position != go.transform.position)
             {
                 animator.SetBool("isWalking", true);
-                animator.SetBool("isIdle", false);
                 transform.position = Vector3.MoveTowards(transform.position, go.transform.position, Time.deltaTime * movementSpeed);
             }
             else if (transform.position == go.transform.position)
             {
                 animator.SetBool("isWalking", false);
-                animator.SetBool("isIdle", true);
                 if (go.GetComponent<DrawGizmo>().isButtonPosition)
                 {
-                    animator.SetBool("isPressing", true);
+                    animator.SetTrigger("PressButton");
                     if (go.GetComponent<DrawGizmo>().attachedObject != null)
                     {
                         transform.LookAt(go.GetComponent<DrawGizmo>().attachedObject.transform);
                     }
-                }
-                else
-                {
-                    animator.SetBool("isIdle", true);
                 }
                 hasRotated = false;
                 isMoving = false;
@@ -172,8 +166,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.P))
         {
-            animator.SetBool("isPressing", false);
-            animator.SetBool("isIdle", true);
+            animator.SetTrigger("PressButton");
         }
 
         if (Input.GetKeyDown(KeyCode.M))
