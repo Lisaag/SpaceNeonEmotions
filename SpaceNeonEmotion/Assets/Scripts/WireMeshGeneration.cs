@@ -19,11 +19,15 @@ public class WireMeshGeneration : MonoBehaviour
     [SerializeField]
     float zOffsetPp = 0;
 
+    [SerializeField]
+    GameObject checkpoint = null;
+
     Mesh mesh;
 
     const int curveCount = 6; //Amount of curves generated
+    const int curveArraySize = curveCount * 2 + 1;
     const int curveDetail = 15; //Amount of points on the curve calculated
-    const int curvePointCount = curveCount * curveDetail;
+    const int curvePointCount = curveArraySize * curveDetail;
     Vector3[] curvePoints = new Vector3[curvePointCount];
 
     List<Vector3> orthogonal = new List<Vector3>();
@@ -31,16 +35,20 @@ public class WireMeshGeneration : MonoBehaviour
     List<Vector3> verts = new List<Vector3>();
     List<int> triangles = new List<int>();
 
+    Vector3[] FirstPoint = new Vector3[curveArraySize];
+    Vector3[] SecondPoint = new Vector3[curveArraySize];
+
+    Vector3[] FirstControlPoint = new Vector3[curveArraySize];
+    Vector3[] SecondControlPoint = new Vector3[curveArraySize];
+
     void Start()
     {
         InitializeMesh();
         CaluclateCurve();
-
+        PlaceCheckPoints();
         CreateCircle();
         int triangleIndex = 0;
         StartCoroutine(WaitDrawTriangle(triangleIndex));
-
-        Debug.Log("playerpos: " + playerPosition.transform.position);
     }
 
     void InitializeMesh()
@@ -50,29 +58,32 @@ public class WireMeshGeneration : MonoBehaviour
         mf.mesh = mesh;
     }
 
+    void PlaceCheckPoints()
+    {
+        checkpoint.transform.localPosition = curvePoints[curvePoints.Length / 2];
+    }
+
     void CaluclateCurve()
     {
-        Vector3[] FirstPoint = new Vector3[curveCount];
-        Vector3[] SecondPoint = new Vector3[curveCount];
-
-        Vector3[] FirstControlPoint = new Vector3[curveCount];
-        Vector3[] SecondControlPoint = new Vector3[curveCount];
 
         float tStep = 1.0f / (curveDetail - 1); //the amount that the position on the curve will go up each iteration
         float y = 0;
         float yStep = 0.08f; //the amount every point will be offset on the y-asix
 
+        int yDir = -1;
+
         Vector2 ContrPtMinMaxOffset = new Vector2(.5f, 1.5f);
 
-        for (int j = 0; j < curveCount; j++)
+        for (int j = 0; j < curveCount * 2 + 1; j++)
         {
+            Debug.Log(j);
             Vector3 ControlPointOffset = new Vector3(RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y),
                                             0, RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y));
 
             if (j == 0) //The points of the first curve of the wire
             {
-                FirstPoint[j] = new Vector3(0, 0, -zOffsetPp);//(Random.Range(0, boundsX + 1), 0, Random.Range(0, boundsZ + 1));
-                SecondPoint[j] = new Vector3(Random.Range(0, -(boundsX + 1)), 0, Random.Range(-zOffsetPp, -(boundsZ + 1)));
+                FirstPoint[j] = new Vector3(0, 0, yDir * zOffsetPp);//(Random.Range(0, boundsX + 1), 0, Random.Range(0, boundsZ + 1));
+                SecondPoint[j] = new Vector3(Random.Range(0, boundsX + 1), 0, Random.Range(yDir * zOffsetPp, yDir * (boundsZ + 1)));
 
                 FirstControlPoint[j] = FirstPoint[j] + ControlPointOffset;
 
@@ -89,12 +100,29 @@ public class WireMeshGeneration : MonoBehaviour
                 FirstControlPoint[j] = SecondPoint[j - 1] + dir * dist;
                 FirstPoint[j] = SecondPoint[j - 1]; //Set the coordinates of first point of the new curve equal to the second point of the previous curve
 
-                SecondPoint[j] = new Vector3(Random.Range(0, -(boundsX + 1)), 0, Random.Range(-zOffsetPp, -(boundsZ + 1)));
+                if(j == curveCount * 2 - 1)
+                {
+                    SecondPoint[j] = new Vector3(0, 0, yDir * zOffsetPp);
+                }
+                else
+                {
+                    SecondPoint[j] = new Vector3(Random.Range(0, -(boundsX + 1)), 0, Random.Range(yDir * zOffsetPp, yDir * (boundsZ + 1)));
+                }
 
                 ControlPointOffset = new Vector3(RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y),
                     0, RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y)); //Create new Random Value
 
                 SecondControlPoint[j] = SecondPoint[j] + ControlPointOffset;
+            }
+
+            if (j == curveCount - 1)
+            {
+              //  yStep = 0;
+                yDir *= -1;
+            }
+            else if (j == curveCount)
+            {
+                yStep = -0.08f;
             }
 
             float t = 0;
@@ -210,23 +238,12 @@ public class WireMeshGeneration : MonoBehaviour
             return Random.Range(SecondMin, SecondMax);
     }
 
-    /* void OnDrawGizmos()
+     void OnDrawGizmos()
      {
-         if(curvePoints.Length != 0)
-         {
-             foreach (Vector3 p in curvePoints)
-             {
-                 Gizmos.DrawSphere(p, 0.05f);
-             }
-         }
-
-         if(verts.Count != 0)
-         {
-             Gizmos.color = Color.cyan;
-             foreach(Vector3 v in verts)
-             {
-                 Gizmos.DrawSphere(v, 0.025f);
-             }
-         }
-     }*/
+        if(curvePoints.Length != 0)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(curvePoints[curvePoints.Length / 2] * this.transform.localScale.y, 0.05f);
+        }
+     }
 }
