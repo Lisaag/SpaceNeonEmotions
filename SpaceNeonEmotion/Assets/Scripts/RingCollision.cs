@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class RingCollision : MonoBehaviour
 {
@@ -35,18 +36,17 @@ public class RingCollision : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             Pickup();
-        }
-
-        if (Input.GetKeyDown(KeyCode.V))
-        {
             MoveRingToCheckpoint();
+            Debug.Log("poep");
         }
     }
 
     void MoveRingToCheckpoint()
     {
+        ring.transform.GetComponentInParent<Hand>().DetachObject(gameObject);
+
         ringRotatePoint = wmg.ringDir;
-        Debug.Log(ringRotatePoint);
+        Debug.Log(ring.transform.parent);
 
         this.transform.position = checkPoint.transform.position;
         Debug.Log("Chakram moved");

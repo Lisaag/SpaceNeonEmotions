@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class CheckPoint : MonoBehaviour
 {
@@ -22,17 +23,18 @@ public class CheckPoint : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            MoveRingToCheckpoint();
-        }
+
 
     }
+
+
 
     void MoveRingToCheckpoint()
     {
         ringRotatePoint = wmg.ringDir;
         Debug.Log(ringRotatePoint);
+
+        transform.parent.GetComponent<Hand>().DetachObject(gameObject);
 
         this.transform.position = checkPoint.transform.position;
         Debug.Log("Chakram moved");
