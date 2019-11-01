@@ -12,12 +12,22 @@ public class RingCollision : MonoBehaviour
 
     CollisionBehaviour collisionBehaviour;
     AudioSource audioSource;
-   // CollisionBehaviour collisionBehaviour = new CollisionBehaviour();
+    // CollisionBehaviour collisionBehaviour = new CollisionBehaviour();
+
+    [SerializeField]
+    GameObject checkPoint = null;
+
+    [SerializeField]
+    GameObject wire = null;
+
+    Vector3 ringRotatePoint;
+    WireMeshGeneration wmg;
 
     void Start()
     {
         collisionBehaviour = colliderParent.GetComponent<CollisionBehaviour>();
         audioSource = colliderParent.GetComponent<AudioSource>();
+        wmg = wire.GetComponent<WireMeshGeneration>();
     }
 
     void Update()
@@ -26,6 +36,28 @@ public class RingCollision : MonoBehaviour
         {
             Pickup();
         }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            MoveRingToCheckpoint();
+        }
+    }
+
+    void MoveRingToCheckpoint()
+    {
+        ringRotatePoint = wmg.ringDir;
+        Debug.Log(ringRotatePoint);
+
+        this.transform.position = checkPoint.transform.position;
+        Debug.Log("Chakram moved");
+
+        Vector3 dir = ringRotatePoint - this.transform.position;
+        Quaternion rot = Quaternion.LookRotation(dir);
+        transform.rotation = rot;
+
+        Vector3 temp = transform.rotation.eulerAngles;
+        temp.x += 90.0f;
+        transform.rotation = Quaternion.Euler(temp);
     }
 
     void OnTriggerEnter(Collider other)
@@ -34,7 +66,8 @@ public class RingCollision : MonoBehaviour
       //  {
             if (other.CompareTag("Wire"))
             {
-                Reset();
+            MoveRingToCheckpoint();
+            Reset();
             }
        // }
     }

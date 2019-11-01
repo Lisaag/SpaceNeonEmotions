@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 63491554}
   - component: {fileID: 63491553}
   - component: {fileID: 63491552}
+  - component: {fileID: 63491550}
   m_Layer: 0
   m_Name: WireCheckPoint
   m_TagString: Checkpoint
@@ -139,6 +140,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &63491550
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63491549}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.58, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &63491552
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -946,7 +960,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030386268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.032, z: -6.3}
+  m_LocalPosition: {x: 0, y: 0.3, z: -6.3}
   m_LocalScale: {x: 0.34671, y: 0.34671, z: 0.34671}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1230,5 +1244,205 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1996596443348108992, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596443348108992, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596443380438996, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596443380438996, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596443532845800, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596443532845800, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596443555522370, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596443555522370, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596443772435899, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596443772435899, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596443826933767, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596443826933767, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596443871798218, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596443871798218, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596444012294532, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596444012294532, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596444143344060, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596444143344060, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596444252026529, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596444252026529, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596444556311611, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596444556311611, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596444592846455, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596444592846455, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596444669513872, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596444669513872, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596444698802716, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596444698802716, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596444725884897, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596444725884897, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596444950666662, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596444950666662, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596445042770245, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596445042770245, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596445144684854, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596445144684854, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596445152419051, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596445152419051, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
+    - target: {fileID: 1996596445348535916, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 2030386268}
+    - target: {fileID: 1996596445348535916, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1,
+        type: 3}
+      propertyPath: checkPoint
+      value: 
+      objectReference: {fileID: 63491549}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c0e5a0eb8bb144d90d87b7b4661dc1, type: 3}

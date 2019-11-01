@@ -10,9 +10,6 @@ public class CheckPoint : MonoBehaviour
     [SerializeField]
     GameObject wire = null;
 
-    [SerializeField]
-    GameObject rotateTowards = null;
-
     Vector3 ringRotatePoint;
     WireMeshGeneration wmg;
 
@@ -21,40 +18,41 @@ public class CheckPoint : MonoBehaviour
     void Start()
     {
         wmg = wire.GetComponent<WireMeshGeneration>();
-        rotateTowards.transform.position = ringRotatePoint;
     }
 
     void Update()
     {
-        if(wmg.ringDir == null)
+        if (Input.GetKeyDown(KeyCode.V))
         {
-
+            MoveRingToCheckpoint();
         }
-        else if (Input.GetKeyDown(KeyCode.V))
-        {
-            ringRotatePoint = wmg.ringDir;
-            Debug.Log(ringRotatePoint);
 
-            this.transform.position = checkPoint.transform.position;
-            Debug.Log("Chakram moved");
-            moved = true;
+    }
 
-            Vector3 dir = ringRotatePoint - this.transform.position;
-            Quaternion rot = Quaternion.LookRotation(dir);
-            transform.rotation = rot;
+    void MoveRingToCheckpoint()
+    {
+        ringRotatePoint = wmg.ringDir;
+        Debug.Log(ringRotatePoint);
 
-            Vector3 temp = transform.rotation.eulerAngles;
-            temp.x += 90.0f;
-            transform.rotation = Quaternion.Euler(temp);
-        }
+        this.transform.position = checkPoint.transform.position;
+        Debug.Log("Chakram moved");
+        moved = true;
+
+        Vector3 dir = ringRotatePoint - this.transform.position;
+        Quaternion rot = Quaternion.LookRotation(dir);
+        transform.rotation = rot;
+
+        Vector3 temp = transform.rotation.eulerAngles;
+        temp.x += 90.0f;
+        transform.rotation = Quaternion.Euler(temp);
     }
 
     void OnDrawGizmos()
     {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawSphere(ringRotatePoint, 0.05f);
-            Gizmos.color = Color.blue;
-            Gizmos.DrawSphere(checkPoint.transform.position, 0.05f);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawSphere(ringRotatePoint, 0.05f);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(checkPoint.transform.position, 0.05f);
     }
-  
+
 }

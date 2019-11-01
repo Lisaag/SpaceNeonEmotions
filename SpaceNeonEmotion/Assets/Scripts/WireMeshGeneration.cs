@@ -62,9 +62,13 @@ public class WireMeshGeneration : MonoBehaviour
 
     void PlaceCheckPoints()
     {
-        checkpoint.transform.localPosition = curvePoints[curvePoints.Length / 2] * this.transform.localScale.y + this.transform.position;
-        ringDir = curvePoints[curvePoints.Length / 2 + 1] * this.transform.localScale.y + this.transform.position;
-        Debug.Log("RingDir" + ringDir);
+        checkpoint.transform.localPosition = curvePoints[curvePoints.Length / 4] * this.transform.localScale.y + this.transform.position;
+        ringDir = curvePoints[curvePoints.Length / 4 + 1] * this.transform.localScale.y + this.transform.position;
+
+        Vector3 relativePos = ringDir - checkpoint.transform.position;
+
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        checkpoint.transform.rotation = rotation;
     }
 
     void CaluclateCurve()
@@ -85,15 +89,15 @@ public class WireMeshGeneration : MonoBehaviour
 
             if (j == 0) //The points of the first curve of the wire
             {
-                FirstPoint[j] = new Vector3(0, 0, yDir * zOffsetPp);//(Random.Range(0, boundsX + 1), 0, Random.Range(0, boundsZ + 1));
-                SecondPoint[j] = new Vector3(Random.Range(0, boundsX + 1), 0, Random.Range(yDir * zOffsetPp, yDir * (boundsZ + 1)));
+                FirstPoint[j] = new Vector3(0, 0, yDir * zOffsetPp);
+                SecondPoint[j] = new Vector3(0, 0, yDir * zOffsetPp);
 
-                FirstControlPoint[j] = FirstPoint[j] + ControlPointOffset;
+                FirstControlPoint[j] = new Vector3(0, 0, yDir * zOffsetPp);
 
                 ControlPointOffset = new Vector3(RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y),
                     0, RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y)); //Create new Random Value
 
-                SecondControlPoint[j] = SecondPoint[j] + ControlPointOffset;
+                SecondControlPoint[j] = new Vector3(0, 0, yDir * zOffsetPp);
             }
             else
             {
@@ -137,8 +141,16 @@ public class WireMeshGeneration : MonoBehaviour
                     y += yStep;
                 }
 
-                Vector3 curvePoint = Mathf.Pow((1 - t), 3) * FirstPoint[j] + 3 * Mathf.Pow((1 - t), 2) * t * FirstControlPoint[j]
-                    + 3 * (1 - t) * Mathf.Pow(t, 2) * SecondControlPoint[j] + Mathf.Pow(t, 3) * SecondPoint[j];
+                Vector3 curvePoint;
+                if(j == 0)
+                {
+                    curvePoint = new Vector3(0, 0, yDir * zOffsetPp);
+                }
+                else
+                {
+                    curvePoint = Mathf.Pow((1 - t), 3) * FirstPoint[j] + 3 * Mathf.Pow((1 - t), 2) * t * FirstControlPoint[j]
+                         + 3 * (1 - t) * Mathf.Pow(t, 2) * SecondControlPoint[j] + Mathf.Pow(t, 3) * SecondPoint[j];
+                }
 
                 t += tStep;
                 curvePoint.y = y;
@@ -150,20 +162,30 @@ public class WireMeshGeneration : MonoBehaviour
     void CreateCircle()
     {
         List<Vector3> normals = new List<Vector3>();
-
+        float dir = 2.0f;
         for (int j = 0; j < curvePointCount - 1; j++)
         {
+            Vector3 firstPerp;
+
             if (j % curveDetail != curveDetail - 1 || j == 0)
             {
-                Vector3 baseLine = curvePoints[j + 1] - curvePoints[j]; //first vector of orthogonal basis
-                //inversing the baseline vector, making one negative (x=-z, z=x), and dividing it by the baseline's magnitude
-                Vector2 perp2D = new Vector2(-baseLine.z, baseLine.x) / Mathf.Sqrt(Mathf.Pow(baseLine.x, 2) + Mathf.Pow(baseLine.z, 2));
-                Vector3 firstPerp = new Vector3(perp2D.x, curvePoints[j].y, perp2D.y).normalized; //Direction of the perpendicular vector
-                firstPerp = curvePoints[j] + (firstPerp * 0.2f); //offsetting the perpendicular vector from circle origin
-                firstPerp.y = curvePoints[j].y; //resetting the y axis, bc this is a 2d perpendicular vector
+                if(j < curveDetail)
+                {
+                    Vector3 p = curvePoints[j] + new Vector3(0, 0, 10);
+                    firstPerp = curvePoints[j] + (p - curvePoints[j]).normalized;
+                }
+                else
+                {
+                    Vector3 baseLine = curvePoints[j + 1] - curvePoints[j]; //first vector of orthogonal basis
+                                                                            //inversing the baseline vector, making one negative (x=-z, z=x), and dividing it by the baseline's magnitude
+                    Vector2 perp2D = new Vector2(-baseLine.z, baseLine.x) / Mathf.Sqrt(Mathf.Pow(baseLine.x, 2) + Mathf.Pow(baseLine.z, 2)) * dir; //;
+                    firstPerp = new Vector3(perp2D.x, curvePoints[j].y, perp2D.y).normalized; //Direction of the perpendicular vector
+                    firstPerp = curvePoints[j] + (firstPerp * 0.2f); //offsetting the perpendicular vector from circle origin
+                    firstPerp.y = curvePoints[j].y; //resetting the y axis, bc this is a 2d perpendicular vector
+                }
 
-                Vector3 secondPerp = Vector3.Cross(curvePoints[j + 1] - curvePoints[j], firstPerp - curvePoints[j]).normalized; //Get vector orthogonal to fp and the next point on the curve
-                secondPerp = curvePoints[j] + (secondPerp / 8);
+                Vector3 secondPerp = (Vector3.Cross(curvePoints[j + 1] - curvePoints[j], firstPerp - curvePoints[j]) * dir).normalized; //Get vector orthogonal to fp and the next point on the curve          
+                secondPerp = curvePoints[j] + (secondPerp * 0.2f);
 
                 perpVectors.Add(firstPerp);
                 orthogonal.Add(secondPerp);
@@ -239,5 +261,29 @@ public class WireMeshGeneration : MonoBehaviour
             return Random.Range(FirstMin, FirstMax);
         else
             return Random.Range(SecondMin, SecondMax);
+    }
+
+    void OnDrawGizmos()
+    {
+        Debug.Log(curvePoints.Length + " - " + orthogonal.Count);
+        Gizmos.color = Color.red;
+
+      /*  Gizmos.color = Color.grey;
+        foreach(Vector3 p in verts)
+        {
+            Gizmos.DrawSphere(p * this.transform.localScale.y + this.transform.position, 0.01f);
+        }*/
+
+        foreach(Vector3 p in perpVectors)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(p * this.transform.localScale.y + this.transform.position, 0.01f);
+        }
+
+        foreach(Vector3 p in orthogonal)
+        {
+           // Gizmos.color = Color.blue;
+            //Gizmos.DrawSphere(p * this.transform.localScale.y + this.transform.position, 0.01f);
+        }
     }
 }
