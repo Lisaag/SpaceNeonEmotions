@@ -10,6 +10,9 @@ public class CheckPoint : MonoBehaviour
     [SerializeField]
     GameObject wire = null;
 
+    [SerializeField]
+    GameObject rotateTowards = null;
+
     Vector3 ringRotatePoint;
     WireMeshGeneration wmg;
 
@@ -18,17 +21,20 @@ public class CheckPoint : MonoBehaviour
     void Start()
     {
         wmg = wire.GetComponent<WireMeshGeneration>();
-        ringRotatePoint = wmg.ringDir;
+        rotateTowards.transform.position = ringRotatePoint;
     }
 
     void Update()
     {
         if(wmg.ringDir == null)
         {
-            ringRotatePoint = wmg.ringDir;
+
         }
-        else if (Input.GetKeyDown(KeyCode.V) && !moved)
+        else if (Input.GetKeyDown(KeyCode.V))
         {
+            ringRotatePoint = wmg.ringDir;
+            Debug.Log(ringRotatePoint);
+
             this.transform.position = checkPoint.transform.position;
             Debug.Log("Chakram moved");
             moved = true;
@@ -41,6 +47,14 @@ public class CheckPoint : MonoBehaviour
             temp.x += 90.0f;
             transform.rotation = Quaternion.Euler(temp);
         }
+    }
+
+    void OnDrawGizmos()
+    {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawSphere(ringRotatePoint, 0.05f);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(checkPoint.transform.position, 0.05f);
     }
   
 }

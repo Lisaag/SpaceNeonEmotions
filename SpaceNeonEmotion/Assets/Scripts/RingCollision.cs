@@ -25,7 +25,6 @@ public class RingCollision : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             Pickup();
-            Debug.Log("Object picked up");
         }
     }
 
@@ -35,7 +34,6 @@ public class RingCollision : MonoBehaviour
       //  {
             if (other.CompareTag("Wire"))
             {
-                Debug.Log("BIEM!!1 collider");
                 Reset();
             }
        // }

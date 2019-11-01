@@ -62,8 +62,9 @@ public class WireMeshGeneration : MonoBehaviour
 
     void PlaceCheckPoints()
     {
-        checkpoint.transform.localPosition = curvePoints[curvePoints.Length / 2];
-        ringDir = curvePoints[curvePoints.Length / 2 + 1];
+        checkpoint.transform.localPosition = curvePoints[curvePoints.Length / 2] * this.transform.localScale.y + this.transform.position;
+        ringDir = curvePoints[curvePoints.Length / 2 + 1] * this.transform.localScale.y + this.transform.position;
+        Debug.Log("RingDir" + ringDir);
     }
 
     void CaluclateCurve()
@@ -79,7 +80,6 @@ public class WireMeshGeneration : MonoBehaviour
 
         for (int j = 0; j < curveCount * 2 + 1; j++)
         {
-            Debug.Log(j);
             Vector3 ControlPointOffset = new Vector3(RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y),
                                             0, RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y));
 
@@ -240,13 +240,4 @@ public class WireMeshGeneration : MonoBehaviour
         else
             return Random.Range(SecondMin, SecondMax);
     }
-
-     void OnDrawGizmos()
-     {
-        if(curvePoints.Length != 0)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(curvePoints[curvePoints.Length / 2] * this.transform.localScale.y, 0.05f);
-        }
-     }
 }
