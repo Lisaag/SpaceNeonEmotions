@@ -29,7 +29,7 @@ public class WireMeshGeneration : MonoBehaviour
     const int curveCount = 6; //Amount of curves generated
     const int curveArraySize = curveCount * 2 + 1;
     const int curveDetail = 15; //Amount of points on the curve calculated
-    const int curvePointCount = curveArraySize * curveDetail;
+    const int curvePointCount = curveArraySize * (curveDetail - 1) + 1;
     Vector3[] curvePoints = new Vector3[curvePointCount];
 
     List<Vector3> orthogonal = new List<Vector3>();
@@ -134,8 +134,14 @@ public class WireMeshGeneration : MonoBehaviour
 
             float t = 0;
 
-            for (int i = 0; i < curveDetail; i++)
+
+
+            for (int i = 0, p = 0; i < curveDetail; i++)
             {
+                if(i == 0)
+                {
+                    continue;
+                }
                 if (i != 0)
                 {
                     y += yStep;
@@ -154,7 +160,8 @@ public class WireMeshGeneration : MonoBehaviour
 
                 t += tStep;
                 curvePoint.y = y;
-                curvePoints[curveDetail * j + i] = curvePoint;
+                curvePoints[curveDetail * j + p] = curvePoint;
+                p++;
             }
         }
     }
@@ -167,8 +174,8 @@ public class WireMeshGeneration : MonoBehaviour
         {
             Vector3 firstPerp;
 
-            if (j % curveDetail != curveDetail - 1 || j == 0)
-            {
+           // if (j % curveDetail != curveDetail - 1 || j == 0)
+            //{
                 if(j < curveDetail)
                 {
                     Vector3 p = curvePoints[j] + new Vector3(0, 0, 10);
@@ -180,7 +187,7 @@ public class WireMeshGeneration : MonoBehaviour
                                                                             //inversing the baseline vector, making one negative (x=-z, z=x), and dividing it by the baseline's magnitude
                     Vector2 perp2D = new Vector2(-baseLine.z, baseLine.x) / Mathf.Sqrt(Mathf.Pow(baseLine.x, 2) + Mathf.Pow(baseLine.z, 2)) * dir; //;
                     firstPerp = new Vector3(perp2D.x, curvePoints[j].y, perp2D.y).normalized; //Direction of the perpendicular vector
-                    firstPerp = curvePoints[j] + (firstPerp * 0.2f); //offsetting the perpendicular vector from circle origin
+                    firstPerp = curvePoints[j] + (firstPerp); //offsetting the perpendicular vector from circle origin
                     firstPerp.y = curvePoints[j].y; //resetting the y axis, bc this is a 2d perpendicular vector
                 }
 
@@ -204,7 +211,7 @@ public class WireMeshGeneration : MonoBehaviour
                     verts.Add(p);
                     normals.Add(normal);
                 }
-            }
+            //}
         }
         mesh.vertices = verts.ToArray();
 
