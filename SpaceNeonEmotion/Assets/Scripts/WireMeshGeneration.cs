@@ -89,15 +89,15 @@ public class WireMeshGeneration : MonoBehaviour
 
             if (j == 0) //The points of the first curve of the wire
             {
-                FirstPoint[j] = new Vector3(0, 0, yDir * zOffsetPp);
-                SecondPoint[j] = new Vector3(0, 0, yDir * zOffsetPp);
+                FirstPoint[j] = new Vector3(0, 0, yDir * -zOffsetPp);
+                SecondPoint[j] = new Vector3(0, 0, yDir * -zOffsetPp);
 
-                FirstControlPoint[j] = new Vector3(0, 0, yDir * zOffsetPp);
+                FirstControlPoint[j] = new Vector3(0, 0, yDir * -zOffsetPp);
 
                 ControlPointOffset = new Vector3(RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y),
                     0, RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y)); //Create new Random Value
 
-                SecondControlPoint[j] = new Vector3(0, 0, yDir * zOffsetPp);
+                SecondControlPoint[j] = new Vector3(0, 0, yDir * -zOffsetPp);
             }
             else
             {

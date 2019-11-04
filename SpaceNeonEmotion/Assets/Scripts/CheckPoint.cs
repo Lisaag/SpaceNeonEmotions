@@ -49,12 +49,4 @@ public class CheckPoint : MonoBehaviour
         transform.rotation = Quaternion.Euler(temp);
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawSphere(ringRotatePoint, 0.05f);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(checkPoint.transform.position, 0.05f);
-    }
-
 }

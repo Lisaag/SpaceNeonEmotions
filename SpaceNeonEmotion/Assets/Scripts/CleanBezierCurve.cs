@@ -24,6 +24,14 @@ public class CleanBezierCurve : MonoBehaviour
     [SerializeField]
     int cylinderDetail = 15;
 
+    [SerializeField]
+    float radius = 0.1f;
+
+    [SerializeField]
+    GameObject checkpoint = null;
+
+    public Vector3 ringDir;
+
     //TEMP
     List<Vector3> perpVectors = new List<Vector3>();
     List<Vector3> orthogonal = new List<Vector3>();
@@ -42,6 +50,7 @@ public class CleanBezierCurve : MonoBehaviour
         CreateCircle();
         int triangleIndex = 0;
         StartCoroutine(WaitDrawTriangle(triangleIndex));
+        PlaceCheckPoints();
     }
 
     void InitializeMesh()
@@ -49,6 +58,17 @@ public class CleanBezierCurve : MonoBehaviour
         MeshFilter mf = GetComponent<MeshFilter>();
         mesh = new Mesh();
         mf.mesh = mesh;
+    }
+
+    void PlaceCheckPoints()
+    {
+        checkpoint.transform.localPosition = curvePoints[curvePoints.Count / 4] * this.transform.localScale.y + this.transform.position;
+        ringDir = curvePoints[curvePoints.Count / 4 + 1] * this.transform.localScale.y + this.transform.position;
+
+        Vector3 relativePos = ringDir - checkpoint.transform.position;
+
+        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        checkpoint.transform.rotation = rotation;
     }
 
     IEnumerator WaitDrawTriangle(int i)
@@ -106,9 +126,9 @@ public class CleanBezierCurve : MonoBehaviour
             if (j < curveDetail)
             {
                 Vector3 p = curvePoints[j] + new Vector3(0, 0, 10);
-                firstPerp = curvePoints[j] + (p - curvePoints[j]).normalized;
+                firstPerp = curvePoints[j] - (p - curvePoints[j]).normalized;
                 tmp = new Vector3(0, 0, 0);
-                finalperp = new Vector3(0, 0, 0);
+                finalperp = curvePoints[j] - (p - curvePoints[j]).normalized;
             }
             else
             {
@@ -144,7 +164,6 @@ public class CleanBezierCurve : MonoBehaviour
             orthogonal.Add(secondPerp);
 
             Vector3 center = curvePoints[j];
-            float radius = .075f;
 
             const float maxt = 2 * Mathf.PI;
             float stept = maxt / cylinderDetail;
@@ -270,7 +289,7 @@ public class CleanBezierCurve : MonoBehaviour
     }
 
 
-    void OnDrawGizmos()
+   /* void OnDrawGizmos()
     {
         if (curvePoints.Count != 0)
         {
@@ -308,5 +327,5 @@ public class CleanBezierCurve : MonoBehaviour
                 Gizmos.DrawSphere(mesh.vertices[i], 0.005f);
             }
         }
-    }
+    }*/
 }
