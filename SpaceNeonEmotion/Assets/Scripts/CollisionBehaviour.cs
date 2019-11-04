@@ -5,4 +5,5 @@ using UnityEngine;
 public class CollisionBehaviour : MonoBehaviour
 {
     public bool hasCollided = false;
+    public bool reachedCheckpoint = false;
 }

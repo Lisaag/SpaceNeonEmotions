@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596443348109021}
   - component: {fileID: 1996596443348109023}
-  - component: {fileID: 1996596443348109022}
   - component: {fileID: 1996596443348108992}
   m_Layer: 0
   m_Name: Collider (13)
@@ -46,22 +45,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596443348109022
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596443348109020}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596443348108992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +59,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596443380438992
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,7 +71,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596443380438993}
   - component: {fileID: 1996596443380438995}
-  - component: {fileID: 1996596443380438994}
   - component: {fileID: 1996596443380438996}
   m_Layer: 0
   m_Name: Collider (6)
@@ -122,22 +106,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.18, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596443380438994
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596443380438992}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596443380438996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596443532845796
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +132,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596443532845797}
   - component: {fileID: 1996596443532845799}
-  - component: {fileID: 1996596443532845798}
   - component: {fileID: 1996596443532845800}
   m_Layer: 0
   m_Name: Collider (7)
@@ -198,22 +167,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596443532845798
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596443532845796}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596443532845800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596443555522398
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +193,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596443555522399}
   - component: {fileID: 1996596443555522369}
-  - component: {fileID: 1996596443555522368}
   - component: {fileID: 1996596443555522370}
   m_Layer: 0
   m_Name: Collider (1)
@@ -274,22 +228,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596443555522368
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596443555522398}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596443555522370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596443772435895
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +254,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596443772435896}
   - component: {fileID: 1996596443772435898}
-  - component: {fileID: 1996596443772435897}
   - component: {fileID: 1996596443772435899}
   m_Layer: 0
   m_Name: Collider (8)
@@ -350,22 +289,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596443772435897
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596443772435895}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596443772435899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +303,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596443826933763
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +315,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596443826933764}
   - component: {fileID: 1996596443826933766}
-  - component: {fileID: 1996596443826933765}
   - component: {fileID: 1996596443826933767}
   m_Layer: 0
   m_Name: Collider (9)
@@ -426,22 +350,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596443826933765
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596443826933763}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596443826933767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,6 +364,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596443871798214
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,7 +376,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596443871798215}
   - component: {fileID: 1996596443871798217}
-  - component: {fileID: 1996596443871798216}
   - component: {fileID: 1996596443871798218}
   m_Layer: 0
   m_Name: Collider (17)
@@ -502,22 +411,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596443871798216
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596443871798214}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596443871798218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,6 +425,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596444012294528
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,7 +437,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596444012294529}
   - component: {fileID: 1996596444012294531}
-  - component: {fileID: 1996596444012294530}
   - component: {fileID: 1996596444012294532}
   m_Layer: 0
   m_Name: Collider (18)
@@ -578,22 +472,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596444012294530
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596444012294528}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596444012294532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,6 +486,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596444143344056
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +498,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596444143344057}
   - component: {fileID: 1996596444143344059}
-  - component: {fileID: 1996596444143344058}
   - component: {fileID: 1996596444143344060}
   m_Layer: 0
   m_Name: Collider (2)
@@ -654,22 +533,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596444143344058
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596444143344056}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596444143344060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,6 +547,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596444252026557
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,7 +559,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596444252026558}
   - component: {fileID: 1996596444252026528}
-  - component: {fileID: 1996596444252026559}
   - component: {fileID: 1996596444252026529}
   m_Layer: 0
   m_Name: Collider (12)
@@ -730,22 +594,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596444252026559
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596444252026557}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596444252026529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,6 +608,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596444556311607
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,7 +620,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596444556311608}
   - component: {fileID: 1996596444556311610}
-  - component: {fileID: 1996596444556311609}
   - component: {fileID: 1996596444556311611}
   m_Layer: 0
   m_Name: Collider (3)
@@ -806,22 +655,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596444556311609
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596444556311607}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596444556311611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -836,6 +669,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596444592846451
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,7 +681,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596444592846452}
   - component: {fileID: 1996596444592846454}
-  - component: {fileID: 1996596444592846453}
   - component: {fileID: 1996596444592846455}
   m_Layer: 0
   m_Name: Collider (19)
@@ -882,22 +716,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.183, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596444592846453
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596444592846451}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596444592846455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,6 +730,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596444669513964
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,7 +742,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596444669513965}
   - component: {fileID: 1996596444669513967}
-  - component: {fileID: 1996596444669513966}
   - component: {fileID: 1996596444669513872}
   m_Layer: 0
   m_Name: Collider (11)
@@ -958,22 +777,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596444669513966
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596444669513964}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1996596444669513872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -988,6 +791,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596444698802712
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,7 +803,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596444698802713}
   - component: {fileID: 1996596444698802715}
-  - component: {fileID: 1996596444698802714}
   - component: {fileID: 1996596444698802716}
   m_Layer: 0
   m_Name: Collider
@@ -1034,22 +838,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596444698802714
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596444698802712}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596444698802716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1064,6 +852,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596444725884925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,7 +864,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596444725884926}
   - component: {fileID: 1996596444725884896}
-  - component: {fileID: 1996596444725884927}
   - component: {fileID: 1996596444725884897}
   m_Layer: 0
   m_Name: Collider (15)
@@ -1110,22 +899,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596444725884927
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596444725884925}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596444725884897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,6 +913,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596444939499261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,7 +1086,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596444950666659}
   - component: {fileID: 1996596444950666661}
-  - component: {fileID: 1996596444950666660}
   - component: {fileID: 1996596444950666662}
   m_Layer: 0
   m_Name: Collider (16)
@@ -1347,22 +1121,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596444950666660
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596444950666658}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596444950666662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1377,6 +1135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596445042770241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,7 +1147,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596445042770242}
   - component: {fileID: 1996596445042770244}
-  - component: {fileID: 1996596445042770243}
   - component: {fileID: 1996596445042770245}
   m_Layer: 0
   m_Name: Collider (14)
@@ -1423,22 +1182,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596445042770243
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596445042770241}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596445042770245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1453,6 +1196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596445144684849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,7 +1208,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596445144684850}
   - component: {fileID: 1996596445144684852}
-  - component: {fileID: 1996596445144684851}
   - component: {fileID: 1996596445144684854}
   m_Layer: 0
   m_Name: Collider (5)
@@ -1499,22 +1243,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596445144684851
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596445144684849}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596445144684854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1529,6 +1257,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596445152419047
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,7 +1269,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596445152419048}
   - component: {fileID: 1996596445152419050}
-  - component: {fileID: 1996596445152419049}
   - component: {fileID: 1996596445152419051}
   m_Layer: 0
   m_Name: Collider (10)
@@ -1575,22 +1304,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.18, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596445152419049
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596445152419047}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596445152419051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1605,6 +1318,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &1996596445348535912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,7 +1330,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1996596445348535913}
   - component: {fileID: 1996596445348535915}
-  - component: {fileID: 1996596445348535914}
   - component: {fileID: 1996596445348535916}
   m_Layer: 0
   m_Name: Collider (4)
@@ -1651,22 +1365,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.185, y: 0.07, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1996596445348535914
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996596445348535912}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &1996596445348535916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1681,6 +1379,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderParent: {fileID: 1996596444939499261}
   ring: {fileID: 7535851440857848881}
+  checkPoint: {fileID: 0}
+  wire: {fileID: 0}
 --- !u!1 &7535851440857848881
 GameObject:
   m_ObjectHideFlags: 0
@@ -2013,3 +1713,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkPoint: {fileID: 0}
+  wire: {fileID: 0}

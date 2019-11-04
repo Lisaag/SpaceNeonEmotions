@@ -13,9 +13,6 @@ public class CleanBezierCurve : MonoBehaviour
     int curveCount = 14;
 
     [SerializeField]
-    float zOffsetPp = 0;
-
-    [SerializeField]
     float boundsX = 0;
 
     [SerializeField]
@@ -30,6 +27,7 @@ public class CleanBezierCurve : MonoBehaviour
     [SerializeField]
     GameObject checkpoint = null;
 
+    public float zOffsetPp = 0;
     public Vector3 ringDir;
 
     //TEMP

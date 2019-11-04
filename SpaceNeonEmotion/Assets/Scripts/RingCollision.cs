@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Valve.VR.InteractionSystem;
+﻿using UnityEngine;
 
 public class RingCollision : MonoBehaviour
 {
@@ -16,60 +13,39 @@ public class RingCollision : MonoBehaviour
     // CollisionBehaviour collisionBehaviour = new CollisionBehaviour();
 
     [SerializeField]
-    GameObject checkPoint = null;
+    readonly GameObject checkPoint = null;
 
     [SerializeField]
     GameObject wire = null;
 
     Vector3 ringRotatePoint;
-    WireMeshGeneration wmg;
+    CleanBezierCurve wmg;
+
+    CheckPoint cp;
 
     void Start()
     {
         collisionBehaviour = colliderParent.GetComponent<CollisionBehaviour>();
         audioSource = colliderParent.GetComponent<AudioSource>();
-        wmg = wire.GetComponent<WireMeshGeneration>();
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Pickup();
-            MoveRingToCheckpoint();
-            Debug.Log("poep");
-        }
-    }
-
-    void MoveRingToCheckpoint()
-    {
-        ring.transform.GetComponentInParent<Hand>().DetachObject(gameObject);
-
-        ringRotatePoint = wmg.ringDir;
-        Debug.Log(ring.transform.parent);
-
-        this.transform.position = checkPoint.transform.position;
-        Debug.Log("Chakram moved");
-
-        Vector3 dir = ringRotatePoint - this.transform.position;
-        Quaternion rot = Quaternion.LookRotation(dir);
-        transform.rotation = rot;
-
-        Vector3 temp = transform.rotation.eulerAngles;
-        temp.x += 90.0f;
-        transform.rotation = Quaternion.Euler(temp);
+        wmg = wire.GetComponent<CleanBezierCurve>();
+        cp = ring.GetComponent<CheckPoint>();
     }
 
     void OnTriggerEnter(Collider other)
     {
-       // if (!collisionBehaviour.hasCollided)
-      //  {
+        if (!collisionBehaviour.hasCollided)
+        {
             if (other.CompareTag("Wire"))
             {
-            MoveRingToCheckpoint();
-            Reset();
+                cp.MoveRingToCheckpoint();
+                Reset();
             }
-       // }
+        }
+        if (other.CompareTag("Checkpoint"))
+        {
+            collisionBehaviour.reachedCheckpoint = true;
+            Debug.Log("Checkpointieeee");
+        }
     }
 
     void Reset()
@@ -77,7 +53,7 @@ public class RingCollision : MonoBehaviour
         collisionBehaviour.hasCollided = true;
         audioSource.Play();
 
-      //  ring.transform.position = new Vector3(0, 2, 0);
+        //  ring.transform.position = new Vector3(0, 2, 0);
     }
 
     void Pickup()

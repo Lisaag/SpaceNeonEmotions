@@ -12,41 +12,58 @@ public class CheckPoint : MonoBehaviour
     GameObject wire = null;
 
     Vector3 ringRotatePoint;
-    WireMeshGeneration wmg;
+    CleanBezierCurve wmg;
+
+    CollisionBehaviour collisionBehaviour;
+
+    private Vector3 startPos = new Vector3(0, 0, 0);
 
     bool moved;
 
     void Start()
     {
-        wmg = wire.GetComponent<WireMeshGeneration>();
+        wmg = wire.GetComponent<CleanBezierCurve>();
+        collisionBehaviour = this.gameObject.transform.GetChild(0).GetComponent<CollisionBehaviour>();
+        startPos =  new Vector3(0, 0.5f, -wire.GetComponent<CleanBezierCurve>().zOffsetPp) * wire.transform.localScale.y + wire.transform.position;
+        this.transform.position = startPos;
     }
 
-    void Update()
+    private void Update()
     {
-
-
+        if(transform.parent != null && collisionBehaviour.hasCollided)
+        {
+            if (transform.parent.GetComponent<Hand>().ObjectIsAttached(this.gameObject))
+            {
+                collisionBehaviour.hasCollided = false;
+            }
+        }
     }
 
-
-
-    void MoveRingToCheckpoint()
+    public void MoveRingToCheckpoint()
     {
-        ringRotatePoint = wmg.ringDir;
-        Debug.Log(ringRotatePoint);
-
         transform.parent.GetComponent<Hand>().DetachObject(gameObject);
 
-        this.transform.position = checkPoint.transform.position;
-        Debug.Log("Chakram moved");
-        moved = true;
+        if (!collisionBehaviour.reachedCheckpoint)
+        {
+            this.transform.position = startPos;
+            this.transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            ringRotatePoint = wmg.ringDir;
+            Debug.Log(ringRotatePoint);
 
-        Vector3 dir = ringRotatePoint - this.transform.position;
-        Quaternion rot = Quaternion.LookRotation(dir);
-        transform.rotation = rot;
+            this.transform.position = checkPoint.transform.position;
+            Debug.Log("Chakram moved");
+            moved = true;
 
-        Vector3 temp = transform.rotation.eulerAngles;
-        temp.x += 90.0f;
-        transform.rotation = Quaternion.Euler(temp);
+            Vector3 dir = ringRotatePoint - this.transform.position;
+            Quaternion rot = Quaternion.LookRotation(dir);
+            transform.rotation = rot;
+
+            Vector3 temp = transform.rotation.eulerAngles;
+            temp.x += 90.0f;
+            transform.rotation = Quaternion.Euler(temp);
+        }
     }
-
 }

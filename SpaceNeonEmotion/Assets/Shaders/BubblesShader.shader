@@ -71,11 +71,10 @@
 			fixed4 bm = tex2D(_BlendMask, IN.uv_MainTex * 2 + _SinTime.x + _Time * speed * float2(_SinTime.x, dir.y * 4));
 
 			fixed4 d = tex2D(_SecondTex, IN.uv_MainTex + _Time * speed * float3(_SinTime.x / 10 * dir.x, dir.y, _SinTime.x)) * bm.b;
-			fixed4 c = tex2D(_MainTex, IN.uv_MainTex + _Time * speed * float2(_SinTime.x / 10 * dirlft.x, dirlft.y));// *bm.g;
+			fixed4 c = tex2D(_MainTex, IN.uv_MainTex);
 
-			o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap + _Time * speed * float2(-_SinTime.x / 2, dir.y)) * bm.g);
-			o.Albedo = d.rgb + c.rgb * _Color;
 			o.Albedo = c.rgb * _Color;
+			o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap + _Time * speed * float2(-_SinTime.x / 2, dir.y)) * bm.g);
 
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
