@@ -19,6 +19,8 @@ public class RingCollision : MonoBehaviour
 
     CheckPoint cp;
 
+    int checkpointId = 0;
+
     void Start()
     {
         collisionBehaviour = colliderParent.GetComponent<CollisionBehaviour>();
@@ -29,7 +31,12 @@ public class RingCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        int checkpointId = 0;
+        if (other.CompareTag("Checkpoint"))
+        {
+            collisionBehaviour.reachedCheckpoint = true;
+            checkpointId = other.GetComponent<CheckPointId>().id;
+            Debug.Log("chackram collided with checkpoint " + checkpointId);
+        }
 
         if (!collisionBehaviour.hasCollided)
         {
@@ -38,12 +45,6 @@ public class RingCollision : MonoBehaviour
                 cp.MoveRingToCheckpoint(checkpointId);
                 Reset();
             }
-        }
-        if (other.CompareTag("Checkpoint"))
-        {
-            collisionBehaviour.reachedCheckpoint = true;
-            checkpointId = other.GetComponent<CheckPointId>().id;
-            Debug.Log("chackram collided with checkpoint " + checkpointId);
         }
     }
 
