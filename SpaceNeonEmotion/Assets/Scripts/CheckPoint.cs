@@ -49,18 +49,18 @@ public class CheckPoint : MonoBehaviour
 
         if(transform.parent == null)
         {
-           // animator.SetBool("isHovering", true);
+            animator.SetBool("isHovering", true);
         }
         else
         {
-           // animator.SetBool("isHovering", false);
+            animator.SetBool("isHovering", false);
         }
         Debug.Log("AnimatorBool: " + animator.GetBool("isHovering"));
     }
 
     public void MoveRingToCheckpoint(int id)
     {
-       transform.parent.GetComponent<Hand>().DetachObject(gameObject);
+       // transform.parent.GetComponent<Hand>().DetachObject(gameObject);
 
         if (!collisionBehaviour.reachedCheckpoint)
         {
