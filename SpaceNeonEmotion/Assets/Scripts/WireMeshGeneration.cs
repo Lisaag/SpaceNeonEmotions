@@ -14,9 +14,6 @@ public class WireMeshGeneration : MonoBehaviour
     int cylinderDetail = 20;
 
     [SerializeField]
-    GameObject playerPosition = null;
-
-    [SerializeField]
     float zOffsetPp = 0;
 
     [SerializeField]

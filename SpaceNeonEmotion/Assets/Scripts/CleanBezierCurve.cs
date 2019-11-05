@@ -25,10 +25,10 @@ public class CleanBezierCurve : MonoBehaviour
     float radius = 0.1f;
 
     [SerializeField]
-    GameObject checkpoint = null;
+    GameObject checkpointsParent = null;
 
     public float zOffsetPp = 0;
-    public Vector3 ringDir;
+    public Vector3[] ringDir;
 
     //TEMP
     List<Vector3> perpVectors = new List<Vector3>();
@@ -60,13 +60,19 @@ public class CleanBezierCurve : MonoBehaviour
 
     void PlaceCheckPoints()
     {
-        checkpoint.transform.localPosition = curvePoints[curvePoints.Count / 4] * this.transform.localScale.y + this.transform.position;
-        ringDir = curvePoints[curvePoints.Count / 4 + 1] * this.transform.localScale.y + this.transform.position;
+        ringDir = new Vector3[checkpointsParent.transform.childCount];
+        int wireDivisions = checkpointsParent.transform.childCount + 1;
 
-        Vector3 relativePos = ringDir - checkpoint.transform.position;
+        for(int i = 0; i < checkpointsParent.transform.childCount; i++)
+        {
+            checkpointsParent.transform.GetChild(i).transform.localPosition = curvePoints[(curvePoints.Count / wireDivisions) * (i + 1)] * this.transform.localScale.y + this.transform.position;
+            ringDir[i] = curvePoints[(curvePoints.Count / wireDivisions) * (i + 1) + 1] * this.transform.localScale.y + this.transform.position;
 
-        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        checkpoint.transform.rotation = rotation;
+            Vector3 relativePos = ringDir[i] - checkpointsParent.transform.GetChild(i).position;
+
+            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+            checkpointsParent.transform.GetChild(0).rotation = rotation;
+        }
     }
 
     IEnumerator WaitDrawTriangle(int i)

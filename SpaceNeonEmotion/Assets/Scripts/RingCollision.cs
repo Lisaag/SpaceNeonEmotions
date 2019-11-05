@@ -6,14 +6,10 @@ public class RingCollision : MonoBehaviour
     GameObject colliderParent = null;
 
     [SerializeField]
-    GameObject ring;
+    GameObject ring = null;
 
     CollisionBehaviour collisionBehaviour;
     AudioSource audioSource;
-    // CollisionBehaviour collisionBehaviour = new CollisionBehaviour();
-
-    [SerializeField]
-    readonly GameObject checkPoint = null;
 
     [SerializeField]
     GameObject wire = null;
@@ -33,18 +29,21 @@ public class RingCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        int checkpointId = 0;
+
         if (!collisionBehaviour.hasCollided)
         {
             if (other.CompareTag("Wire"))
             {
-                cp.MoveRingToCheckpoint();
+                cp.MoveRingToCheckpoint(checkpointId);
                 Reset();
             }
         }
         if (other.CompareTag("Checkpoint"))
         {
             collisionBehaviour.reachedCheckpoint = true;
-            Debug.Log("Checkpointieeee");
+            checkpointId = other.GetComponent<CheckPointId>().id;
+            Debug.Log("chackram collided with checkpoint " + checkpointId);
         }
     }
 
@@ -52,8 +51,6 @@ public class RingCollision : MonoBehaviour
     {
         collisionBehaviour.hasCollided = true;
         audioSource.Play();
-
-        //  ring.transform.position = new Vector3(0, 2, 0);
     }
 
     void Pickup()
