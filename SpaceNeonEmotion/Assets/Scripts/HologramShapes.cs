@@ -31,7 +31,7 @@ public class HologramShapes : MonoBehaviour
 
     private void SetLocation(GameObject colObj)
     {
-        if (this.transform.parent != null)
+        if (this.transform.parent.GetComponent<Hand>())
         {
             this.transform.parent.GetComponent<Hand>().DetachObject(this.gameObject);
         }

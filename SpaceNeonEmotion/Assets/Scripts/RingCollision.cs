@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RingCollision : MonoBehaviour
 {
@@ -8,45 +6,52 @@ public class RingCollision : MonoBehaviour
     GameObject colliderParent = null;
 
     [SerializeField]
-    GameObject ring;
+    GameObject ring = null;
 
     CollisionBehaviour collisionBehaviour;
     AudioSource audioSource;
-   // CollisionBehaviour collisionBehaviour = new CollisionBehaviour();
+
+    [SerializeField]
+    GameObject wire = null;
+
+    Vector3 ringRotatePoint;
+    CleanBezierCurve wmg;
+
+    CheckPoint cp;
+
+    int checkpointId = 0;
 
     void Start()
     {
         collisionBehaviour = colliderParent.GetComponent<CollisionBehaviour>();
         audioSource = colliderParent.GetComponent<AudioSource>();
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Pickup();
-            Debug.Log("Object picked up");
-        }
+        wmg = wire.GetComponent<CleanBezierCurve>();
+        cp = ring.GetComponent<CheckPoint>();
     }
 
     void OnTriggerEnter(Collider other)
     {
-       // if (!collisionBehaviour.hasCollided)
-      //  {
+        if (other.CompareTag("Checkpoint"))
+        {
+            collisionBehaviour.reachedCheckpoint = true;
+            checkpointId = other.GetComponent<CheckPointId>().id;
+            Debug.Log("chackram collided with checkpoint " + checkpointId);
+        }
+
+        if (!collisionBehaviour.hasCollided)
+        {
             if (other.CompareTag("Wire"))
             {
-                Debug.Log("BIEM!!1 collider");
+                cp.MoveRingToCheckpoint(checkpointId);
                 Reset();
             }
-       // }
+        }
     }
 
     void Reset()
     {
         collisionBehaviour.hasCollided = true;
         audioSource.Play();
-
-      //  ring.transform.position = new Vector3(0, 2, 0);
     }
 
     void Pickup()

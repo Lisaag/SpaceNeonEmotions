@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.P))
         {
-            animator.SetTrigger("PressButton");
+            animator.SetBool("isClapping", true);
         }
 
         if (Input.GetKeyDown(KeyCode.M))

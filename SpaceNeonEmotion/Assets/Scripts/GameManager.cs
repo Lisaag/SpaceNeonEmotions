@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject upperDoor;
     public GameObject lowerDoor;
+    public GameObject wire;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     {
         moveDoors = true;
         yield return new WaitForSeconds(2f);
+        wire.SetActive(true);
         moveDoors = false;
     }
     private void LateUpdate()
