@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         animator = this.GetComponent<Animator>();
+        StartCoroutine(RandomMove());
     }
     void Update()
     {
@@ -92,6 +93,19 @@ public class Player : MonoBehaviour
 
     }
 
+    IEnumerator RandomMove()
+    {
+        GameObject go = movementPositions[Random.Range(0, movementPositions.Count)];
+        while (go == toGameObject)
+        {
+            go = movementPositions[Random.Range(0, movementPositions.Count)];
+        }
+        toGameObject = go;
+        isRotating = true;
+        isMoving = true;
+        yield return new WaitForSeconds(Random.Range(10, 20));
+        StartCoroutine(RandomMove());
+    }
     private void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.G) && !isMoving)

@@ -27,6 +27,9 @@ public class CleanBezierCurve : MonoBehaviour
     [SerializeField]
     GameObject checkpointsParent = null;
 
+    [SerializeField]
+    float yStep = 0.0f; //the amount every point will be offset on the y-asix
+
     public float zOffsetPp = 0;
     public Vector3[] ringDir;
 
@@ -191,7 +194,6 @@ public class CleanBezierCurve : MonoBehaviour
     {
         float tStep = 1.0f / (curveDetail - 1); //the amount that the position on the curve will go up each iteration
         float y = 0;
-        float yStep = 0.08f; //the amount every point will be offset on the y-asix
         int zDir = -1;
 
         Vector2 ContrPtMinMaxOffset = new Vector2(1.0f, 1.5f);
@@ -248,7 +250,7 @@ public class CleanBezierCurve : MonoBehaviour
             }
             else if (j == curveCount / 2)
             {
-                yStep = -0.08f;
+                yStep *= -1;
             }
 
             float t = 0;
