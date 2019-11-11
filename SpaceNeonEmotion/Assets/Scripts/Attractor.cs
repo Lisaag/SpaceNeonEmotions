@@ -5,8 +5,9 @@ using UnityEngine;
 public class Attractor : MonoBehaviour
 {
     const float G = 667.4f;
+    public float newDrag = 2.5f;
     public Rigidbody rb;
-    public static List<Attractor> Attractors;
+    //public static List<Attractor> Attractors;
 
     private void FixedUpdate()
     {
@@ -23,13 +24,13 @@ public class Attractor : MonoBehaviour
             Attract(other.gameObject.GetComponent<Rigidbody>());
         }
     }
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.GetComponent<Rigidbody>() != null)
-        {
-            Attract(collision.gameObject.GetComponent<Rigidbody>());
-        }
-    }
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    if (collision.gameObject.GetComponent<Rigidbody>() != null)
+    //    {
+    //        Attract(collision.gameObject.GetComponent<Rigidbody>());
+    //    }
+    //}
     //private void OnEnable()
     //{
     //    if (Attractors == null)
@@ -45,8 +46,15 @@ public class Attractor : MonoBehaviour
     //}
     void Attract(Rigidbody rbToAttract)
     {
+        if (!rb.CompareTag("CubeLocation") && rbToAttract.CompareTag("HologramCube") || !rb.CompareTag("SphereLocation") && rbToAttract.CompareTag("HologramSphere") || !rb.CompareTag("TriangleLocation") && rb.CompareTag("HologramTriangle")){
+            return;
+        }
         Debug.Log("Attracting");
-        rbToAttract.drag = 2.5f;
+        if (rbToAttract.drag != newDrag)
+        {
+            rbToAttract.drag = newDrag;
+        }
+
         //Rigidbody rbToAttract = objToAttract.rb;
         Vector3 direction = rb.position - rbToAttract.position;
         float distance = direction.magnitude;

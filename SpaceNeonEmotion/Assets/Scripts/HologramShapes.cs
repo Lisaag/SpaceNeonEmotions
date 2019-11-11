@@ -31,7 +31,8 @@ public class HologramShapes : MonoBehaviour
 
     private void SetLocation(GameObject colObj)
     {
-        this.GetComponent<Interactable>().enabled = false;
+        Destroy(this.GetComponent<Throwable>());
+        Destroy(this.GetComponent<Interactable>());//.enabled = false;
         colObj.gameObject.SetActive(false);
         this.transform.rotation = colObj.gameObject.transform.rotation;
         this.GetComponent<Rigidbody>().isKinematic = true;
