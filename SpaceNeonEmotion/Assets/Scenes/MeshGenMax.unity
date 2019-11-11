@@ -205,7 +205,7 @@ PrefabInstance:
     - target: {fileID: 5706153219235535413, guid: 9c13b8049b2a7204f82c3ac907c5dbf3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5706153219235535369, guid: 9c13b8049b2a7204f82c3ac907c5dbf3,
         type: 3}
@@ -1828,6 +1828,106 @@ PrefabInstance:
       propertyPath: wireStartPoint
       value: 
       objectReference: {fileID: 1796731925}
+    - target: {fileID: 7466051589026917407, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051589032552898, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051589096483653, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051589234436239, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051589393724524, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051589452386101, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051589479400136, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051589490156985, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051589885330270, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051589913872658, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051590036679829, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051590213567368, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051590304159459, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051590324249902, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051590444647597, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051590635247553, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051590658970219, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051590672451730, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051590817276669, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051590853112809, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca9dad657395bf94eb68b5e50fae4445, type: 3}
 --- !u!1 &1796731925 stripped

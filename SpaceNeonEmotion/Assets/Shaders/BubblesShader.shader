@@ -50,11 +50,7 @@
 		sampler2D _BumpMap;
 		sampler2D _BlendMask;
 
-        // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
-        // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
-        // #pragma instancing_options assumeuniformscaling
         UNITY_INSTANCING_BUFFER_START(Props)
-            // put more per-instance properties here
         UNITY_INSTANCING_BUFFER_END(Props)
 
         void surf (Input IN, inout SurfaceOutputStandard o)
@@ -64,22 +60,17 @@
 			float speed = _Speed;
 			float a = _Alpha;
 
-            // Albedo comes from a texture tinted by color
-			//fixed4 d = tex2D(_MainTex, (IN.uv_MainTex));
-			//fixed4 bm = tex2D(_BlendMask, IN.uv_MainTex / _SinTime.x /*+ _Time * speed * float2(_SinTime.x, dir.y * 4)*/);
-			//fixed4 bm = tex2D(_BlendMask, IN.uv_MainTex * _SinTime.x /*+ _Time * speed * float2(_SinTime.x, dir.y * 4)*/);
 			fixed4 bm = tex2D(_BlendMask, IN.uv_MainTex * 2 + _SinTime.x + _Time * speed * float2(_SinTime.x, dir.y * 4));
 
-			fixed4 d = tex2D(_SecondTex, IN.uv_MainTex + _Time * speed * float3(_SinTime.x / 10 * dir.x, dir.y, _SinTime.x)) * bm.b;
-			fixed4 c = tex2D(_MainTex, IN.uv_MainTex);
+			fixed4 d = tex2D(_SecondTex, IN.uv_MainTex) * bm.g;
+			fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * bm.r;
 
-			o.Albedo = c.rgb * _Color;
+			o.Albedo = c.rgb + d.rgb * _Color;
 			o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap + _Time * speed * float2(-_SinTime.x / 2, dir.y)) * bm.g);
 
-            // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
-			o.Alpha = a;// +bm.g;
+			o.Alpha = a + bm.g;
         }
         ENDCG
     }

@@ -69,17 +69,15 @@ public class CheckPoint : MonoBehaviour
         }
         else
         {
-            Debug.Log("moving chackram to checkpoint: " + id);
             ringRotatePoint = wmg.ringDir[id];
-            Debug.Log(ringRotatePoint);
-
             this.transform.position = checkpointsParent.transform.GetChild(id).position;
-           // moved = true;
 
+            //apply the right rotation to the chakram by pointing it to the next point of the curve
             Vector3 dir = ringRotatePoint - this.transform.position;
             Quaternion rot = Quaternion.LookRotation(dir);
             transform.rotation = rot;
 
+            //add 90 to the x rotation, to make the the local y axis point to the next point (by default this is z)
             Vector3 temp = transform.rotation.eulerAngles;
             temp.x += 90.0f;
             transform.rotation = Quaternion.Euler(temp);

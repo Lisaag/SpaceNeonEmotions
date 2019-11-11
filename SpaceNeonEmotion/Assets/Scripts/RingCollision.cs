@@ -35,7 +35,6 @@ public class RingCollision : MonoBehaviour
         {
             collisionBehaviour.reachedCheckpoint = true;
             checkpointId = other.GetComponent<CheckPointId>().id;
-            Debug.Log("chackram collided with checkpoint " + checkpointId);
         }
 
         if (!collisionBehaviour.hasCollided)

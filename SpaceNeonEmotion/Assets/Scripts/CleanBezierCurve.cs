@@ -153,9 +153,6 @@ public class CleanBezierCurve : MonoBehaviour
                 finalperp = (((firstPerp + tmp) / 2.0f) - curvePoints[j]).normalized;
                 finalperp = curvePoints[j] + (finalperp * 0.1f);
                 finalperp.y = curvePoints[j].y;
-                //  finalPerps.Add(finalperp);
-
-                //   Debug.Log(finalperp);
             }
 
             tmps.Add(tmp);
