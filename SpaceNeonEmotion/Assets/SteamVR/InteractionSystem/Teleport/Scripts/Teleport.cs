@@ -126,21 +126,24 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private static Teleport _instance;
 		public static Teleport instance
-		{
-			get
-			{
-				if ( _instance == null )
-				{
-					_instance = GameObject.FindObjectOfType<Teleport>();
-				}
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = GameObject.FindObjectOfType<Teleport>();
+                }
 
-				return _instance;
-			}
-		}
+                return _instance;
+            }
+        }
 
+        [Header("Custom added")]
+        public int timesTeleported;
+        public bool hasAreaTeleported;
 
-		//-------------------------------------------------
-		void Awake()
+        //-------------------------------------------------
+        void Awake()
         {
             _instance = this;
 
@@ -871,6 +874,8 @@ namespace Valve.VR.InteractionSystem
 					teleportPoint.TeleportToScene();
 					return;
 				}
+
+                hasAreaTeleported = true;
 			}
 
 			// Find the actual floor position below the navigation mesh
@@ -903,7 +908,10 @@ namespace Valve.VR.InteractionSystem
 			}
 
 			Teleport.Player.Send( pointedAtTeleportMarker );
-		}
+
+            timesTeleported++;
+
+        }
 
 
 		//-------------------------------------------------
