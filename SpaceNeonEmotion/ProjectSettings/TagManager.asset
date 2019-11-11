@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wire
+  - CubeLocation
+  - SphereLocation
+  - HologramCube
+  - HologramSphere
+  - TriangleLocation
+  - HologramTriangle
   layers:
   - Default
   - TransparentFX
@@ -14,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - Obstacle
+  - PostProcessing
   - 
   - 
   - 
