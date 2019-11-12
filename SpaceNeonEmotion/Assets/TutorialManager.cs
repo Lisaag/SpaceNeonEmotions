@@ -8,6 +8,14 @@ public class TutorialManager : MonoBehaviour
     public List<Phase> phases;
     public int currentPhase = 0;
 
+    public TeleportArea teleportArea;
+
+    public List<TeleportPoint> teleportPoints;
+
+    public Material highlighted, regular;
+
+    public GameObject thumbButton, indexButton, controller;
+
     public Teleport teleport;
 
     [System.Serializable]
@@ -32,6 +40,14 @@ public class TutorialManager : MonoBehaviour
             if (!phases[currentPhase].phaseObjects[i].activeSelf)
                 phases[currentPhase].phaseObjects[i].SetActive(true);
         }
+
+        for (int i = 0; i < teleportPoints.Count; i++)
+        {
+            teleportPoints[i].gameObject.SetActive(false);
+            teleportPoints[i].enabled = false;
+        }
+
+        thumbButton.GetComponent<Renderer>().material = highlighted;
     }
 
     // Update is called once per frame
@@ -44,7 +60,6 @@ public class TutorialManager : MonoBehaviour
 
         if (teleport.hasAreaTeleported && currentPhase == 1)
         {
-            Destroy(GameObject.FindObjectOfType<TeleportPoint>());
             NextPhase();
         }
     }
@@ -61,6 +76,33 @@ public class TutorialManager : MonoBehaviour
         for (int i = 0; i < phases[currentPhase].phaseObjects.Count; i++)
         {
             phases[currentPhase].phaseObjects[i].SetActive(true);
+        }
+
+        switch(currentPhase)
+        {
+            case 0:
+                // use start method instead
+                break;
+            case 1:
+                teleportArea.enabled = false;
+                break;
+            case 2:
+                for (int i = 0; i < teleportPoints.Count; i++)
+                {
+                    teleportPoints[i].gameObject.SetActive(false);
+                    teleportPoints[i].enabled = false;
+                }
+
+                thumbButton.GetComponent<Renderer>().material = regular;
+                indexButton.GetComponent<Renderer>().material = highlighted;
+                break;
+            case 3:
+                teleportArea.gameObject.SetActive(true);
+                teleportArea.enabled = true;
+                controller.SetActive(false);
+                break;
+            case 4:
+                break;
         }
     }
 }
