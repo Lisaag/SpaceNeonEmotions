@@ -44,11 +44,7 @@ public class TutorialManager : MonoBehaviour
 
         if (teleport.hasAreaTeleported && currentPhase == 1)
         {
-            NextPhase();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+            Destroy(GameObject.FindObjectOfType<TeleportPoint>());
             NextPhase();
         }
     }
