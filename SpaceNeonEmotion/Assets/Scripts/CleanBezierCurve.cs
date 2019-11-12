@@ -38,6 +38,9 @@ public class CleanBezierCurve : MonoBehaviour
     List<Vector3> orthogonal = new List<Vector3>();
     List<Vector3> tmps = new List<Vector3>();
     List<Vector3> finalPerps = new List<Vector3>();
+
+    List<Vector3> tempOrderedVerts = new List<Vector3>();
+    List<Vector3> tmpVerts = new List<Vector3>();
     ///
 
     List<Vector3> curvePoints = new List<Vector3>();
@@ -180,11 +183,50 @@ public class CleanBezierCurve : MonoBehaviour
                 Vector3 p = center + radius * Mathf.Cos(i) * (center - secondPerp).normalized + radius * Mathf.Sin(i) * (center - finalperp).normalized;
                 Vector3 normal = Mathf.Cos(i) * (center - secondPerp).normalized + Mathf.Sin(i) * (center - finalperp).normalized;
 
+                tempOrderedVerts.Add(p);
                 verts.Add(p);
                 normals.Add(normal);
             }
 
+            float lowestPoint = 0;
+            int lpIndex = 0;
+            int index = 0;
+            foreach (Vector3 t in tempOrderedVerts)
+            {
+                if(lowestPoint == 0)
+                {
+                    lowestPoint = t.y;
+                }
+                if (t.y < lowestPoint)
+                {
+                    lowestPoint = t.y;
+                    lpIndex = index;
+                }
+                index++;
+            }
+            Debug.Log("temporderedverts count: " + lpIndex + "  -  " + tempOrderedVerts.Count);
+
+
+            for (int i = 0; i < cylinderDetail; i++)
+            {
+                 if (lpIndex > cylinderDetail)
+                 {
+                     lpIndex = 0;
+                 }
+
+                 if(lpIndex < tempOrderedVerts.Count)
+                 {
+                    Debug.Log("lpIndex" + lpIndex);
+                    tmpVerts.Add(tempOrderedVerts[lpIndex]);
+                 }
+
+                 lpIndex++;             
+             }
+
+             tempOrderedVerts.Clear();
+            
         }
+        Debug.Log(tmpVerts.Count + " - " + verts.Count);
 
         mesh.vertices = verts.ToArray();
         mesh.normals = normals.ToArray();
