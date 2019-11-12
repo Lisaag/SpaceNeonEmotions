@@ -6,6 +6,7 @@ using Valve.VR.InteractionSystem;
 
 public class HologramShapes : MonoBehaviour
 {
+    //public GameObject forcefieldSphere;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("CubeLocation") && this.transform.CompareTag("HologramCube"))
@@ -28,6 +29,16 @@ public class HologramShapes : MonoBehaviour
 
         }
     }
+
+    //public void enableSphere()
+    //{
+    //    forcefieldSphere.SetActive(true);
+    //}
+
+    //public void disableSphere()
+    //{
+    //    forcefieldSphere.SetActive(false);
+    //}
 
     private void SetLocation(GameObject colObj)
     {

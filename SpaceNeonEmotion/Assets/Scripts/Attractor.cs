@@ -7,6 +7,7 @@ public class Attractor : MonoBehaviour
     const float G = 667.4f;
     public float newDrag = 2.5f;
     public Rigidbody rb;
+    [SerializeField] private GameObject forcefield;
     //public static List<Attractor> Attractors;
 
     private void FixedUpdate()
@@ -17,20 +18,33 @@ public class Attractor : MonoBehaviour
         //        Attract(attractor);
         //}
     }
+
+    private bool CheckTags(Collider other)
+    {
+        if (this.CompareTag("CubeLocation") && other.CompareTag("HologramCube")
+            || this.CompareTag("SphereLocation") && other.CompareTag("HologramSphere")
+                || this.CompareTag("TriangleLocation") && other.CompareTag("HologramTriangle"))
+        {
+            return true;
+        }
+            return false;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (CheckTags(other))
+            this.forcefield.SetActive(true);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (CheckTags(other))
+            this.forcefield.SetActive(false);
+    }
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.GetComponent<Rigidbody>() != null)
-        {
+        if (CheckTags(other))
             Attract(other.gameObject.GetComponent<Rigidbody>());
-        }
     }
-    //private void OnCollisionStay(Collision collision)
-    //{
-    //    if (collision.gameObject.GetComponent<Rigidbody>() != null)
-    //    {
-    //        Attract(collision.gameObject.GetComponent<Rigidbody>());
-    //    }
-    //}
     //private void OnEnable()
     //{
     //    if (Attractors == null)
@@ -46,9 +60,9 @@ public class Attractor : MonoBehaviour
     //}
     void Attract(Rigidbody rbToAttract)
     {
-        if (!rb.CompareTag("CubeLocation") && rbToAttract.CompareTag("HologramCube") || !rb.CompareTag("SphereLocation") && rbToAttract.CompareTag("HologramSphere") || !rb.CompareTag("TriangleLocation") && rb.CompareTag("HologramTriangle")){
-            return;
-        }
+        //if (!rb.CompareTag("CubeLocation") && rbToAttract.CompareTag("HologramCube") || !rb.CompareTag("SphereLocation") && rbToAttract.CompareTag("HologramSphere") || !rb.CompareTag("TriangleLocation") && rb.CompareTag("HologramTriangle")){
+        //    return;
+        //}
         Debug.Log("Attracting");
         if (rbToAttract.drag != newDrag)
         {
@@ -63,7 +77,7 @@ public class Attractor : MonoBehaviour
         {
             return;
         }
-        float forceMagnitude = (rb.mass * rbToAttract.mass) / Mathf.Pow(distance, 2);
+        float forceMagnitude = (rb.mass * rbToAttract.mass) * Mathf.Pow(distance, 2);
         Vector3 force = direction.normalized * forceMagnitude;
 
         rbToAttract.AddForce(force);
