@@ -68,6 +68,7 @@ public class Attractor : MonoBehaviour
         {
             rbToAttract.drag = newDrag;
         }
+        rbToAttract.useGravity = false;
 
         //Rigidbody rbToAttract = objToAttract.rb;
         Vector3 direction = rb.position - rbToAttract.position;
