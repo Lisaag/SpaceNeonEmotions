@@ -100,8 +100,6 @@ public class TutorialManager : MonoBehaviour
                     Instantiate(spawnPoint, tpPointPos1, Quaternion.identity, null);
                     Instantiate(spawnPoint, tpPointPos2, Quaternion.identity, null);
                     Instantiate(spawnPoint, tpPointPos3, Quaternion.identity, null);
-                    teleportArea.enabled = false;
-                    teleportArea.gameObject.SetActive(false);
                     break;
                 case 2:
                     thumbButton.GetComponent<Renderer>().material = regular;
