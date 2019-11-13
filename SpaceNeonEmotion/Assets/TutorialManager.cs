@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Valve.VR.InteractionSystem;
 
 public class TutorialManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class TutorialManager : MonoBehaviour
 
     public TeleportArea teleportArea;
 
-    public List<TeleportPoint> teleportPoints;
+    public string playScene;
 
     public Vector3 tpPointPos1, tpPointPos2, tpPointPos3;
 
@@ -19,7 +20,7 @@ public class TutorialManager : MonoBehaviour
     private float startTime;
     public float speed = 3;
 
-    public GameObject thumbButton, indexButton, controller;
+    public GameObject thumbButton, indexButton, controller, spawnPoint;
 
     public Color startColor, endColor;
 
@@ -46,12 +47,6 @@ public class TutorialManager : MonoBehaviour
         {
             if (!phases[currentPhase].phaseObjects[i].activeSelf)
                 phases[currentPhase].phaseObjects[i].SetActive(true);
-        }
-
-        for (int i = 0; i < teleportPoints.Count; i++)
-        {
-            teleportPoints[i].gameObject.SetActive(false);
-            teleportPoints[i].enabled = false;
         }
 
         thumbButton.GetComponent<Renderer>().material = highlighted;
@@ -102,25 +97,18 @@ public class TutorialManager : MonoBehaviour
                     // use start method instead
                     break;
                 case 1:
+                    Instantiate(spawnPoint, tpPointPos1, Quaternion.identity, null);
+                    Instantiate(spawnPoint, tpPointPos2, Quaternion.identity, null);
+                    Instantiate(spawnPoint, tpPointPos3, Quaternion.identity, null);
                     teleportArea.enabled = false;
                     teleportArea.gameObject.SetActive(false);
                     break;
                 case 2:
-                    for (int i = 0; i < teleportPoints.Count; i++)
-                    {
-                        teleportPoints[i].gameObject.SetActive(false);
-                        teleportPoints[i].enabled = false;
-                    }
-
                     thumbButton.GetComponent<Renderer>().material = regular;
                     indexButton.GetComponent<Renderer>().material = highlighted;
                     break;
                 case 3:
-                    teleportArea.gameObject.SetActive(true);
-                    teleportArea.enabled = true;
-                    controller.SetActive(false);
-                    break;
-                case 4:
+                    SceneManager.LoadScene(playScene);
                     break;
             }
         }

@@ -52,6 +52,6 @@ MonoBehaviour:
   driveFactor: 3
   minDriveFactor: 3
   maxDriveFactor: 8
-  maxSpeed: 25
+  maxSpeed: 12
   neighbourRadius: 5
   avoidanceRadiusMultiplier: 0.8
