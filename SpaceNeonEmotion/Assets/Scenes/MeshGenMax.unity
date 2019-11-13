@@ -2125,7 +2125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c495f7542e1d54bab7138744a1c912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 75
 --- !u!1 &1348331377
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,7 +2176,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1081111994}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -927199367670048503, guid: 6038acfcceae3584f8e34dfcebdbbfa5,
         type: 3}
@@ -2226,17 +2226,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 6038acfcceae3584f8e34dfcebdbbfa5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.317
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6038acfcceae3584f8e34dfcebdbbfa5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.11
+      value: 1.08
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6038acfcceae3584f8e34dfcebdbbfa5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.725
+      value: 3.22
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6038acfcceae3584f8e34dfcebdbbfa5,
         type: 3}
@@ -2261,7 +2261,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 6038acfcceae3584f8e34dfcebdbbfa5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6038acfcceae3584f8e34dfcebdbbfa5,
         type: 3}
@@ -2281,17 +2281,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 6038acfcceae3584f8e34dfcebdbbfa5,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.32496014
+      value: 2.32311
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6038acfcceae3584f8e34dfcebdbbfa5,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.32496014
+      value: 2.32311
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6038acfcceae3584f8e34dfcebdbbfa5,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.32496014
+      value: 2.323108
       objectReference: {fileID: 0}
     - target: {fileID: 7435551800186991515, guid: 6038acfcceae3584f8e34dfcebdbbfa5,
         type: 3}
@@ -3316,14 +3316,17 @@ MonoBehaviour:
   phases:
   - phaseObjects:
     - {fileID: 1769297633}
+    - {fileID: 1344525052}
   - phaseObjects:
     - {fileID: 1338721581}
     - {fileID: 1245155145}
     - {fileID: 464394294}
+    - {fileID: 1344525052}
   - phaseObjects:
     - {fileID: 1490116850}
     - {fileID: 1261505200}
     - {fileID: 2068553063}
+    - {fileID: 1344525052}
   - phaseObjects:
     - {fileID: 999572757}
     - {fileID: 1182977458}
@@ -3343,11 +3346,17 @@ MonoBehaviour:
   - {fileID: 464394295}
   - {fileID: 1338721582}
   - {fileID: 1245155146}
+  tpPointPos1: {x: 0, y: 0, z: 0}
+  tpPointPos2: {x: 0, y: 0, z: 0}
+  tpPointPos3: {x: 0, y: 0, z: 0}
   highlighted: {fileID: 2100000, guid: e9f63bd1e9e74ef4c8d39457d7856b36, type: 2}
   regular: {fileID: 2100000, guid: ee329033d32d66d449330cfd2b22fbb6, type: 2}
+  speed: 2
   thumbButton: {fileID: 2067606073}
   indexButton: {fileID: 1197855532}
   controller: {fileID: 1344525052}
+  startColor: {r: 1, g: 0.2216981, b: 0.6483507, a: 0.60784316}
+  endColor: {r: 1, g: 0.6084906, b: 0.8229135, a: 0.5254902}
   teleport: {fileID: 1760267951}
 --- !u!4 &1948558464
 Transform:
@@ -3786,6 +3795,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.111739054
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.15118119
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.254717
+      objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3817,22 +3842,6 @@ PrefabInstance:
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
-      propertyPath: m_ClearFlags
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.111739054
-      objectReference: {fileID: 0}
-    - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.15118119
-      objectReference: {fileID: 0}
-    - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.254717
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
@@ -3875,6 +3884,10 @@ PrefabInstance:
     - target: {fileID: 1363439381, guid: 015872b182073e442bcb1d2662830f0e, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363439383, guid: 015872b182073e442bcb1d2662830f0e, type: 3}
+      propertyPath: markerActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2028176725801278266, guid: 015872b182073e442bcb1d2662830f0e,
         type: 3}
@@ -3969,10 +3982,6 @@ PrefabInstance:
     - target: {fileID: 1363439384, guid: 015872b182073e442bcb1d2662830f0e, type: 3}
       propertyPath: m_Enabled
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1363439383, guid: 015872b182073e442bcb1d2662830f0e, type: 3}
-      propertyPath: markerActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 015872b182073e442bcb1d2662830f0e, type: 3}
