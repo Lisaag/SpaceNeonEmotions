@@ -20680,7 +20680,7 @@ GameObject:
   - component: {fileID: 2122942977653962684}
   - component: {fileID: 2148149412933402053}
   m_Layer: 0
-  m_Name: FrontTopDoor1
+  m_Name: FrontBotDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53670,7 +53670,7 @@ GameObject:
   - component: {fileID: 1715983946742803676}
   - component: {fileID: 8506751539189666819}
   m_Layer: 0
-  m_Name: FrontTopDoor2
+  m_Name: FrontTopDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
