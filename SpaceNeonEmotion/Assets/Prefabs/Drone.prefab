@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2868099715790103269}
   - component: {fileID: 896483622102471896}
   - component: {fileID: 4189371408939024665}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PropCupMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 824033263003376874}
   - component: {fileID: 347653678742438196}
   - component: {fileID: 4144169814367237927}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PropCupMesh 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 9194730858591277409}
   - component: {fileID: 5870851716402323127}
   - component: {fileID: 8960038227416116297}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TopPiece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 2749563271112104194}
   - component: {fileID: 1860949868618566972}
   - component: {fileID: 5937188572048115407}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PropEdge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 6465920210798588886}
   - component: {fileID: 6832487425211493774}
   - component: {fileID: 4251606856313746115}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PropCupBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3188822663091844563}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DroneLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 5686527584025798777}
   - component: {fileID: 5399976711453529069}
   - component: {fileID: 5661352583415797991}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PropCupMesh 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 4801877606762224323}
   - component: {fileID: 7489443017457041037}
   - component: {fileID: 5787733653753412034}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SteamCup 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -591,7 +591,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8193266463113529007}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DroneLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,7 +629,7 @@ GameObject:
   - component: {fileID: 2997705591143492877}
   - component: {fileID: 1029981535778800315}
   - component: {fileID: 3255714061332377837}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,7 +707,7 @@ GameObject:
   - component: {fileID: 3983466633471973297}
   - component: {fileID: 7451410457606168970}
   - component: {fileID: 8768533809622450274}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LightRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 1403392141116184987}
   - component: {fileID: 1218000035512789681}
   - component: {fileID: 2413602357762630838}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Leg 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 274672504719820454}
   - component: {fileID: 527370495464033368}
   - component: {fileID: 6430206661967470908}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PropCupMesh 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -941,7 +941,7 @@ GameObject:
   - component: {fileID: 3977822107968204204}
   - component: {fileID: 7908473498558687109}
   - component: {fileID: 8507920191636144185}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Leg 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1019,7 +1019,7 @@ GameObject:
   - component: {fileID: 802076013621778522}
   - component: {fileID: 3518660862785804219}
   - component: {fileID: 6318242218954141981}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PropCupBottom 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1097,7 +1097,7 @@ GameObject:
   - component: {fileID: 4186624238834814434}
   - component: {fileID: 5579983572676409250}
   - component: {fileID: 3621581713396074667}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SteamCup 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1175,7 +1175,7 @@ GameObject:
   - component: {fileID: 892970707530000492}
   - component: {fileID: 3556524267398164268}
   - component: {fileID: 2142124241504743286}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Leg 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1251,7 +1251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6403093152420133754}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DroneLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1289,7 +1289,7 @@ GameObject:
   - component: {fileID: 7091841861814722507}
   - component: {fileID: 3023013228045414252}
   - component: {fileID: 7917259453997648760}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PropEdge 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1367,7 +1367,7 @@ GameObject:
   - component: {fileID: 279959552398254917}
   - component: {fileID: 8377915833137000635}
   - component: {fileID: 7830846453481307147}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Drone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1435,7 +1435,7 @@ GameObject:
   - component: {fileID: 6096209714896409429}
   - component: {fileID: 74810330353051792}
   - component: {fileID: 3281362138161569375}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BasePiece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1513,7 +1513,7 @@ GameObject:
   - component: {fileID: 2399921161467547919}
   - component: {fileID: 8933165097031189086}
   - component: {fileID: 8396119650729806859}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CameraBackPiece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1591,7 +1591,7 @@ GameObject:
   - component: {fileID: 388358263893748047}
   - component: {fileID: 1456371367437227136}
   - component: {fileID: 140427021442237128}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PropCupBottom 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1670,7 +1670,7 @@ GameObject:
   - component: {fileID: 3456481535183873424}
   - component: {fileID: 8829983066828481477}
   - component: {fileID: 184009851857915068}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Propellors 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1761,7 +1761,7 @@ GameObject:
   - component: {fileID: 9142749288812252539}
   - component: {fileID: 660595070453918462}
   - component: {fileID: 3117509354619075610}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LightLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1837,7 +1837,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4534376222473640716}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DroneLeg3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1876,7 +1876,7 @@ GameObject:
   - component: {fileID: 2805918087778675138}
   - component: {fileID: 6953215791048712500}
   - component: {fileID: 946050745762343119}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Propellors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1968,7 +1968,7 @@ GameObject:
   - component: {fileID: 8091278782244851631}
   - component: {fileID: 6548137176702092032}
   - component: {fileID: 4147849105129473647}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Propellors 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2059,7 +2059,7 @@ GameObject:
   - component: {fileID: 5650465240912375784}
   - component: {fileID: 645991790762160428}
   - component: {fileID: 1861511934396956513}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PropEdge 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2137,7 +2137,7 @@ GameObject:
   - component: {fileID: 7266464540367876803}
   - component: {fileID: 2054256589782069167}
   - component: {fileID: 4098580717871323371}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PropEdge 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2215,7 +2215,7 @@ GameObject:
   - component: {fileID: 1868541454346565038}
   - component: {fileID: 6776770001871894042}
   - component: {fileID: 4688968613659380100}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SteamCup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2293,7 +2293,7 @@ GameObject:
   - component: {fileID: 670060579596728844}
   - component: {fileID: 2684454975541134029}
   - component: {fileID: 3540953207476044227}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PropCupBottom 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2372,7 +2372,7 @@ GameObject:
   - component: {fileID: 5523051720896518575}
   - component: {fileID: 2398139630192750228}
   - component: {fileID: 7525365180617888784}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Propellors 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2463,7 +2463,7 @@ GameObject:
   - component: {fileID: 9008974343630544170}
   - component: {fileID: 1167324180063156175}
   - component: {fileID: 1457353340700113459}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BottomPiece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2541,7 +2541,7 @@ GameObject:
   - component: {fileID: 5854530526768175155}
   - component: {fileID: 2741871547363033685}
   - component: {fileID: 9221059370437567037}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SteamCup 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2619,7 +2619,7 @@ GameObject:
   - component: {fileID: 6282311618320398991}
   - component: {fileID: 6522578433197203493}
   - component: {fileID: 2055058969134680128}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}

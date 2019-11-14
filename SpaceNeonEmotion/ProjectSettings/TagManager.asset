@@ -24,8 +24,8 @@ TagManager:
   - PostProcessing
   - Forcefield
   - Teleporting
-  - 
-  - 
+  - Obstacle
+  - NoShadows
   - 
   - 
   - 
