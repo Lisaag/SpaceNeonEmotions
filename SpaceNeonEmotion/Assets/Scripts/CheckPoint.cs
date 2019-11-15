@@ -41,7 +41,7 @@ public class CheckPoint : MonoBehaviour
     {
         if(transform.parent != null && collisionBehaviour.hasCollided)
         {
-            if (transform.parent.GetComponent<Hand>().ObjectIsAttached(this.gameObject))
+            if (transform.parent.GetComponent<Hand>() && transform.parent.GetComponent<Hand>().ObjectIsAttached(this.gameObject))
             {
                 collisionBehaviour.hasCollided = false;
             }
