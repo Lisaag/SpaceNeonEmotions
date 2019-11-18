@@ -33,6 +33,6 @@ public class FlockAgent : MonoBehaviour
 
     private void LateUpdate()
     {
-        Debug.DrawLine(transform.position, transform.position + vel, Color.green, 0.1f);
+        //Debug.DrawLine(transform.position, transform.position + vel, Color.green, 0.1f);
     }
 }

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    private bool dissapear, grow;
+    public bool dissapear, grow, destroy, coroutineRunning;
     public float maxSize = 0.3f;
     public float growSpeed;
     public GameObject shape;
-    public float minX, maxX, minZ, maxZ, roofY, floorY, roofOffset, respawnInterval;
+    public float minX, maxX, minZ, maxZ, roofY, floorY, roofOffset;
+    public int respawnInterval, minRespawnTime, maxRespawnTime;
     public Vector3 newPosition;
 
     // Start is called before the first frame update
@@ -19,6 +20,8 @@ public class Portal : MonoBehaviour
         transform.localRotation = new Quaternion(shape.transform.localRotation.x, shape.transform.localRotation.y, 0, transform.localRotation.w);
         dissapear = true;
         grow = true;
+
+        respawnInterval = Random.Range(minRespawnTime, maxRespawnTime);
     }
 
     // Update is called once per frame
@@ -26,21 +29,28 @@ public class Portal : MonoBehaviour
     {
         if (transform.localScale.x < maxSize)
         {
-            if (grow)
+            if (grow && !destroy)
                 transform.localScale = new Vector3(transform.localScale.x * growSpeed * growSpeed, maxSize, transform.localScale.z * growSpeed * growSpeed);
         }
         else
         {
             if (dissapear)
-                StartCoroutine(ShapeMovement(dissapear));
-
-            if (!grow)
-                transform.localScale = new Vector3(transform.localScale.x / growSpeed / growSpeed, maxSize, transform.localScale.z / growSpeed / growSpeed);
+            {
+                if (!coroutineRunning)
+                    StartCoroutine(ShapeMovement(dissapear));
+            }
         }
+
+        if (destroy)
+            transform.localScale = new Vector3(transform.localScale.x / growSpeed / growSpeed, maxSize, transform.localScale.z / growSpeed / growSpeed);
+
+        if (transform.localScale.x < 0.001f)
+            Destroy(gameObject);
     }
 
     public IEnumerator ShapeMovement(bool dissapear)
     {
+        coroutineRunning = true;
         grow = !grow;
         shape.GetComponent<Rigidbody>().isKinematic = false;
         shape.GetComponent<Collider>().isTrigger = true;
@@ -57,7 +67,8 @@ public class Portal : MonoBehaviour
 
         if (!dissapear)
         {
-            yield break;
+            destroy = true;
+            coroutineRunning = false;
         }
     }
 
@@ -75,6 +86,11 @@ public class Portal : MonoBehaviour
         }
         
         yield return new WaitForSeconds(respawnInterval);
+
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].enabled = true;
+        }
 
         StartCoroutine(ShapeMovement(dissapear));
     }
