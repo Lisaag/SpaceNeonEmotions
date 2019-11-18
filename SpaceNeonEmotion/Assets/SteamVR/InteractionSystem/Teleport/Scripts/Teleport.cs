@@ -142,6 +142,9 @@ namespace Valve.VR.InteractionSystem
         public int timesTeleported;
         public bool hasAreaTeleported;
         public bool showHint = false;
+        public int portalSpawnPercentageChance = 25;
+        public bool spawnPortal = false;
+        public PortalManager portalManager;
 
         //-------------------------------------------------
         void Awake()
@@ -922,6 +925,15 @@ namespace Valve.VR.InteractionSystem
 
             timesTeleported++;
 
+            bool[] spawnPortals = new bool[3];
+
+            for (int i = 0; i < spawnPortals.Length; i++)
+            {
+                int randomNr = Random.Range(0, 100) + 1;
+                if (randomNr <= portalSpawnPercentageChance)
+                    spawnPortals[i] = true;
+            }
+            portalManager.CheckSpawnPortal(spawnPortals);
         }
 
 

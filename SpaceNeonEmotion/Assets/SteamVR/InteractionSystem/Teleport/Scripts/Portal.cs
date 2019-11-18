@@ -17,7 +17,7 @@ public class Portal : MonoBehaviour
     {
         transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
         transform.position = new Vector3(shape.transform.position.x, floorY, shape.transform.position.z);
-        transform.localRotation = new Quaternion(shape.transform.localRotation.x, shape.transform.localRotation.y, 0, transform.localRotation.w);
+        transform.localRotation = new Quaternion(0, shape.transform.localRotation.y, 0, transform.localRotation.w);
         dissapear = true;
         grow = true;
 

@@ -139,7 +139,7 @@ MonoBehaviour:
   roofOffset: 1.8
   respawnInterval: 3
   minRespawnTime: 3
-  maxRespawnTime: 30
+  maxRespawnTime: 15
   newPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &8628758067118107730
 GameObject:
