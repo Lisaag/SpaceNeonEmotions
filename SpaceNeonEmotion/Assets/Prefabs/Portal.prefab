@@ -88,6 +88,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7151225918622881578}
   - component: {fileID: 2757600293574714321}
+  - component: {fileID: 3739748073604624672}
+  - component: {fileID: 5039297562054138181}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -124,9 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dissapear: 0
-  grow: 0
-  destroy: 0
-  coroutineRunning: 0
   maxSize: 0.3
   growSpeed: 1.02
   shape: {fileID: 0}
@@ -141,6 +140,42 @@ MonoBehaviour:
   minRespawnTime: 3
   maxRespawnTime: 15
   newPosition: {x: 0, y: 0, z: 0}
+  resizeAnimation: {fileID: 5039297562054138181}
+  clip: {fileID: 7400000, guid: 5abe23547c4c49647a3a36ed0dec095f, type: 2}
+--- !u!95 &3739748073604624672
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6153355034823468345}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e196ce51193db174b96fb0437c19e4da, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!111 &5039297562054138181
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6153355034823468345}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 5abe23547c4c49647a3a36ed0dec095f, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &8628758067118107730
 GameObject:
   m_ObjectHideFlags: 0
