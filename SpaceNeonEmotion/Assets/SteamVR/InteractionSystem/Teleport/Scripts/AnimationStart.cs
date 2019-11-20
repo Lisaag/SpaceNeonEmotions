@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class AnimationStart : MonoBehaviour
 {
-    public AnimationClip clip;
-    public Animation animation;
+    public Animator animation;
 
     private void Start()
     {
-        animation = GetComponent<Animation>();
-        animation.wrapMode = WrapMode.Once;
+        animation = GetComponent<Animator>();
     }
 
     public void StartAnimation()
     {
         //animation.AddClip(clip, "clip");
-        animation.Play("PortalResize");
+        animation.SetTrigger("PlayAnimation");
     }
 }
