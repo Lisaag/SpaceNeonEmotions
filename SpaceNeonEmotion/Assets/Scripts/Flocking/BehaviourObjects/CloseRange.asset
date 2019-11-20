@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CloseRange
   m_EditorClassIdentifier: 
   filter: {fileID: 0}
-  centerpoint: {x: -31.2, y: 3, z: -25}
-  radius: 75
+  centerpoint: {x: 0, y: 3, z: 0}
+  radius: 15
   rangePercent: 90

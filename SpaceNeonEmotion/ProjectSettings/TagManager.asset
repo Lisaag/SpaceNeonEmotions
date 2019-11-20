@@ -11,6 +11,7 @@ TagManager:
   - HologramSphere
   - TriangleLocation
   - HologramTriangle
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
@@ -21,10 +22,10 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
-  - 
-  - 
+  - Forcefield
+  - Teleporting
+  - Obstacle
+  - NoShadows
   - 
   - 
   - 
