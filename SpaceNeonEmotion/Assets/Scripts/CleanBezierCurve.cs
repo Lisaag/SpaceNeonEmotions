@@ -421,11 +421,6 @@ public class CleanBezierCurve : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        /* Gizmos.color = Color.blue;
-         foreach (Vector3 v in gizzies)
-         {
-             Gizmos.DrawCube(v * this.transform.localScale.y + this.transform.localPosition, new Vector3(0.005f, 0.005f, 0.005f));
-         }*/
 
         for (int i = 0; i < sloep.Count; i++)
         {
@@ -448,90 +443,7 @@ public class CleanBezierCurve : MonoBehaviour
             }
             else { Gizmos.color = Color.red; }
 
-
-
-            /*  switch (circleNum)
-              {
-                  case 0:
-                      Gizmos.color = Color.blue;
-                      break;
-                  case 1:
-                      Gizmos.color = Color.clear;
-                      break;
-                  case 2:
-                      Gizmos.color = Color.cyan;
-                      break;
-                  case 3:
-                      Gizmos.color = Color.gray;
-                      break;
-                  case 4:
-                      Gizmos.color = Color.magenta;
-                      break;
-                  case 5:
-                      Gizmos.color = Color.white;
-                      break;
-                  case 6:
-                      Gizmos.color = Color.yellow;
-                      break;
-                  case 7:
-                      Gizmos.color = Color.cyan;
-                      break;
-                  case 8:
-                      Gizmos.color = Color.magenta;
-                      break;
-                  default:
-                      Gizmos.color = Color.red;
-                      break;
-              }*/
-
             Gizmos.DrawSphere(sloep[i] * this.transform.localScale.y + this.transform.localPosition, 0.002f);
         }
-        /* int index = 0;
-         foreach(Vector3 p in perpVectors)
-         {
-             Gizmos.color = Color.green;
-             Gizmos.DrawLine(p * this.transform.localScale.y + this.transform.localPosition, curvePoints[index] * this.transform.localScale.y + this.transform.localPosition);
-             Gizmos.color = Color.blue;
-             Gizmos.DrawLine(tmps[index] * this.transform.localScale.y + this.transform.localPosition, curvePoints[index] * this.transform.localScale.y + this.transform.localPosition);
-             index++;
-         }
-
-         index = 0;
-         foreach(Vector3 v in offAnglePoints)
-         {
-             Gizmos.color = Color.red;
-             Gizmos.DrawSphere(v * this.transform.localScale.y + this.transform.localPosition, 0.01f);
-         }*/
-        /*  int index = 0;
-          foreach (Vector3 v in finalPerps)
-          {
-              Gizmos.color = Color.grey;
-              Gizmos.DrawLine(v * this.transform.localScale.y + this.transform.localPosition, checkPerps[index] * this.transform.localScale.y + this.transform.localPosition);
-              Gizmos.color = Color.green;
-              Gizmos.DrawSphere(v * this.transform.localScale.y + this.transform.localPosition, 0.01f);
-              Gizmos.color = Color.cyan;
-              Gizmos.DrawSphere(checkPerps[index] * this.transform.localScale.y + this.transform.localPosition, 0.01f);
-              Gizmos.color = Color.magenta;
-              Gizmos.DrawSphere(correctPerps[index] * this.transform.localScale.y + this.transform.localPosition, 0.005f);
-              index++;
-
-          }
-
-          foreach (Vector3 p in offAnglePoints)
-          {
-              Gizmos.color = Color.red;
-              Gizmos.DrawSphere(p * this.transform.localScale.y + this.transform.localPosition, 0.0125f);
-          }
-
-          index = 0;
-          foreach (Vector3 v in tmps)
-          {
-              Gizmos.color = Color.green;
-              Gizmos.DrawSphere(v * this.transform.localScale.y + this.transform.localPosition, 0.01f);
-              Gizmos.color = Color.blue;
-              Gizmos.DrawSphere(perpVectors[index] * this.transform.localScale.y + this.transform.localPosition, 0.011f);
-
-              index++;
-          }*/
     }
 }
