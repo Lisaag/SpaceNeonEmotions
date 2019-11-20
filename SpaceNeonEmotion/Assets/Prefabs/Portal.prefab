@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 7151225918622881578}
   - component: {fileID: 2757600293574714321}
   - component: {fileID: 3739748073604624672}
-  - component: {fileID: 5039297562054138181}
+  - component: {fileID: 949732451}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -134,14 +134,13 @@ MonoBehaviour:
   minZ: 5
   maxZ: 10
   roofY: 3.09
-  floorY: 0.1
+  floorY: 0.15
   roofOffset: 1.8
   respawnInterval: 3
-  minRespawnTime: 3
-  maxRespawnTime: 15
+  minRespawnTime: 1
+  maxRespawnTime: 8
   newPosition: {x: 0, y: 0, z: 0}
-  resizeAnimation: {fileID: 5039297562054138181}
-  clip: {fileID: 7400000, guid: 5abe23547c4c49647a3a36ed0dec095f, type: 2}
+  animationHandler: {fileID: 949732451}
 --- !u!95 &3739748073604624672
 Animator:
   serializedVersion: 3
@@ -161,21 +160,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!111 &5039297562054138181
-Animation:
+--- !u!114 &949732451
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6153355034823468345}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 5abe23547c4c49647a3a36ed0dec095f, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992a4e654ce5e4c46a56e75b419fad64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animation: {fileID: 3739748073604624672}
 --- !u!1 &8628758067118107730
 GameObject:
   m_ObjectHideFlags: 0
