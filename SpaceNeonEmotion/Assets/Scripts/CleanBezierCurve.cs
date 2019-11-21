@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CleanBezierCurve : MonoBehaviour
 {
@@ -30,30 +31,19 @@ public class CleanBezierCurve : MonoBehaviour
     [SerializeField]
     float yStep = 0.0f; //the amount every point will be offset on the y-asix
 
-    public float zOffsetPp = 0;
     public Vector3[] ringDir;
+    public float zOffsetPp = 0;
 
     //TEMP
     List<Vector3> perpVectors = new List<Vector3>();
-    List<Vector3> perpVectorsReversed = new List<Vector3>();
 
     List<Vector3> orthogonal = new List<Vector3>();
-    List<Vector3> tmps = new List<Vector3>();
-    List<Vector3> finalPerps = new List<Vector3>();
-    List<Vector3> checkPerps = new List<Vector3>();
-    List<Vector3> correctPerps = new List<Vector3>();
-
-    List<float> angles = new List<float>();
-    List<Vector3> offAnglePoints = new List<Vector3>();
-
-    bool swapped;
-
-    List<Vector3> tempOrderedVerts = new List<Vector3>();
-    List<Vector3> tmpVerts = new List<Vector3>();
 
     List<Vector3> sloep = new List<Vector3>();
 
     List<Vector3> gizzies = new List<Vector3>();
+
+    Vector3 LastPoint = new Vector3(0, 0, 0);
     ///
 
     List<Vector3> curvePoints = new List<Vector3>();
@@ -62,12 +52,56 @@ public class CleanBezierCurve : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CalculateWire();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Reset();
+            CalculateWire();
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            StartCoroutine(RemoveWire());
+        }
+    }
+
+    IEnumerator RemoveWire()
+    {
+        if (triangles.Count == 0) yield break;
+        triangles.RemoveRange(triangles.Count - (cylinderDetail) * 6, (cylinderDetail) * 6);
+        mesh.triangles = triangles.ToArray();
+
+        yield return new WaitForSeconds(0.01f);
+        StartCoroutine(RemoveWire());
+    }
+
+    void CalculateWire()
+    {
         InitializeMesh();
         CalculateCurve();
         CreateCircle();
         int triangleIndex = 0;
         StartCoroutine(WaitDrawTriangle(triangleIndex));
         PlaceCheckPoints();
+    }
+
+    void Reset()
+    {
+        if (mesh.vertices.Length != 0) Array.Clear(mesh.vertices, 0, mesh.vertices.Length);
+        if (mesh.normals.Length != 0) Array.Clear(mesh.normals, 0, mesh.vertices.Length);
+        if (mesh.triangles.Length != 0) Array.Clear(mesh.triangles, 0, mesh.vertices.Length);
+
+        perpVectors.Clear();
+        orthogonal.Clear();
+        sloep.Clear();
+        gizzies.Clear();
+        triangles.Clear();
+        curvePoints.Clear();
+
+        zOffsetPp = 0;
     }
 
     void InitializeMesh()
@@ -96,7 +130,7 @@ public class CleanBezierCurve : MonoBehaviour
 
     IEnumerator WaitDrawTriangle(int i)
     {
-        if (i == (mesh.vertices.Length / cylinderDetail) - 2)
+        if (i == (mesh.vertices.Length / cylinderDetail) - curveDetail + 2)
         {
             Debug.Log("Wire mesh collider updated");
             GetComponent<MeshCollider>().sharedMesh = mesh;
@@ -143,95 +177,20 @@ public class CleanBezierCurve : MonoBehaviour
         for (int j = 0; j < curvePoints.Count - 1; j++)
         {
             Vector3 firstPerp;
-            Vector3 tmp;
-            Vector3 finalperp;
-            Vector3 checkPerp;
-            Vector3 correctPerp;
-            Vector3 firstPerpRev;
 
             if (j < curveDetail)
             {
                 Vector3 p = curvePoints[j] + new Vector3(0, 0, 10);
                 firstPerp = curvePoints[j] - (p - curvePoints[j]).normalized;
-                firstPerpRev = new Vector3(0, 0, 0);
-                tmp = new Vector3(0, 0, 0);
-                finalperp = curvePoints[j] - (p - curvePoints[j]).normalized;
-                checkPerp = new Vector3(0, 0, 0);
-                correctPerp = new Vector3(0, 0, 0);
             }
             else
             {
-                /*  Vector3 baseLine = curvePoints[j + 1] - curvePoints[j]; //first vector of orthogonal basis
-                                                                          //inversing the baseline vector, making one negative (x=-z, z=x), and dividing it by the baseline's magnitude
-                  Vector2 perp2D = new Vector2(-baseLine.z, baseLine.x) / Mathf.Sqrt(Mathf.Pow(baseLine.x, 2) + Mathf.Pow(baseLine.z, 2)); //;
-                  firstPerp = new Vector3(perp2D.x, curvePoints[j].y, perp2D.y).normalized; //Direction of the perpendicular vector
-                  firstPerp = curvePoints[j] + (firstPerp * 0.2f); //offsetting the perpendicular vector from circle origin
-                  firstPerp.y = curvePoints[j].y; //resetting the y axis, bc this is a 2d perpendicular vector
-
-                  baseLine = curvePoints[j - 1] - curvePoints[j];
-                  perp2D = new Vector3(-baseLine.z, baseLine.x) / Mathf.Sqrt(Mathf.Pow(baseLine.x, 2) + Mathf.Pow(baseLine.z, 2));
-                  tmp = new Vector3(perp2D.x, curvePoints[j].y, perp2D.y).normalized;
-                  tmp = curvePoints[j] + (tmp * 0.2f * -1.0f); //offsetting the perpendicular vector from circle origin
-                  tmp.y = curvePoints[j].y; //resetting the y axis, bc this is a 2d perpendicular vector*/
-
-
-                /* finalperp = (((firstPerp + tmp) / 2.0f) - curvePoints[j]).normalized;
-                 checkPerp = curvePoints[j] - (finalperp * 0.1f);
-                 finalperp = curvePoints[j] + (finalperp * 0.1f);
-                 finalperp.y = curvePoints[j].y;*/
-                correctPerp = new Vector3(0, 0, 0);
                 firstPerp = Vector3.Cross((curvePoints[j] - curvePoints[j + 1]).normalized, Vector3.up.normalized).normalized;
-                firstPerpRev = curvePoints[j] - (firstPerp * 0.3f);
                 firstPerp = curvePoints[j] + (firstPerp * 0.3f);
                 firstPerp.y = curvePoints[j].y;
-                firstPerpRev.y = curvePoints[j].y;
-
-                tmp = Vector3.Cross((curvePoints[j] - curvePoints[j - 1]).normalized, Vector3.up.normalized).normalized;
-                tmp = curvePoints[j] - (tmp * 0.3f);
-                tmp.y = curvePoints[j].y;
-                finalperp = (((firstPerp + tmp) / 2.0f) - curvePoints[j]).normalized;
-                checkPerp = curvePoints[j] - (finalperp * 0.25f);
-                checkPerp.y = curvePoints[j].y;
-                finalperp = curvePoints[j] + (finalperp * 0.25f);
-                finalperp.y = curvePoints[j].y;
-
-                float angle = Vector3.Angle(curvePoints[j] - firstPerp, curvePoints[j] - tmp);
-                float otherangle = Vector3.Angle(curvePoints[j] - tmp, curvePoints[j] - firstPerp);
-                if (angle > 60.0f || otherangle > 60.0f)
-                {
-                    // tmps.Add(tmp);
-                    // perpVectors.Add(firstPerp);
-                    Debug.Log("angle: " + angle);
-                    offAnglePoints.Add(curvePoints[j]);
-                }
-
-                float dist = (finalPerps[j - 1] - finalperp).magnitude;
-                if (dist > (checkPerps[j - 1] - finalperp).magnitude)
-                {
-                    if (!swapped)
-                    {
-                        correctPerp = checkPerp;
-                        swapped = true;
-                    }
-                    else if (swapped)
-                    {
-                        correctPerp = finalperp;
-                        swapped = false;
-                    }
-                }
-                else
-                {
-                    if (!swapped) correctPerp = finalperp;
-                    if (swapped) correctPerp = checkPerp;
-                }
             }
 
-            tmps.Add(tmp);
             perpVectors.Add(firstPerp);
-            perpVectorsReversed.Add(firstPerpRev);
-            finalPerps.Add(finalperp);
-            checkPerps.Add(checkPerp);
-            correctPerps.Add(correctPerp);
 
             Vector3 secondPerp = (Vector3.Cross(curvePoints[j + 1] - curvePoints[j], firstPerp - curvePoints[j])).normalized; //Get vector orthogonal to fp and the next point on the curve          
             secondPerp = curvePoints[j] + (secondPerp * 0.2f);
@@ -250,9 +209,8 @@ public class CleanBezierCurve : MonoBehaviour
             for (float i = 0; i < maxt; i += stept)
             {
                 Vector3 p = center + radius * Mathf.Cos(i) * (center - secondPerp).normalized + radius * Mathf.Sin(i) * (center - firstPerp).normalized;
-                Vector3 normal = Mathf.Cos(i) * (center - secondPerp).normalized + Mathf.Sin(i) * (center - correctPerp).normalized;
+                Vector3 normal = Mathf.Cos(i) * (center - secondPerp).normalized + Mathf.Sin(i) * (center - firstPerp).normalized;
 
-                tempOrderedVerts.Add(p);
                 verts.Add(p);
                 checkVerts.Add(p);
                 checkNormals.Add(normal);
@@ -266,8 +224,7 @@ public class CleanBezierCurve : MonoBehaviour
                 int checkIndex = cylinderDetail * (j - 1);
                 int index = 0;
                 int shortestDistIndex = 0;
-              //  sloep.Add(verts[checkIndex]);
-                //Debug.Log(checkVerts.Count);
+
                 foreach (Vector3 v in checkVerts)
                 {
                     if (!(verts.Count < checkIndex))
@@ -287,21 +244,16 @@ public class CleanBezierCurve : MonoBehaviour
                         index++;
                     }
                 }
-                //gizzies.Add(verts[checkIndex]);
                 gizzies.Add(checkVerts[shortestDistIndex]);
 
-                //   Debug.Log("shortestDistIndex: " + shortestDistIndex);
                 //Reorder vertices
                 index = 0;
                 foreach (Vector3 v in checkVerts)
                 {
                     if (shortestDistIndex == cylinderDetail) shortestDistIndex = 0;
-                    //Debug.Log("index: " + shortestDistIndex);
                     sloep.Add(checkVerts[shortestDistIndex]);
                     normals.Add(checkNormals[shortestDistIndex]);
                     shortestDistIndex++;
-                    //if()
-                    //checkVerts[shortestDistIndex]
                 }
             }
 
@@ -322,7 +274,11 @@ public class CleanBezierCurve : MonoBehaviour
         Vector3 FirstPoint = new Vector3(0, 0, 0); ;
         Vector3 SecondPoint = new Vector3(0, 0, 0);
         Vector3 FirstControlPoint = new Vector3(0, 0, 0); ;
-        Vector3 SecondControlPoint = new Vector3(0, 0, 0); ;
+        Vector3 SecondControlPoint = new Vector3(0, 0, 0);
+        // Vector3 LastPoint = new Vector3(0, 0, 0);
+        Vector3 lastPointDir = new Vector3(0, 0, 0);
+
+        bool wireMiddle = false;
 
         for (int j = 0; j < curveCount; j++)
         {
@@ -342,6 +298,19 @@ public class CleanBezierCurve : MonoBehaviour
 
                 SecondControlPoint = new Vector3(0, 0, zDir * zOffsetPp);
             }
+            else if (j >= curveCount - 3)
+            {
+                float dist = (SecondPoint - SecondControlPoint).magnitude; //returns length of the difference between the two Vectors
+                Vector3 dir = (SecondPoint - SecondControlPoint).normalized;
+                FirstControlPoint = SecondPoint + dir * dist;
+                FirstPoint = SecondPoint; //Set the coordinates of first point of the new curve equal to the second point of the previous curve
+
+                SecondPoint = FirstPoint;
+                SecondPoint.z += 0.005f;
+                SecondControlPoint = SecondPoint;
+                SecondControlPoint.z -= 0.0045f;
+
+            }
             else
             {
                 //Create a controlpoint exactly on the oppsite side of the second point
@@ -350,14 +319,7 @@ public class CleanBezierCurve : MonoBehaviour
                 FirstControlPoint = SecondPoint + dir * dist;
                 FirstPoint = SecondPoint; //Set the coordinates of first point of the new curve equal to the second point of the previous curve
 
-                if (j == curveCount * 2 - 1)
-                {
-                    SecondPoint = new Vector3(0, 0, zDir * zOffsetPp);
-                }
-                else
-                {
-                    SecondPoint = new Vector3(Random.Range(0, -(boundsX + 1)), 0, Random.Range(zDir * zOffsetPp, zDir * (boundsZ + 1)));
-                }
+                SecondPoint = new Vector3(UnityEngine.Random.Range(0, -(boundsX + 1)), 0, UnityEngine.Random.Range(zDir * zOffsetPp, zDir * (boundsZ + 1)));
 
                 ControlPointOffset = new Vector3(RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y),
                     0, RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y)); //Create new Random Value
@@ -365,17 +327,20 @@ public class CleanBezierCurve : MonoBehaviour
                 SecondControlPoint = SecondPoint + ControlPointOffset;
             }
 
+            float lastY = y;
+
             if (j == curveCount / 2 - 2)
             {
                 zDir *= -1;
             }
-           /* else if (j == curveCount / 2 - 1)
+            else if (j == curveCount / 2 - 1)
             {
-                yOffset = 0;
-            }*/
+                wireMiddle = true;
+            }
             else if (j == curveCount / 2)
             {
                 yOffset = -1;
+                wireMiddle = false;
             }
 
             float t = 0;
@@ -393,6 +358,7 @@ public class CleanBezierCurve : MonoBehaviour
                 {
                     curvePoint = new Vector3(0, 0, zDir * zOffsetPp);
                 }
+
                 else
                 {
                     curvePoint = Mathf.Pow((1 - t), 3) * FirstPoint + 3 * Mathf.Pow((1 - t), 2) * t * FirstControlPoint
@@ -400,9 +366,18 @@ public class CleanBezierCurve : MonoBehaviour
                 }
 
                 t += tStep;
-                curvePoint.y = y;
-                y += (yStep * yOffset);
 
+                if (!wireMiddle)
+                {
+                    y += (yStep * yOffset);
+                }
+                else
+                {
+                    float v = -.8f * (Mathf.Sin((((Mathf.PI) / (curveDetail - 1)) * i) / -1.0f)) + lastY;
+                    y = v;
+
+                }
+                curvePoint.y = y;
                 curvePoints.Add(curvePoint);
             }
         }
@@ -411,39 +386,27 @@ public class CleanBezierCurve : MonoBehaviour
     //this function returns a random value between two ranges
     float RandomTwoRanges(float FirstMin, float FirstMax, float SecondMin, float SecondMax)
     {
-        int chooseRange = Random.Range(0, 2); //returns 0 or 1, determines which range will be chosen
+        int chooseRange = UnityEngine.Random.Range(0, 2); //returns 0 or 1, determines which range will be chosen
 
         if (chooseRange == 0)
-            return Random.Range(FirstMin, FirstMax);
+            return UnityEngine.Random.Range(FirstMin, FirstMax);
         else
-            return Random.Range(SecondMin, SecondMax);
+            return UnityEngine.Random.Range(SecondMin, SecondMax);
     }
 
     void OnDrawGizmos()
     {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(LastPoint * this.transform.localScale.y + this.transform.localPosition, 0.1f);
+        Debug.Log(LastPoint);
 
-        for (int i = 0; i < sloep.Count; i++)
+        int index = 0;
+        foreach (Vector3 p in perpVectors)
         {
-            int circleNum = i % 3;
-            if(i % cylinderDetail == 0)
-            {
-                Gizmos.color = Color.magenta;
-            }
-            else if (circleNum == 0)
-            {
-                Gizmos.color = Color.blue;
-            }
-            else if (circleNum == 1)
-            {
-                Gizmos.color = Color.green;
-            }
-            else if (circleNum == 2)
-            {
-                Gizmos.color = Color.yellow;
-            }
-            else { Gizmos.color = Color.red; }
+            if (index > (curveCount - 1) * curveDetail) break;
+            Gizmos.DrawSphere(p * this.transform.localScale.y + this.transform.localPosition, 0.05f);
 
-            Gizmos.DrawSphere(sloep[i] * this.transform.localScale.y + this.transform.localPosition, 0.002f);
+            index++;
         }
     }
 }
