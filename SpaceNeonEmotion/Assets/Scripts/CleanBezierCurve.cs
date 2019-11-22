@@ -30,6 +30,9 @@ public class CleanBezierCurve : MonoBehaviour
     GameObject checkpointsParent = null;
 
     [SerializeField]
+    GameObject wireEnding = null;
+
+    [SerializeField]
     float yStep = 0.0f; //the amount every point will be offset on the y-asix
 
     public Vector3[] ringDir;
@@ -108,6 +111,13 @@ public class CleanBezierCurve : MonoBehaviour
         int triangleIndex = 0;
         StartCoroutine(WaitDrawTriangle(triangleIndex));
         PlaceCheckPoints();
+        PlaceWireEnding();
+    }
+
+    void PlaceWireEnding()
+    {
+        wireEnding.transform.position = new Vector3(0.0f, 0.0f, zOffsetPp) * this.transform.localScale.y + this.transform.localPosition;
+        Debug.Log("PlaceWireEnding() called");
     }
 
     void Reset()
@@ -435,34 +445,5 @@ public class CleanBezierCurve : MonoBehaviour
             return UnityEngine.Random.Range(FirstMin, FirstMax);
         else
             return UnityEngine.Random.Range(SecondMin, SecondMax);
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(LastPoint * this.transform.localScale.y + this.transform.localPosition, 0.1f);
-        Debug.Log(LastPoint);
-
-        int index = 0;
-        foreach (Vector3 p in perpVectors)
-        {
-            //if (index > (curveCount - 1) * curveDetail) break;
-            Gizmos.DrawSphere(p * this.transform.localScale.y + this.transform.localPosition, 0.02f);
-
-            index++;
-        }
-
-        Gizmos.color = Color.grey;
-        foreach (Vector3 p in curvePoints)
-        {
-            Gizmos.DrawSphere(p * this.transform.localScale.y + this.transform.localPosition, 0.015f);
-        }
-
-        Gizmos.color = Color.magenta;
-
-        Gizmos.DrawSphere(new Vector3(0, 0, zOffsetPp) * this.transform.localScale.y + this.transform.localPosition, 0.015f);
-        Gizmos.DrawSphere(new Vector3(0, 0, -zOffsetPp) + this.transform.localPosition, 0.015f);
-        Gizmos.DrawSphere(new Vector3(0, 3.0f, 0) + this.transform.localPosition, 0.015f);
-
     }
 }
