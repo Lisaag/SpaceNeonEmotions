@@ -30,6 +30,9 @@ public class CleanBezierCurve : MonoBehaviour
     GameObject checkpointsParent = null;
 
     [SerializeField]
+    GameObject wireEnding = null;
+
+    [SerializeField]
     float yStep = 0.0f; //the amount every point will be offset on the y-asix
 
     public Vector3[] ringDir;
@@ -108,6 +111,12 @@ public class CleanBezierCurve : MonoBehaviour
         int triangleIndex = 0;
         StartCoroutine(WaitDrawTriangle(triangleIndex));
         PlaceCheckPoints();
+        PlaceWireEnding();
+    }
+
+    void PlaceWireEnding()
+    {
+        wireEnding.transform.localPosition = new Vector3(0.0f, 0.0f, zOffsetPp) * this.transform.localScale.y + this.transform.localPosition;
     }
 
     void Reset()
@@ -122,8 +131,6 @@ public class CleanBezierCurve : MonoBehaviour
         gizzies.Clear();
         triangles.Clear();
         curvePoints.Clear();
-
-        //zOffsetPp = 0;
     }
 
     void InitializeMesh()

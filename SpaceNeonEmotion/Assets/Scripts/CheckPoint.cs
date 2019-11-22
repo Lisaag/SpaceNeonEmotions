@@ -21,7 +21,7 @@ public class CheckPoint : MonoBehaviour
 
     bool isHovering = false;
 
-    private Vector3 startPos = new Vector3(0, 0, 0);
+    public Vector3 startPos = new Vector3(0, 0, 0);
 
     Animator animator;
 
@@ -39,23 +39,13 @@ public class CheckPoint : MonoBehaviour
 
     private void Update()
     {
-        if(transform.parent != null && collisionBehaviour.hasCollided)
+        if (transform.parent != null && collisionBehaviour.hasCollided)
         {
             if (transform.parent.GetComponent<Hand>().ObjectIsAttached(this.gameObject))
             {
                 collisionBehaviour.hasCollided = false;
             }
         }
-
-        if(transform.parent == null)
-        {
-           // animator.SetBool("isHovering", true);
-        }
-        else
-        {
-           // animator.SetBool("isHovering", false);
-        }
-        //Debug.Log("AnimatorBool: " + animator.GetBool("isHovering"));
     }
 
     public void MoveRingToCheckpoint(int id)

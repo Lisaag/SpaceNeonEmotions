@@ -46,6 +46,12 @@ public class RingCollision : MonoBehaviour
                 Reset();
             }
         }
+
+        if (other.CompareTag("WireEnding"))
+        {
+            collisionBehaviour.wireIndex++;
+            ring.transform.localPosition = cp.startPos;
+        }
     }
 
     void Reset()
