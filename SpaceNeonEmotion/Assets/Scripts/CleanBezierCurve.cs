@@ -10,6 +10,7 @@ public class CleanBezierCurve : MonoBehaviour
     [SerializeField]
     int curveDetail = 15;
 
+    [Tooltip("Pleas use even number")]
     [SerializeField]
     int curveCount = 14;
 
@@ -55,6 +56,8 @@ public class CleanBezierCurve : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        curveCount -= curveCount % 2;
+        Debug.Log("cc" + curveCount);
         CalculateWire();
     }
 
