@@ -27,17 +27,17 @@ public class XYDemo : MonoBehaviour
         reader = XYStreamReader.FromFile("C:\\Users\\User\\Desktop\\Heartrate\\sample.txt");
         print("Read...");
         reader.Read();
-        if (reader.heartrate != heartrate)
-        {
-            heartrate = reader.heartrate;
-            float newRed = (heartrate - baseline) * 5;
-            if (newRed > 255)
-            {
-                newRed = 255;
-            }
-            Color c = new Color(100, 0, 0);
-            rend.sharedMaterial.SetColor("_EmissionColor", new Vector4(c.r,c.g,c.b, 1));
-        }
+        //if (reader.heartrate != heartrate)
+        //{
+        //    heartrate = reader.heartrate;
+        //    float newRed = (heartrate - baseline) * 5;
+        //    if (newRed > 255)
+        //    {
+        //        newRed = 255;
+        //    }
+        //    Color c = new Color(100, 0, 0);
+        //    rend.sharedMaterial.SetColor("_EmissionColor", new Vector4(c.r,c.g,c.b, 1));
+        //}
         reader.Dispose();
         Debug.Log(reader.heartrate);
     }

@@ -46,10 +46,9 @@ public class XYStreamReader : IDisposable
     public static XYStreamReader FromFile(string path)
     {
         Stream stream = new FileStream(
-            path,
+            "Assets/Resources/sample.txt",
             FileMode.Open,
-            FileAccess.Read,
-            FileShare.ReadWrite);
+            FileAccess.Read);
 
         return new XYStreamReader(stream);
     }
