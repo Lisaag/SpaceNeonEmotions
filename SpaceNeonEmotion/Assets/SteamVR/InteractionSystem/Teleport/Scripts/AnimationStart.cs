@@ -13,7 +13,6 @@ public class AnimationStart : MonoBehaviour
 
     public void StartAnimation()
     {
-        //animation.AddClip(clip, "clip");
         animation.SetTrigger("PlayAnimation");
     }
 }

@@ -12,6 +12,8 @@ public class FlockAgent : MonoBehaviour
     public Collider AgentCollider { get { return agentCollider; } }
     Vector3 vel;
 
+    public AudioSource audio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,9 @@ public class FlockAgent : MonoBehaviour
         transform.position += velocity * Time.deltaTime;
         vel = velocity;
         transform.LookAt(transform.position + velocity);
+
+        if (!audio.isPlaying)
+            SoundManager.instance.PlaySound(audio, gameObject, true, 0);
     }
 
     private void LateUpdate()
