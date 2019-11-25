@@ -48,6 +48,14 @@ public class CheckPoint : MonoBehaviour
         }
     }
 
+    public void MoveRingToStartPoint()
+    {
+        transform.parent.GetComponent<Hand>().DetachObject(gameObject);
+        this.transform.position = startPos;
+        Vector3 rot = new Vector3(0, 0, 0);
+        transform.rotation = Quaternion.Euler(rot);
+    }
+
     public void MoveRingToCheckpoint(int id)
     {
        transform.parent.GetComponent<Hand>().DetachObject(gameObject);

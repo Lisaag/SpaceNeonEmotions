@@ -21,7 +21,7 @@ public class CleanBezierCurve : MonoBehaviour
     float boundsZ = 0;
 
     [SerializeField]
-    int cylinderDetail = 15;
+    int cylinderDetail = 0;
 
     [SerializeField]
     float radius = 0.1f;
@@ -53,14 +53,13 @@ public class CleanBezierCurve : MonoBehaviour
     List<Vector3> curvePoints = new List<Vector3>();
     List<int> triangles = new List<int>();
 
-    bool isFirstCurve = false;
-    int curveIndex = 0;
+    bool isFirstCurve = true;
+    int wireIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         curveCount -= curveCount % 2;
-        Debug.Log("cc" + curveCount);
         CalculateWire();
     }
 
@@ -68,34 +67,17 @@ public class CleanBezierCurve : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Reset();
-            CalculateWire();
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
             StartCoroutine(RemoveWire());
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            isFirstCurve = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            curveCount = 8;
-            yStep = 0.07f;
-
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            curveCount = 14;
-            yStep = 0.04f;
         }
     }
 
-    IEnumerator RemoveWire()
+    public IEnumerator RemoveWire()
     {
-        if (triangles.Count == 0) yield break;
+        if (triangles.Count == 0)
+        {
+            CalculateWire();
+            yield break;
+        }
         triangles.RemoveRange(triangles.Count - (cylinderDetail) * 6, (cylinderDetail) * 6);
         mesh.triangles = triangles.ToArray();
 
@@ -105,6 +87,7 @@ public class CleanBezierCurve : MonoBehaviour
 
     void CalculateWire()
     {
+        Reset();
         InitializeMesh();
         CalculateCurve();
         CreateCircle();
@@ -112,6 +95,17 @@ public class CleanBezierCurve : MonoBehaviour
         StartCoroutine(WaitDrawTriangle(triangleIndex));
         PlaceCheckPoints();
         PlaceWireEnding();
+        if(wireIndex == 0)
+        {
+            curveCount = 8;
+            yStep = 0.07f;
+        }
+        else if(wireIndex == 1)
+        {
+            curveCount = 14;
+            yStep = 0.04f;
+        }
+        wireIndex++;
     }
 
     void PlaceWireEnding()
@@ -121,6 +115,7 @@ public class CleanBezierCurve : MonoBehaviour
 
     void Reset()
     {
+        if (isFirstCurve) return;
         if (mesh.vertices.Length != 0) Array.Clear(mesh.vertices, 0, mesh.vertices.Length);
         if (mesh.normals.Length != 0) Array.Clear(mesh.normals, 0, mesh.vertices.Length);
         if (mesh.triangles.Length != 0) Array.Clear(mesh.triangles, 0, mesh.vertices.Length);
@@ -159,13 +154,15 @@ public class CleanBezierCurve : MonoBehaviour
 
     IEnumerator WaitDrawTriangle(int i)
     {
-        if ((i == (mesh.vertices.Length / cylinderDetail) - curveDetail + 2 && !isFirstCurve) || (i == curveDetail - 3 && isFirstCurve))
+        if ((i == curveDetail - 3 && isFirstCurve) || (i == (mesh.vertices.Length / cylinderDetail) - curveDetail + 2 && !isFirstCurve))
         {
             GetComponent<MeshCollider>().sharedMesh = mesh;
             isFirstCurve = false;
+            Debug.Log("Done generating triangles");
 
             yield break;
         }
+        Debug.Log(cylinderDetail);
 
         for (int j = 0; j < cylinderDetail; j++)
         {
@@ -192,7 +189,7 @@ public class CleanBezierCurve : MonoBehaviour
         mesh.triangles = triangles.ToArray();
 
 
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.1f);
 
         i++;
         StartCoroutine(WaitDrawTriangle(i));
@@ -309,7 +306,6 @@ public class CleanBezierCurve : MonoBehaviour
         Vector3 SecondPoint = new Vector3(0, 0, 0);
         Vector3 FirstControlPoint = new Vector3(0, 0, 0); ;
         Vector3 SecondControlPoint = new Vector3(0, 0, 0);
-        // Vector3 LastPoint = new Vector3(0, 0, 0);
         Vector3 lastPointDir = new Vector3(0, 0, 0);
 
         bool wireMiddle = false;
@@ -443,34 +439,5 @@ public class CleanBezierCurve : MonoBehaviour
             return UnityEngine.Random.Range(FirstMin, FirstMax);
         else
             return UnityEngine.Random.Range(SecondMin, SecondMax);
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(LastPoint * this.transform.localScale.y + this.transform.localPosition, 0.1f);
-        Debug.Log(LastPoint);
-
-        int index = 0;
-        foreach (Vector3 p in perpVectors)
-        {
-            //if (index > (curveCount - 1) * curveDetail) break;
-            Gizmos.DrawSphere(p * this.transform.localScale.y + this.transform.localPosition, 0.02f);
-
-            index++;
-        }
-
-        Gizmos.color = Color.grey;
-        foreach (Vector3 p in curvePoints)
-        {
-            Gizmos.DrawSphere(p * this.transform.localScale.y + this.transform.localPosition, 0.015f);
-        }
-
-        Gizmos.color = Color.magenta;
-
-        Gizmos.DrawSphere(new Vector3(0, 0, zOffsetPp) * this.transform.localScale.y + this.transform.localPosition, 0.015f);
-        Gizmos.DrawSphere(new Vector3(0, 0, -zOffsetPp) + this.transform.localPosition, 0.015f);
-        Gizmos.DrawSphere(new Vector3(0, 3.0f, 0) + this.transform.localPosition, 0.015f);
-
     }
 }

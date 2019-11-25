@@ -50,7 +50,8 @@ public class RingCollision : MonoBehaviour
         if (other.CompareTag("WireEnding"))
         {
             collisionBehaviour.wireIndex++;
-            ring.transform.localPosition = cp.startPos;
+            cp.MoveRingToStartPoint();
+            StartCoroutine(wmg.RemoveWire());
         }
     }
 
