@@ -35,6 +35,9 @@ public class CleanBezierCurve : MonoBehaviour
     [SerializeField]
     float yStep = 0.0f; //the amount every point will be offset on the y-asix
 
+    [SerializeField]
+    float generateSpeed = 0;
+
     public Vector3[] ringDir;
     public float zOffsetPp = 0;
 
@@ -98,19 +101,19 @@ public class CleanBezierCurve : MonoBehaviour
         if(wireIndex == 0)
         {
             curveCount = 8;
-            yStep = 0.07f;
+            yStep = 0.085f;
         }
         else if(wireIndex == 1)
         {
             curveCount = 14;
-            yStep = 0.04f;
+            yStep = 0.045f;
         }
         wireIndex++;
     }
 
     void PlaceWireEnding()
     {
-        wireEnding.transform.localPosition = new Vector3(0.0f, 0.0f, zOffsetPp) * this.transform.localScale.y + this.transform.localPosition;
+        wireEnding.transform.localPosition = new Vector3(0.0f, 0.1f, zOffsetPp);
     }
 
     void Reset()
@@ -189,7 +192,7 @@ public class CleanBezierCurve : MonoBehaviour
         mesh.triangles = triangles.ToArray();
 
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.01f);
 
         i++;
         StartCoroutine(WaitDrawTriangle(i));
@@ -318,7 +321,7 @@ public class CleanBezierCurve : MonoBehaviour
 
             for (int i = 0; i < curveDetail; i++)
             {
-                float height = 8.0f;
+                float height = 10.0f;
                 float offset = 2.0f;
                 curvePoint = Mathf.Pow((1 - t), 3) * new Vector3(0.0f, 0, -offset) + 3 * Mathf.Pow((1 - t), 2) * t * new Vector3(0.0f, height, -offset)
                 + 3 * (1 - t) * Mathf.Pow(t, 2) * new Vector3(0.0f, height, offset) + Mathf.Pow(t, 3) * new Vector3(0.0f, 0, offset);
