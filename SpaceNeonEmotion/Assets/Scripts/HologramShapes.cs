@@ -6,6 +6,8 @@ using Valve.VR.InteractionSystem;
 
 public class HologramShapes : MonoBehaviour
 {
+    public AudioSource clip;
+
     //public GameObject forcefieldSphere;
     private void OnCollisionEnter(Collision collision)
     {
@@ -50,5 +52,6 @@ public class HologramShapes : MonoBehaviour
         this.transform.position = colObj.transform.position;
         gameObject.AddComponent<CubeRotator>();
         GameManager.Instance.checkPlacement();
+        SoundManager.instance.PlaySound(clip, gameObject, false, 0);
     }
 }

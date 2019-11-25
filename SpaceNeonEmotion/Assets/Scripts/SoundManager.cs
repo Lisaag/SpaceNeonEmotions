@@ -33,7 +33,12 @@ public class SoundManager : MonoBehaviourExtensionCoroutines
     public void PlaySound(AudioSource clip, GameObject movingObject, bool loop, int delayInSeconds)
     {
         clipInfoObject = new ClipInfo(clip, movingObject, loop);
-        StartCoroutine(this, playSoundClip, delayInSeconds);
+
+        if (delayInSeconds > 0)
+            StartCoroutine(this, playSoundClip, delayInSeconds);
+
+        else
+            ActuallyPlay();
     }
 
     private void ActuallyPlay()
