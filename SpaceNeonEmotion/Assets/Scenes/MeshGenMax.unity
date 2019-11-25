@@ -469,6 +469,11 @@ PrefabInstance:
       propertyPath: wireEnding
       value: 
       objectReference: {fileID: 2038088}
+    - target: {fileID: 5706153219235535368, guid: 9c13b8049b2a7204f82c3ac907c5dbf3,
+        type: 3}
+      propertyPath: generateSpeed
+      value: 0.015
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c13b8049b2a7204f82c3ac907c5dbf3, type: 3}
 --- !u!4 &244242080 stripped

@@ -59,6 +59,11 @@ public class CleanBezierCurve : MonoBehaviour
     bool isFirstCurve = true;
     int wireIndex = 0;
 
+    [SerializeField]
+    GameObject steamCamera;
+
+    float playerHeight = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +77,11 @@ public class CleanBezierCurve : MonoBehaviour
         {
             StartCoroutine(RemoveWire());
         }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            playerHeight = steamCamera.transform.position.y;
+        }
+
     }
 
     public IEnumerator RemoveWire()
@@ -84,7 +94,7 @@ public class CleanBezierCurve : MonoBehaviour
         triangles.RemoveRange(triangles.Count - (cylinderDetail) * 6, (cylinderDetail) * 6);
         mesh.triangles = triangles.ToArray();
 
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(generateSpeed);
         StartCoroutine(RemoveWire());
     }
 
@@ -101,12 +111,12 @@ public class CleanBezierCurve : MonoBehaviour
         if(wireIndex == 0)
         {
             curveCount = 8;
-            yStep = 0.085f;
+            yStep = 0.051f * playerHeight;
         }
         else if(wireIndex == 1)
         {
             curveCount = 14;
-            yStep = 0.045f;
+            yStep = 0.027f;
         }
         wireIndex++;
     }
@@ -157,7 +167,7 @@ public class CleanBezierCurve : MonoBehaviour
 
     IEnumerator WaitDrawTriangle(int i)
     {
-        if ((i == curveDetail - 3 && isFirstCurve) || (i == (mesh.vertices.Length / cylinderDetail) - curveDetail + 2 && !isFirstCurve))
+        if ((i == (curveDetail * 2) - 3 && isFirstCurve) || (i == (mesh.vertices.Length / cylinderDetail) - curveDetail + 2 && !isFirstCurve))
         {
             GetComponent<MeshCollider>().sharedMesh = mesh;
             isFirstCurve = false;
@@ -192,7 +202,7 @@ public class CleanBezierCurve : MonoBehaviour
         mesh.triangles = triangles.ToArray();
 
 
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(generateSpeed);
 
         i++;
         StartCoroutine(WaitDrawTriangle(i));
@@ -319,13 +329,13 @@ public class CleanBezierCurve : MonoBehaviour
         {
             float t = 0;
 
-            for (int i = 0; i < curveDetail; i++)
+            for (int i = 0; i < curveDetail * 2; i++)
             {
                 float height = 10.0f;
                 float offset = 2.0f;
                 curvePoint = Mathf.Pow((1 - t), 3) * new Vector3(0.0f, 0, -offset) + 3 * Mathf.Pow((1 - t), 2) * t * new Vector3(0.0f, height, -offset)
                 + 3 * (1 - t) * Mathf.Pow(t, 2) * new Vector3(0.0f, height, offset) + Mathf.Pow(t, 3) * new Vector3(0.0f, 0, offset);
-                t += tStep;
+                t += (tStep / 2);
                 curvePoints.Add(curvePoint);
             }
             return;
@@ -442,5 +452,16 @@ public class CleanBezierCurve : MonoBehaviour
             return UnityEngine.Random.Range(FirstMin, FirstMax);
         else
             return UnityEngine.Random.Range(SecondMin, SecondMax);
+    }
+
+    void OnDrawGizmos()
+    {
+        if(mesh != null && mesh.vertices.Length != 0)
+        {
+            foreach(Vector3 p in mesh.vertices)
+            {
+                Gizmos.DrawSphere(p, 0.01f);
+            }
+        }
     }
 }
