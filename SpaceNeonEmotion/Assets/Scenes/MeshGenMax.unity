@@ -127,19 +127,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1647918928}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9792519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9792513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2740367bd8317cc4083a091eb5d941ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resetPosition: {fileID: 971285096}
 --- !u!1 &34959252 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7828924524056282870, guid: 705dbb54ea020a344bacb54bdd71f20c,
@@ -986,6 +973,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportArea
       objectReference: {fileID: 0}
+    - target: {fileID: 1152910541610171968, guid: 261c4c72de670e04c9b3eae84dd4d0c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1152910541610171971, guid: 261c4c72de670e04c9b3eae84dd4d0c9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1371,7 +1363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isButtonPosition: 0
-  attachedObject: {fileID: 0}
+  attachedObject: {fileID: 1045512164}
   attachedHologramLoc: {fileID: 0}
 --- !u!4 &893113991 stripped
 Transform:
@@ -1431,6 +1423,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 1
   turningSpeed: 100
+  trianglePrefab: {fileID: 9009523762669996669, guid: 557135ea8e38c8e4a826cae1a5fc69b9,
+    type: 3}
+  spherePrefab: {fileID: 8979806361354190896, guid: efb4b0544fb83aa4484d9f801d454924,
+    type: 3}
+  cubePrefab: {fileID: 2906051870533727516, guid: 7ce1a4a976ca129409adb24bbd9850bc,
+    type: 3}
   rotateTowards: {fileID: 1800631900}
   dropoffLoc: {fileID: 876680465}
   droppingOff: 0
@@ -1565,7 +1563,7 @@ PrefabInstance:
     - target: {fileID: 5387984761154810403, guid: efb4b0544fb83aa4484d9f801d454924,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.595
+      value: 6.11
       objectReference: {fileID: 0}
     - target: {fileID: 5387984761154810403, guid: efb4b0544fb83aa4484d9f801d454924,
         type: 3}
@@ -1575,7 +1573,7 @@ PrefabInstance:
     - target: {fileID: 5387984761154810403, guid: efb4b0544fb83aa4484d9f801d454924,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.69
+      value: -4.66
       objectReference: {fileID: 0}
     - target: {fileID: 5387984761154810403, guid: efb4b0544fb83aa4484d9f801d454924,
         type: 3}
@@ -1617,16 +1615,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8487939291768791534, guid: efb4b0544fb83aa4484d9f801d454924,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4490090750773091857, guid: efb4b0544fb83aa4484d9f801d454924,
-        type: 3}
-      propertyPath: forcefieldSphere
-      value: 
-      objectReference: {fileID: 477699619}
     - target: {fileID: 4490090750773091857, guid: efb4b0544fb83aa4484d9f801d454924,
         type: 3}
       propertyPath: cubeLoc
@@ -1634,14 +1622,14 @@ PrefabInstance:
       objectReference: {fileID: 999572757}
     - target: {fileID: 4490090750773091857, guid: efb4b0544fb83aa4484d9f801d454924,
         type: 3}
-      propertyPath: sphereLoc
-      value: 
-      objectReference: {fileID: 1182977458}
-    - target: {fileID: 4490090750773091857, guid: efb4b0544fb83aa4484d9f801d454924,
-        type: 3}
       propertyPath: triangleLoc
       value: 
       objectReference: {fileID: 947693118}
+    - target: {fileID: 4490090750773091857, guid: efb4b0544fb83aa4484d9f801d454924,
+        type: 3}
+      propertyPath: sphereLoc
+      value: 
+      objectReference: {fileID: 1182977458}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb4b0544fb83aa4484d9f801d454924, type: 3}
 --- !u!1 &999572757
@@ -11575,12 +11563,12 @@ PrefabInstance:
     - target: {fileID: 2165957777352247055, guid: 7ce1a4a976ca129409adb24bbd9850bc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.25
+      value: -2.36
       objectReference: {fileID: 0}
     - target: {fileID: 2165957777352247055, guid: 7ce1a4a976ca129409adb24bbd9850bc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.32
+      value: -0.63
       objectReference: {fileID: 0}
     - target: {fileID: 2165957777352247055, guid: 7ce1a4a976ca129409adb24bbd9850bc,
         type: 3}
@@ -11627,26 +11615,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3697179134616986515, guid: 7ce1a4a976ca129409adb24bbd9850bc,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3697179134616986515, guid: 7ce1a4a976ca129409adb24bbd9850bc,
-        type: 3}
-      propertyPath: m_Mass
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3697179134616986515, guid: 7ce1a4a976ca129409adb24bbd9850bc,
-        type: 3}
-      propertyPath: m_Drag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4913154395295045748, guid: 7ce1a4a976ca129409adb24bbd9850bc,
-        type: 3}
-      propertyPath: forcefieldSphere
-      value: 
-      objectReference: {fileID: 168924234}
     - target: {fileID: 4913154395295045748, guid: 7ce1a4a976ca129409adb24bbd9850bc,
         type: 3}
       propertyPath: cubeLoc
@@ -11654,14 +11622,18 @@ PrefabInstance:
       objectReference: {fileID: 999572757}
     - target: {fileID: 4913154395295045748, guid: 7ce1a4a976ca129409adb24bbd9850bc,
         type: 3}
-      propertyPath: sphereLoc
-      value: 
-      objectReference: {fileID: 1182977458}
-    - target: {fileID: 4913154395295045748, guid: 7ce1a4a976ca129409adb24bbd9850bc,
-        type: 3}
       propertyPath: triangleLoc
       value: 
       objectReference: {fileID: 947693118}
+    - target: {fileID: 4913154395295045748, guid: 7ce1a4a976ca129409adb24bbd9850bc,
+        type: 3}
+      propertyPath: sphereLoc
+      value: 
+      objectReference: {fileID: 1182977458}
+    - target: {fileID: 9792519, guid: 7ce1a4a976ca129409adb24bbd9850bc, type: 3}
+      propertyPath: resetPosition
+      value: 
+      objectReference: {fileID: 971285096}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ce1a4a976ca129409adb24bbd9850bc, type: 3}
 --- !u!1001 &1670858910
@@ -12674,7 +12646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11445746, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
       propertyPath: traceLayerMask.m_Bits
-      value: 1335
+      value: 7479
       objectReference: {fileID: 0}
     - target: {fileID: 11445746, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
       propertyPath: portalManager
@@ -12682,7 +12654,7 @@ PrefabInstance:
       objectReference: {fileID: 1799086697}
     - target: {fileID: 11445746, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
       propertyPath: portalSpawnPercentageChance
-      value: 65
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 11445746, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
       propertyPath: showHint
@@ -12851,15 +12823,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TriangleShape
       objectReference: {fileID: 0}
-    - target: {fileID: 9009523762669996669, guid: 557135ea8e38c8e4a826cae1a5fc69b9,
-        type: 3}
-      propertyPath: m_TagString
-      value: HologramTriangle
-      objectReference: {fileID: 0}
     - target: {fileID: 5427712729000720494, guid: 557135ea8e38c8e4a826cae1a5fc69b9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.733
+      value: 3.78
       objectReference: {fileID: 0}
     - target: {fileID: 5427712729000720494, guid: 557135ea8e38c8e4a826cae1a5fc69b9,
         type: 3}
@@ -12869,7 +12836,7 @@ PrefabInstance:
     - target: {fileID: 5427712729000720494, guid: 557135ea8e38c8e4a826cae1a5fc69b9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.899
+      value: 1.53
       objectReference: {fileID: 0}
     - target: {fileID: 5427712729000720494, guid: 557135ea8e38c8e4a826cae1a5fc69b9,
         type: 3}
@@ -12911,26 +12878,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5427712729000720494, guid: 557135ea8e38c8e4a826cae1a5fc69b9,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5427712729000720494, guid: 557135ea8e38c8e4a826cae1a5fc69b9,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5427712729000720494, guid: 557135ea8e38c8e4a826cae1a5fc69b9,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1549517915869250339, guid: 557135ea8e38c8e4a826cae1a5fc69b9,
-        type: 3}
-      propertyPath: forcefieldSphere
-      value: 
-      objectReference: {fileID: 1245452201}
     - target: {fileID: 1549517915869250339, guid: 557135ea8e38c8e4a826cae1a5fc69b9,
         type: 3}
       propertyPath: cubeLoc
@@ -12938,14 +12885,14 @@ PrefabInstance:
       objectReference: {fileID: 999572757}
     - target: {fileID: 1549517915869250339, guid: 557135ea8e38c8e4a826cae1a5fc69b9,
         type: 3}
-      propertyPath: sphereLoc
-      value: 
-      objectReference: {fileID: 1182977458}
-    - target: {fileID: 1549517915869250339, guid: 557135ea8e38c8e4a826cae1a5fc69b9,
-        type: 3}
       propertyPath: triangleLoc
       value: 
       objectReference: {fileID: 947693118}
+    - target: {fileID: 1549517915869250339, guid: 557135ea8e38c8e4a826cae1a5fc69b9,
+        type: 3}
+      propertyPath: sphereLoc
+      value: 
+      objectReference: {fileID: 1182977458}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 557135ea8e38c8e4a826cae1a5fc69b9, type: 3}
 --- !u!1001 &7691223356435334390

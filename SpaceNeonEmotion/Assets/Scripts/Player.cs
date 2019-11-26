@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
     public float movementSpeed = 10;
     public float turningSpeed = 60;
 
+    public GameObject trianglePrefab;
+    public GameObject spherePrefab;
+    public GameObject cubePrefab;
+
     public GameObject rotateTowards;
 
     public GameObject dropoffLoc;
@@ -85,7 +89,36 @@ public class Player : MonoBehaviour
                 animator.SetBool("isWalking", false);
                 if (go.transform.gameObject.name == "DropoffLocation" && GetComponentInChildren<HologramShapes>() != null)
                 {
+                    GameObject tempObj = GetComponentInChildren<HologramShapes>().gameObject;
                     GetComponentInChildren<HologramShapes>().LetGo();
+                    if (tempObj.CompareTag("HologramCube"))
+                    {
+                        Debug.Log("Instantiating" + tempObj.transform.position);
+                        GameObject newObj = Instantiate(cubePrefab, tempObj.transform.position, tempObj.transform.rotation, go.transform); //cube - triangle = sphere
+                        shapePositions[0].GetComponent<DrawGizmo>().attachedObject = newObj;
+                        newObj.GetComponent<HologramShapes>().cubeLoc = shapePositions[0].GetComponent<DrawGizmo>().attachedHologramLoc;
+                        newObj.GetComponent<HologramShapes>().triangleLoc = shapePositions[1].GetComponent<DrawGizmo>().attachedHologramLoc;
+                        newObj.GetComponent<HologramShapes>().sphereLoc = shapePositions[2].GetComponent<DrawGizmo>().attachedHologramLoc;
+                        PortalManager._instance.shapes[1] = newObj; //triangle - cube = sphere 
+                    } else if (tempObj.CompareTag("HologramSphere"))
+                    {
+                        Debug.Log("Instantiating" + tempObj.transform.position);
+                        GameObject newObj = Instantiate(spherePrefab, tempObj.transform.position, tempObj.transform.rotation, go.transform);
+                        shapePositions[2].GetComponent<DrawGizmo>().attachedObject = newObj;
+                        newObj.GetComponent<HologramShapes>().cubeLoc = shapePositions[0].GetComponent<DrawGizmo>().attachedHologramLoc;
+                        newObj.GetComponent<HologramShapes>().triangleLoc = shapePositions[1].GetComponent<DrawGizmo>().attachedHologramLoc;
+                        newObj.GetComponent<HologramShapes>().sphereLoc = shapePositions[2].GetComponent<DrawGizmo>().attachedHologramLoc;
+                        PortalManager._instance.shapes[2] = newObj;
+                    } else if (tempObj.CompareTag("HologramTriangle"))
+                    {
+                        Debug.Log("Instantiating" + tempObj.transform.position);
+                        GameObject newObj = Instantiate(trianglePrefab, tempObj.transform.position, tempObj.transform.rotation, go.transform);
+                        shapePositions[1].GetComponent<DrawGizmo>().attachedObject = newObj;
+                        newObj.GetComponent<HologramShapes>().cubeLoc = shapePositions[0].GetComponent<DrawGizmo>().attachedHologramLoc;
+                        newObj.GetComponent<HologramShapes>().triangleLoc = shapePositions[1].GetComponent<DrawGizmo>().attachedHologramLoc;
+                        newObj.GetComponent<HologramShapes>().sphereLoc = shapePositions[2].GetComponent<DrawGizmo>().attachedHologramLoc;
+                        PortalManager._instance.shapes[0] = newObj;
+                    }
                     droppingOff = false;
                 }
                 if (go.GetComponent<DrawGizmo>().isButtonPosition)

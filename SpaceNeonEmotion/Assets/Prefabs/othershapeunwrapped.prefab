@@ -1285,6 +1285,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15432f6a83bba9a4f90d70d1b9961b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeLoc: {fileID: 0}
+  triangleLoc: {fileID: 0}
+  sphereLoc: {fileID: 0}
 --- !u!114 &72060407976198738
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -64,10 +64,10 @@ public class HologramShapes : MonoBehaviour
     }
     public void LetGo()
     {
-        this.transform.parent = null;
-        this.GetComponent<Rigidbody>().isKinematic = false;
-        this.GetComponent<Rigidbody>().useGravity = true;
-        this.GetComponent<Rigidbody>().drag = 0f;
+        //this.transform.parent = null;
+        //this.GetComponent<Rigidbody>().isKinematic = false;
+        //this.GetComponent<Rigidbody>().useGravity = true;
+        //this.GetComponent<Rigidbody>().drag = 0f;
 
         if (this.CompareTag("HologramCube"))
         {
@@ -84,6 +84,7 @@ public class HologramShapes : MonoBehaviour
             sphereLoc.gameObject.SetActive(true);
             sphereLoc.GetComponentInChildren<Attractor>().forcefield.SetActive(false);
         }
+        Destroy(this.gameObject);
     }
 
     public void Delocate(GameObject obj)
@@ -100,11 +101,6 @@ public class HologramShapes : MonoBehaviour
         }
         this.transform.parent = obj.transform;
         this.transform.position = obj.transform.position;
-        if (gameObject.GetComponent<Interactable>().enabled == false)
-        {
-            gameObject.GetComponent<Interactable>().enabled = true;
-            gameObject.AddComponent<Throwable>();
-        }
         Destroy(this.GetComponent<CubeRotator>());
 
     }
