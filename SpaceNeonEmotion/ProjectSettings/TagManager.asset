@@ -12,6 +12,8 @@ TagManager:
   - TriangleLocation
   - HologramTriangle
   - Checkpoint
+  - WirePoint
+  - WireEnding
   layers:
   - Default
   - TransparentFX

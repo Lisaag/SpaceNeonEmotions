@@ -29,6 +29,20 @@ public class RingCollision : MonoBehaviour
         cp = ring.GetComponent<CheckPoint>();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            collisionBehaviour.reachedCheckpoint = true;
+            checkpointId++;
+        }
+        else if (Input.GetKeyDown(KeyCode.H))
+        {
+            cp.MoveRingToCheckpoint(checkpointId);
+            Reset();
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Checkpoint"))
@@ -45,6 +59,13 @@ public class RingCollision : MonoBehaviour
                 cp.MoveRingToCheckpoint(checkpointId);
                 Reset();
             }
+        }
+
+        if (other.CompareTag("WireEnding"))
+        {
+            cp.MoveRingToStartPoint();
+            wmg.placeNewWire();
+            checkpointId = 0;
         }
     }
 
