@@ -27,7 +27,11 @@ public class SoundManager : MonoBehaviourExtensionCoroutines
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        instance = this;
+        if (SoundManager.instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
         playSoundClip = ActuallyPlay;
     }
 

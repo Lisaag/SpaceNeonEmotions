@@ -9,6 +9,7 @@ public class HologramShapes : MonoBehaviour
     public GameObject cubeLoc;
     public GameObject triangleLoc;
     public GameObject sphereLoc;
+    public AudioSource clip;
     //public GameObject forcefieldSphere;
     private void OnCollisionEnter(Collision collision)
     {
@@ -61,6 +62,7 @@ public class HologramShapes : MonoBehaviour
         this.transform.position = colObj.transform.position;
         gameObject.AddComponent<CubeRotator>();
         GameManager.Instance.CheckPlacement();
+        SoundManager.instance.PlaySound(clip, gameObject, false, 0);
     }
     public void LetGo()
     {
