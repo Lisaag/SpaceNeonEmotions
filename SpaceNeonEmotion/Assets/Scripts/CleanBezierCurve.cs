@@ -134,7 +134,7 @@ public class CleanBezierCurve : MonoBehaviour
 
     void PlaceWireEnding()
     {
-        wireEnding.transform.localPosition = new Vector3(0.0f, 0.1f, zOffsetPp);
+        wireEnding.transform.localPosition = new Vector3(0.0f, 0.0f, zOffsetPp);
     }
 
     void Reset()
@@ -188,7 +188,6 @@ public class CleanBezierCurve : MonoBehaviour
 
             yield break;
         }
-        Debug.Log(cylinderDetail);
 
         for (int j = 0; j < cylinderDetail; j++)
         {
@@ -344,10 +343,11 @@ public class CleanBezierCurve : MonoBehaviour
 
             for (int i = 0; i < curveDetail * 2; i++)
             {
-                float height = 10.0f;
+                float height = 6.05f * playerHeight;
                 float offset = 2.0f;
-                curvePoint = Mathf.Pow((1 - t), 3) * new Vector3(0.0f, 0, -offset) + 3 * Mathf.Pow((1 - t), 2) * t * new Vector3(0.0f, height, -offset)
-                + 3 * (1 - t) * Mathf.Pow(t, 2) * new Vector3(0.0f, height, offset) + Mathf.Pow(t, 3) * new Vector3(0.0f, 0, offset);
+                float yPosition = -0.35f;
+                curvePoint = Mathf.Pow((1 - t), 3) * new Vector3(0.0f, yPosition, -offset) + 3 * Mathf.Pow((1 - t), 2) * t * new Vector3(0.0f, height, -offset)
+                + 3 * (1 - t) * Mathf.Pow(t, 2) * new Vector3(0.0f, height, offset) + Mathf.Pow(t, 3) * new Vector3(0.0f, yPosition, offset);
                 t += (tStep / 2);
                 curvePoints.Add(curvePoint);
             }
@@ -361,7 +361,7 @@ public class CleanBezierCurve : MonoBehaviour
 
             if (j == 0) //The points of the first curve of the wire
             {
-                FirstPoint = new Vector3(0, 0, zDir * zOffsetPp);
+                FirstPoint = new Vector3(0, -0.5f, zDir * zOffsetPp);
                 SecondPoint = new Vector3(0, 0, zDir * zOffsetPp);
 
                 FirstControlPoint = new Vector3(0, 0, zDir * zOffsetPp);

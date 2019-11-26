@@ -31,7 +31,7 @@ public class CheckPoint : MonoBehaviour
         collisionBehaviour = this.gameObject.transform.GetChild(0).GetComponent<CollisionBehaviour>();
         animator = this.gameObject.GetComponent<Animator>();
 
-        startPos = new Vector3(0, 0.5f, -wire.GetComponent<CleanBezierCurve>().zOffsetPp) * wire.transform.localScale.y + wire.transform.position;
+        startPos = new Vector3(0, 0.0f, -wire.GetComponent<CleanBezierCurve>().zOffsetPp) * wire.transform.localScale.y + wire.transform.position;
         wireStartPoint.transform.position = startPos;
         startPos.y += 0.035f;
         this.transform.position = startPos;
