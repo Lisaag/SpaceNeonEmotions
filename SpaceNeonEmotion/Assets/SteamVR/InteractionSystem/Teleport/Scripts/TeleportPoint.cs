@@ -95,9 +95,9 @@ namespace Valve.VR.InteractionSystem
 				lookAtPosition.x = player.hmdTransform.position.x;
 				lookAtPosition.y = lookAtJointTransform.position.y;
 				lookAtPosition.z = player.hmdTransform.position.z;
-
 				lookAtJointTransform.LookAt( lookAtPosition );
 			}
+
 		}
 
 

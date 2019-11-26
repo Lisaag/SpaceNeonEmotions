@@ -82,7 +82,6 @@ public class CleanBezierCurve : MonoBehaviour
             playerHeight = steamCamera.transform.localPosition.y;
             Debug.Log("Getting player height... - " + playerHeight);
         }
-
     }
 
     public IEnumerator RemoveWire()

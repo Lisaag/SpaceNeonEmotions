@@ -138,6 +138,7 @@ namespace Valve.VR.InteractionSystem
             }
         }
 
+        //Custom
         [Header("Custom added")]
         public int timesTeleported;
         public bool hasAreaTeleported;
@@ -145,6 +146,7 @@ namespace Valve.VR.InteractionSystem
         public int portalSpawnPercentageChance = 25;
         public bool spawnPortal = false;
         public PortalManager portalManager;
+        public bool isOnWirePoint;
 
         //-------------------------------------------------
         void Awake()
@@ -876,6 +878,10 @@ namespace Valve.VR.InteractionSystem
             if (teleportPoint != null)
             {
                 teleportPosition = teleportPoint.transform.position;
+                if (teleportPoint.CompareTag("WirePoint"))
+                {
+                    isOnWirePoint = true;
+                }
 
                 //Teleport to a new scene
                 if (teleportPoint.teleportType == TeleportPoint.TeleportPointType.SwitchToNewScene)
@@ -899,6 +905,8 @@ namespace Valve.VR.InteractionSystem
                         teleportPosition = raycastHit.point;
                     }
                 }
+
+                
             }
 
             if (teleportingToMarker.ShouldMovePlayer())
