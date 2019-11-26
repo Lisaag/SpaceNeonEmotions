@@ -7,7 +7,8 @@ public class Attractor : MonoBehaviour
     const float G = 667.4f;
     public float newDrag = 2.5f;
     public Rigidbody rb;
-    [SerializeField] private GameObject forcefield;
+    public GameObject forcefield;
+    public AudioSource attractingSound;
     //public static List<Attractor> Attractors;
 
     private void FixedUpdate()
@@ -82,5 +83,11 @@ public class Attractor : MonoBehaviour
         Vector3 force = direction.normalized * forceMagnitude;
 
         rbToAttract.AddForce(force);
+
+        if (!attractingSound.isPlaying)
+        {
+            SoundManager.instance.PlaySound(attractingSound, rbToAttract.gameObject, false, 0);
+            Debug.Log(rbToAttract.gameObject);
+        }
     }
 }

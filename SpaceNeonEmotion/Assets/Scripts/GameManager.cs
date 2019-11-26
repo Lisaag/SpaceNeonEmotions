@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public bool spherePlaced;
     public bool moveDoors;
 
+    public AudioSource doorsMoving;
+
     public GameObject upperDoor;
     public GameObject lowerDoor;
     public GameObject wire;
@@ -27,16 +29,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void checkPlacement()
+    public void CheckPlacement()
     {
         if (cubePlaced && spherePlaced && trianglePlaced)
         {
-            StartCoroutine(startMoveDoors());
+            StartCoroutine(StartMoveDoors());
         }
     }
 
-    IEnumerator startMoveDoors()
+    IEnumerator StartMoveDoors()
     {
+        SoundManager.instance.PlaySound(doorsMoving, upperDoor, false, 0);
+        SoundManager.instance.PlaySound(doorsMoving, lowerDoor, false, 0);
         moveDoors = true;
         yield return new WaitForSeconds(2f);
         wire.SetActive(true);

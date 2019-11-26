@@ -26,14 +26,24 @@ public class SoundManager : MonoBehaviourExtensionCoroutines
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;
+        DontDestroyOnLoad(gameObject);
+        if (SoundManager.instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
         playSoundClip = ActuallyPlay;
     }
 
     public void PlaySound(AudioSource clip, GameObject movingObject, bool loop, int delayInSeconds)
     {
         clipInfoObject = new ClipInfo(clip, movingObject, loop);
-        StartCoroutine(this, playSoundClip, delayInSeconds);
+
+        if (delayInSeconds > 0)
+            StartCoroutine(this, playSoundClip, delayInSeconds);
+
+        else
+            ActuallyPlay();
     }
 
     private void ActuallyPlay()
@@ -49,6 +59,7 @@ public class SoundManager : MonoBehaviourExtensionCoroutines
 
         AudioSource soundHolderClip = clipInfoObject.clipObject.AddComponent<AudioSource>();
         soundHolderClip = clip;
-        soundHolderClip.PlayOneShot(soundHolderClip.clip);
+        if (!soundHolderClip.isPlaying)
+            soundHolderClip.PlayOneShot(soundHolderClip.clip);
     }
 }

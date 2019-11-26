@@ -26,6 +26,8 @@ public class TutorialManager : MonoBehaviour
 
     public Teleport teleport;
 
+    public AudioSource introducion, teleportInstruction ,firstTeleport, threeTeleports, pickUp, done;
+
     [System.Serializable]
     public struct Phase
     {
@@ -51,11 +53,20 @@ public class TutorialManager : MonoBehaviour
 
         thumbButton.GetComponent<Renderer>().material = highlighted;
         startTime = Time.time;
+
+        SoundManager.instance.PlaySound(introducion, gameObject, false, 0);
+        SoundManager.instance.PlaySound(teleportInstruction, gameObject, false, (int)introducion.clip.length + 1);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (teleport.timesTeleported == 1 && currentPhase == 0)
+        {
+            StopAllHints();
+            SoundManager.instance.PlaySound(firstTeleport, gameObject, false, 0);
+        }
+
         if (teleport.timesTeleported >= 3 && currentPhase == 0)
         {
             NextPhase();
@@ -100,15 +111,48 @@ public class TutorialManager : MonoBehaviour
                     Instantiate(spawnPoint, tpPointPos1, Quaternion.identity, null);
                     Instantiate(spawnPoint, tpPointPos2, Quaternion.identity, null);
                     Instantiate(spawnPoint, tpPointPos3, Quaternion.identity, null);
+                    StopAllHints();
+                    SoundManager.instance.PlaySound(threeTeleports, gameObject, false, 0);
                     break;
                 case 2:
                     thumbButton.GetComponent<Renderer>().material = regular;
                     indexButton.GetComponent<Renderer>().material = highlighted;
+                    StopAllHints();
+                    SoundManager.instance.PlaySound(pickUp, gameObject, false, 0);
                     break;
                 case 3:
-                    SceneManager.LoadScene(playScene);
+                    StopAllHints();
+                    SoundManager.instance.PlaySound(done, gameObject, false, 0);
+                    StartCoroutine(SwapScene());
                     break;
             }
         }
+    }
+
+    private void StopAllHints()
+    {
+        if (introducion.isPlaying)
+            introducion.Stop();
+
+        if (teleportInstruction.isPlaying)
+            teleportInstruction.Stop();
+
+        if (firstTeleport.isPlaying)
+            firstTeleport.Stop();
+
+        if (threeTeleports.isPlaying)
+            threeTeleports.Stop();
+
+        if (pickUp.isPlaying)
+            pickUp.Stop();
+
+        if (done.isPlaying)
+            done.Stop();
+    }
+
+    private IEnumerator SwapScene()
+    {
+        yield return new WaitForSeconds(done.clip.length + 1);
+        SceneManager.LoadScene(playScene);
     }
 }
