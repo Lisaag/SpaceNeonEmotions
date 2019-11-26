@@ -936,7 +936,7 @@ namespace Valve.VR.InteractionSystem
             for (int i = 0; i < spawnPortals.Length; i++)
             {
                 int randomNr = Random.Range(0, 100) + 1;
-                Debug.Log(randomNr);
+                //Debug.Log(randomNr);
                 if (randomNr <= portalSpawnPercentageChance)
                     spawnPortals[i] = true;
             }

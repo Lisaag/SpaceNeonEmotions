@@ -172,7 +172,7 @@ public class CleanBezierCurve : MonoBehaviour
             Vector3 relativePos = ringDir[i] - checkpointsParent.transform.GetChild(i).position;
 
             Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-            checkpointsParent.transform.GetChild(0).rotation = rotation;
+            checkpointsParent.transform.GetChild(i).rotation = rotation;
             checkpointsParent.transform.GetChild(i).transform.GetComponent<MeshRenderer>().enabled = true;
         }
     }
@@ -465,5 +465,14 @@ public class CleanBezierCurve : MonoBehaviour
             return UnityEngine.Random.Range(FirstMin, FirstMax);
         else
             return UnityEngine.Random.Range(SecondMin, SecondMax);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        for(int i = 0; i < ringDir.Length; i++)
+        {
+            Gizmos.DrawSphere(ringDir[i], 0.01f);
+        }
     }
 }

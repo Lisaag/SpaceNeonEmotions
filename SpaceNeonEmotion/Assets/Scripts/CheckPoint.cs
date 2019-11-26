@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Valve.VR.InteractionSystem;
 
 public class CheckPoint : MonoBehaviour
@@ -18,8 +16,7 @@ public class CheckPoint : MonoBehaviour
     CleanBezierCurve wmg;
 
     CollisionBehaviour collisionBehaviour;
-
-    bool isHovering = false;
+    readonly bool isHovering = false;
 
     public Vector3 startPos = new Vector3(0, 0, 0);
 
@@ -31,7 +28,7 @@ public class CheckPoint : MonoBehaviour
         collisionBehaviour = this.gameObject.transform.GetChild(0).GetComponent<CollisionBehaviour>();
         animator = this.gameObject.GetComponent<Animator>();
 
-        startPos = new Vector3(0, 0.0f, -wire.GetComponent<CleanBezierCurve>().zOffsetPp) * wire.transform.localScale.y + wire.transform.position;
+        startPos = new Vector3(0, 0.4f, -wire.GetComponent<CleanBezierCurve>().zOffsetPp) * wire.transform.localScale.y + wire.transform.position;
         wireStartPoint.transform.position = startPos;
         startPos.y += 0.035f;
         this.transform.position = startPos;
@@ -41,16 +38,22 @@ public class CheckPoint : MonoBehaviour
     {
         if (transform.parent != null && collisionBehaviour.hasCollided)
         {
-            if (transform.parent.GetComponent<Hand>().ObjectIsAttached(this.gameObject))
+            if (transform.parent.GetComponent<Hand>())
             {
-                collisionBehaviour.hasCollided = false;
+                if (transform.parent.GetComponent<Hand>().ObjectIsAttached(this.gameObject))
+                {
+                    collisionBehaviour.hasCollided = false;
+                }
             }
         }
     }
 
     public void MoveRingToStartPoint()
     {
-        transform.parent.GetComponent<Hand>().DetachObject(gameObject);
+        if (transform.parent.GetComponent<Hand>())
+        {
+            transform.parent.GetComponent<Hand>().DetachObject(gameObject);
+        }
         this.transform.position = startPos;
         Vector3 rot = new Vector3(0, 0, 0);
         transform.rotation = Quaternion.Euler(rot);
@@ -60,7 +63,7 @@ public class CheckPoint : MonoBehaviour
     {
         transform.parent.GetComponent<Hand>().DetachObject(gameObject);
 
-        if (!collisionBehaviour.reachedCheckpoint)
+        if (id == -1)
         {
             this.transform.position = startPos;
             this.transform.eulerAngles = new Vector3(0, 0, 0);

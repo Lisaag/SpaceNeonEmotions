@@ -49,23 +49,25 @@ public class RingCollision : MonoBehaviour
         {
             collisionBehaviour.reachedCheckpoint = true;
             checkpointId = other.GetComponent<CheckPointId>().id;
-            Debug.Log("chackram collided with checkpoint " + checkpointId);
+           // Debug.Log("chackram collided with checkpoint " + checkpointId);
+        }
+
+
+        if (other.CompareTag("WireEnding"))
+        {
+            checkpointId = -1;
+            cp.MoveRingToStartPoint();
+            wmg.placeNewWire();
         }
 
         if (!collisionBehaviour.hasCollided)
         {
             if (other.CompareTag("Wire"))
             {
+                Debug.Log("checkPointid: " + checkpointId);
                 cp.MoveRingToCheckpoint(checkpointId);
                 Reset();
             }
-        }
-
-        if (other.CompareTag("WireEnding"))
-        {
-            cp.MoveRingToStartPoint();
-            wmg.placeNewWire();
-            checkpointId = 0;
         }
     }
 
