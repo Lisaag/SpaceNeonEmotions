@@ -7,7 +7,7 @@ public class Attractor : MonoBehaviour
     const float G = 667.4f;
     public float newDrag = 2.5f;
     public Rigidbody rb;
-    [SerializeField] private GameObject forcefield;
+    [SerializeField] public GameObject forcefield;
     //public static List<Attractor> Attractors;
 
     private void FixedUpdate()

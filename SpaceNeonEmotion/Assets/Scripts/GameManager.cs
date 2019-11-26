@@ -27,15 +27,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void checkPlacement()
+    public void CheckPlacement()
     {
         if (cubePlaced && spherePlaced && trianglePlaced)
         {
-            StartCoroutine(startMoveDoors());
+            StartCoroutine(StartMoveDoors());
         }
     }
 
-    IEnumerator startMoveDoors()
+    IEnumerator StartMoveDoors()
     {
         moveDoors = true;
         yield return new WaitForSeconds(2f);
