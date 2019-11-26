@@ -46,11 +46,21 @@ public class CheckPoint : MonoBehaviour
                 }
             }
         }
+
+       // Debug.Log("currentcheckpointid: " + collisionBehaviour.currentCheckpointId);
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Wire"))
+        {
+            MoveRingToStartPoint();
+        }
     }
 
     public void MoveRingToStartPoint()
     {
-        if (transform.parent.GetComponent<Hand>())
+        if (transform.parent != null && transform.parent.GetComponent<Hand>())
         {
             transform.parent.GetComponent<Hand>().DetachObject(gameObject);
         }
@@ -61,7 +71,12 @@ public class CheckPoint : MonoBehaviour
 
     public void MoveRingToCheckpoint(int id)
     {
-        transform.parent.GetComponent<Hand>().DetachObject(gameObject);
+        if (transform.parent != null && transform.parent.GetComponent<Hand>())
+        {
+            transform.parent.GetComponent<Hand>().DetachObject(gameObject);
+        }
+
+        Debug.Log("moving chackram to checkpoint: " + id);
 
         if (id == -1)
         {
@@ -70,7 +85,6 @@ public class CheckPoint : MonoBehaviour
         }
         else
         {
-            Debug.Log("moving chackram to checkpoint: " + id);
             ringRotatePoint = wmg.ringDir[id];
             Debug.Log(ringRotatePoint);
 

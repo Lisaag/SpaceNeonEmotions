@@ -49,7 +49,7 @@ public class RingCollision : MonoBehaviour
         {
             collisionBehaviour.reachedCheckpoint = true;
             checkpointId = other.GetComponent<CheckPointId>().id;
-           // Debug.Log("chackram collided with checkpoint " + checkpointId);
+            Debug.Log("chackram collided with checkpoint " + checkpointId);
         }
 
 
@@ -64,7 +64,7 @@ public class RingCollision : MonoBehaviour
         {
             if (other.CompareTag("Wire"))
             {
-                Debug.Log("checkPointid: " + checkpointId);
+                //Debug.Log("checkPointid: " + checkpointId);
                 cp.MoveRingToCheckpoint(checkpointId);
                 Reset();
             }
