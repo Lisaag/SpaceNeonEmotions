@@ -11,10 +11,14 @@ public class WireManager : MonoBehaviour
     [SerializeField]
     GameObject wire;
 
+    [SerializeField]
+    GameObject steamCamera;
+
     void Update()
     {
         if (teleport.isOnWirePoint)
         {
+            wire.GetComponent<CleanBezierCurve>().playerHeight = steamCamera.transform.localPosition.y;
             wire.SetActive(true);
         }
     }

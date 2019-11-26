@@ -62,7 +62,7 @@ public class CleanBezierCurve : MonoBehaviour
     [SerializeField]
     GameObject steamCamera;
 
-    float playerHeight = 1.0f;
+    public float playerHeight = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -75,7 +75,7 @@ public class CleanBezierCurve : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            StartCoroutine(RemoveWire());
+            placeNewWire();
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
@@ -84,7 +84,16 @@ public class CleanBezierCurve : MonoBehaviour
         }
     }
 
-    public IEnumerator RemoveWire()
+    public void placeNewWire()
+    {
+        for (int i = 0; i < checkpointsParent.transform.childCount; i++)
+        {
+            checkpointsParent.transform.GetChild(i).transform.GetComponent<MeshRenderer>().enabled = false;
+        }
+        StartCoroutine(RemoveWire());
+    }
+
+    IEnumerator RemoveWire()
     {
         if (triangles.Count == 0)
         {
@@ -119,7 +128,6 @@ public class CleanBezierCurve : MonoBehaviour
         CreateCircle();
         int triangleIndex = 0;
         StartCoroutine(WaitDrawTriangle(triangleIndex));
-        PlaceCheckPoints();
         PlaceWireEnding();
         wireIndex++;
     }
@@ -165,6 +173,7 @@ public class CleanBezierCurve : MonoBehaviour
 
             Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
             checkpointsParent.transform.GetChild(0).rotation = rotation;
+            checkpointsParent.transform.GetChild(i).transform.GetComponent<MeshRenderer>().enabled = true;
         }
     }
 
@@ -174,6 +183,7 @@ public class CleanBezierCurve : MonoBehaviour
         {
             GetComponent<MeshCollider>().sharedMesh = mesh;
             isFirstCurve = false;
+            PlaceCheckPoints();
             Debug.Log("Done generating triangles");
 
             yield break;

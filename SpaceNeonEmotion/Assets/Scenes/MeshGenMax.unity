@@ -337,7 +337,7 @@ PrefabInstance:
     - target: {fileID: 5706153219235535413, guid: 9c13b8049b2a7204f82c3ac907c5dbf3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5706153219235535369, guid: 9c13b8049b2a7204f82c3ac907c5dbf3,
         type: 3}
@@ -11609,6 +11609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleport: {fileID: 2051485720}
   wire: {fileID: 869273320}
+  steamCamera: {fileID: 0}
 --- !u!1 &1799086695
 GameObject:
   m_ObjectHideFlags: 0
