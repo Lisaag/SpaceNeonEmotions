@@ -1591,6 +1591,7 @@ MonoBehaviour:
   trianglePlaced: 0
   spherePlaced: 0
   moveDoors: 0
+  heartrate: 0
   doorsMoving: {fileID: 0}
   upperDoor: {fileID: 0}
   lowerDoor: {fileID: 0}
@@ -1694,7 +1695,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883480320}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 23.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

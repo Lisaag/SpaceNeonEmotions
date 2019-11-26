@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public bool trianglePlaced;
     public bool spherePlaced;
     public bool moveDoors;
+    XYStreamReader reader;
+    public int heartrate;
 
     public AudioSource doorsMoving;
 
@@ -29,6 +31,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        InvokeRepeating("Read", 1.0f, 1.0f);
+    }
     public void CheckPlacement()
     {
         if (cubePlaced && spherePlaced && trianglePlaced)
@@ -55,5 +61,15 @@ public class GameManager : MonoBehaviour
             Vector3 lowerPos = lowerDoor.transform.position;
             lowerDoor.transform.position = new Vector3(lowerPos.x, lowerPos.y - (1f * Time.deltaTime), lowerPos.z);
         }
+    }
+
+    void Read()
+    {
+        reader = XYStreamReader.FromFile("");
+        print("Read...");
+        reader.Read();
+        reader.Dispose();
+        heartrate = reader.heartrate;
+        Debug.Log(reader.heartrate);
     }
 }

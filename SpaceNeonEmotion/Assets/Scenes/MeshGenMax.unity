@@ -1653,11 +1653,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1045512165}
     m_Modifications:
-    - target: {fileID: -2952632521370562026, guid: efb4b0544fb83aa4484d9f801d454924,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: fcb55259cd8ad2e49afb12200e8751fb, type: 3}
     - target: {fileID: 8979806361354190896, guid: efb4b0544fb83aa4484d9f801d454924,
         type: 3}
       propertyPath: m_Name
@@ -1718,6 +1713,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2952632521370562026, guid: efb4b0544fb83aa4484d9f801d454924,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fcb55259cd8ad2e49afb12200e8751fb, type: 3}
     - target: {fileID: 4490090750773091857, guid: efb4b0544fb83aa4484d9f801d454924,
         type: 3}
       propertyPath: cubeLoc
@@ -12524,6 +12524,7 @@ MonoBehaviour:
   trianglePlaced: 0
   spherePlaced: 0
   moveDoors: 0
+  heartrate: 0
   doorsMoving: {fileID: 1836489214}
   upperDoor: {fileID: 909626493}
   lowerDoor: {fileID: 1156130372}
@@ -12797,7 +12798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1928102335
 Transform:
   m_ObjectHideFlags: 0
