@@ -144,6 +144,7 @@ namespace Valve.VR.InteractionSystem
         public bool showHint = false;
         public int portalSpawnPercentageChance = 25;
         public bool spawnPortal = false;
+        public bool isOnWirePoint = false;
         //public PortalManager portalManager;
 
         //-------------------------------------------------
@@ -877,6 +878,11 @@ namespace Valve.VR.InteractionSystem
             {
                 teleportPosition = teleportPoint.transform.position;
 
+                if (teleportPoint.CompareTag("WirePoint"))
+                {
+                    isOnWirePoint = true;
+                }
+
                 //Teleport to a new scene
                 if (teleportPoint.teleportType == TeleportPoint.TeleportPointType.SwitchToNewScene)
                 {
@@ -930,7 +936,7 @@ namespace Valve.VR.InteractionSystem
             for (int i = 0; i < spawnPortals.Length; i++)
             {
                 int randomNr = Random.Range(0, 100) + 1;
-                Debug.Log(randomNr);
+                //Debug.Log(randomNr);
                 if (randomNr <= portalSpawnPercentageChance)
                     spawnPortals[i] = true;
             }
