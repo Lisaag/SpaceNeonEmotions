@@ -152,6 +152,7 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator SwapScene()
     {
+        SoundManager.instance.baseHeartrate = GameManager._instance.heartrate;
         yield return new WaitForSeconds(done.clip.length + 1);
         SceneManager.LoadScene(playScene);
     }

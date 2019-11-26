@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviourExtensionCoroutines
 {
+    public int baseHeartrate;
     public static SoundManager instance;
     private Action playSoundClip;
     private ClipInfo clipInfoObject;

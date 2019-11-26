@@ -1713,11 +1713,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -2952632521370562026, guid: efb4b0544fb83aa4484d9f801d454924,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: fcb55259cd8ad2e49afb12200e8751fb, type: 3}
     - target: {fileID: 4490090750773091857, guid: efb4b0544fb83aa4484d9f801d454924,
         type: 3}
       propertyPath: cubeLoc
@@ -1733,6 +1728,11 @@ PrefabInstance:
       propertyPath: sphereLoc
       value: 
       objectReference: {fileID: 1182977458}
+    - target: {fileID: -2952632521370562026, guid: efb4b0544fb83aa4484d9f801d454924,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fcb55259cd8ad2e49afb12200e8751fb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb4b0544fb83aa4484d9f801d454924, type: 3}
 --- !u!1 &999572757
@@ -12520,6 +12520,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f27365a3f067f24589e6c7fcbf362c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baselineHeartrate: 80
+  neonMat: {fileID: 2100000, guid: b4966ca154cbff248b2528b5d05f1554, type: 2}
+  hologramMat: {fileID: 2100000, guid: 2ca0d6769126dc14fb5a89a17b4112c1, type: 2}
   cubePlaced: 0
   trianglePlaced: 0
   spherePlaced: 0
