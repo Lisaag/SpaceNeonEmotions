@@ -425,7 +425,7 @@ PrefabInstance:
     - target: {fileID: 5706153219235535413, guid: 9c13b8049b2a7204f82c3ac907c5dbf3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5706153219235535369, guid: 9c13b8049b2a7204f82c3ac907c5dbf3,
         type: 3}
@@ -511,6 +511,16 @@ PrefabInstance:
         type: 3}
       propertyPath: curveCount
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706153219235535368, guid: 9c13b8049b2a7204f82c3ac907c5dbf3,
+        type: 3}
+      propertyPath: curveDetail
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706153219235535368, guid: 9c13b8049b2a7204f82c3ac907c5dbf3,
+        type: 3}
+      propertyPath: cylinderDetail
+      value: 19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c13b8049b2a7204f82c3ac907c5dbf3, type: 3}
@@ -1653,11 +1663,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1045512165}
     m_Modifications:
-    - target: {fileID: -2952632521370562026, guid: efb4b0544fb83aa4484d9f801d454924,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: fcb55259cd8ad2e49afb12200e8751fb, type: 3}
     - target: {fileID: 8979806361354190896, guid: efb4b0544fb83aa4484d9f801d454924,
         type: 3}
       propertyPath: m_Name
@@ -1718,6 +1723,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2952632521370562026, guid: efb4b0544fb83aa4484d9f801d454924,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fcb55259cd8ad2e49afb12200e8751fb, type: 3}
     - target: {fileID: 4490090750773091857, guid: efb4b0544fb83aa4484d9f801d454924,
         type: 3}
       propertyPath: cubeLoc
@@ -13142,7 +13152,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 107946, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.x
