@@ -21,7 +21,7 @@ public class CheckPoint : MonoBehaviour
 
     bool isHovering = false;
 
-    private Vector3 startPos = new Vector3(0, 0, 0);
+    public Vector3 startPos = new Vector3(0, 0, 0);
 
     Animator animator;
 
@@ -31,36 +31,34 @@ public class CheckPoint : MonoBehaviour
         collisionBehaviour = this.gameObject.transform.GetChild(0).GetComponent<CollisionBehaviour>();
         animator = this.gameObject.GetComponent<Animator>();
 
-        startPos =  new Vector3(0, 0.5f, -wire.GetComponent<CleanBezierCurve>().zOffsetPp) * wire.transform.localScale.y + wire.transform.position;
+        startPos = new Vector3(0, 0.5f, -wire.GetComponent<CleanBezierCurve>().zOffsetPp) * wire.transform.localScale.y + wire.transform.position;
         wireStartPoint.transform.position = startPos;
-        startPos.y += 0.25f;
+        startPos.y += 0.035f;
         this.transform.position = startPos;
     }
 
     private void Update()
     {
-        if(transform.parent != null && collisionBehaviour.hasCollided)
+        if (transform.parent != null && collisionBehaviour.hasCollided)
         {
-            if (transform.parent.GetComponent<Hand>() && transform.parent.GetComponent<Hand>().ObjectIsAttached(this.gameObject))
+            if (transform.parent.GetComponent<Hand>().ObjectIsAttached(this.gameObject))
             {
                 collisionBehaviour.hasCollided = false;
             }
         }
+    }
 
-        if(transform.parent == null)
-        {
-           // animator.SetBool("isHovering", true);
-        }
-        else
-        {
-           // animator.SetBool("isHovering", false);
-        }
-        //Debug.Log("AnimatorBool: " + animator.GetBool("isHovering"));
+    public void MoveRingToStartPoint()
+    {
+        transform.parent.GetComponent<Hand>().DetachObject(gameObject);
+        this.transform.position = startPos;
+        Vector3 rot = new Vector3(0, 0, 0);
+        transform.rotation = Quaternion.Euler(rot);
     }
 
     public void MoveRingToCheckpoint(int id)
     {
-       transform.parent.GetComponent<Hand>().DetachObject(gameObject);
+        transform.parent.GetComponent<Hand>().DetachObject(gameObject);
 
         if (!collisionBehaviour.reachedCheckpoint)
         {
@@ -74,7 +72,7 @@ public class CheckPoint : MonoBehaviour
             Debug.Log(ringRotatePoint);
 
             this.transform.position = checkpointsParent.transform.GetChild(id).position;
-           // moved = true;
+            // moved = true;
 
             Vector3 dir = ringRotatePoint - this.transform.position;
             Quaternion rot = Quaternion.LookRotation(dir);

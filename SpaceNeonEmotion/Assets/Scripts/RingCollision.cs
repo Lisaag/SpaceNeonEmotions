@@ -46,6 +46,12 @@ public class RingCollision : MonoBehaviour
                 Reset();
             }
         }
+
+        if (other.CompareTag("WireEnding"))
+        {
+            cp.MoveRingToStartPoint();
+            StartCoroutine(wmg.RemoveWire());
+        }
     }
 
     void Reset()
