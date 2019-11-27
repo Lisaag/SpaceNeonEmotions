@@ -102,7 +102,7 @@ public class TutorialManager : MonoBehaviour
                 phases[currentPhase].phaseObjects[i].SetActive(true);
                 if (phases[currentPhase].phaseObjects[i].GetComponent<TeleportArea>() != null)
                 {
-                    Destroy(phases[currentPhase].phaseObjects[i].GetComponent<TeleportArea>());
+                    phases[currentPhase].phaseObjects[i].GetComponent<TeleportArea>().gameObject.layer = 9;
                 }
             }
 
