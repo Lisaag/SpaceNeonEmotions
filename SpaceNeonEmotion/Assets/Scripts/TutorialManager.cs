@@ -100,6 +100,10 @@ public class TutorialManager : MonoBehaviour
             for (int i = 0; i < phases[currentPhase].phaseObjects.Count; i++)
             {
                 phases[currentPhase].phaseObjects[i].SetActive(true);
+                if (phases[currentPhase].phaseObjects[i].GetComponent<TeleportArea>() != null)
+                {
+                    Destroy(phases[currentPhase].phaseObjects[i].GetComponent<TeleportArea>());
+                }
             }
 
             switch (currentPhase)
