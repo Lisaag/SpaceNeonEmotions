@@ -12,6 +12,7 @@ public class Portal : MonoBehaviour
     public int respawnInterval, minRespawnTime, maxRespawnTime;
     public Vector3 newPosition;
     public AnimationStart animationHandler;
+    public AudioSource increaseSound, decreaseSound;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +49,9 @@ public class Portal : MonoBehaviour
     {
         if (dissapear)
             StartCoroutine(ResetPortal());
+
+        else
+            Destroy(gameObject);
     }
 
     public IEnumerator ResetPortal()
@@ -71,5 +75,15 @@ public class Portal : MonoBehaviour
         }
 
         animationHandler.StartAnimation();
+    }
+
+    public void PlayIncreaseSound()
+    {
+        SoundManager.instance.PlaySound(increaseSound, gameObject, false, 0);
+    }
+
+    public void PlayDecreaseSound()
+    {
+        SoundManager.instance.PlaySound(decreaseSound, gameObject, false, 0);
     }
 }
