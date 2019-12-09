@@ -1,7 +1,13 @@
 ﻿using UnityEngine;
+using Valve.VR;
 
 public class RingCollision : MonoBehaviour
 {
+    public SteamVR_Input_Sources LeftInputsource = SteamVR_Input_Sources.LeftHand;
+    public SteamVR_Input_Sources RightInputsource = SteamVR_Input_Sources.RightHand;
+    public SteamVR_Action_Vibration vibrate;
+
+
     [SerializeField]
     GameObject colliderParent = null;
 
@@ -43,6 +49,11 @@ public class RingCollision : MonoBehaviour
         }
     }
 
+    private void Pulse(float delay, float duration, float frequency, float amplitude, SteamVR_Input_Sources source)
+    {
+        vibrate.Execute(delay, duration, frequency, amplitude, source);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Checkpoint"))
@@ -64,7 +75,9 @@ public class RingCollision : MonoBehaviour
         {
             if (other.CompareTag("Wire"))
             {
-                Debug.Log("checkPointid: " + checkpointId);
+                Pulse(0f, 1f, 100, 40, LeftInputsource);
+                Pulse(0f, 1f, 100, 40, RightInputsource);
+
                 cp.MoveRingToCheckpoint(checkpointId);
                 Reset();
             }

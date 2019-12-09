@@ -13546,6 +13546,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 8701883971642044739, guid: 705dbb54ea020a344bacb54bdd71f20c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520764221653783231, guid: 705dbb54ea020a344bacb54bdd71f20c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 705dbb54ea020a344bacb54bdd71f20c, type: 3}
 --- !u!1 &1441167366
@@ -14317,101 +14327,201 @@ PrefabInstance:
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051589452386101, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
     - target: {fileID: 7466051590658970219, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: wire
+      value: 
+      objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051590658970219, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590036679829, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051590036679829, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589913872658, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051589913872658, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589096483653, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051589096483653, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589026917407, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051589026917407, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590817276669, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051590817276669, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590635247553, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051590635247553, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590672451730, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051590672451730, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590324249902, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051590324249902, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589032552898, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051589032552898, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589490156985, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051589490156985, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590213567368, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051590213567368, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590853112809, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051590853112809, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589393724524, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051589393724524, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589479400136, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051589479400136, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589234436239, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051589234436239, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590304159459, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051590304159459, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590444647597, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
     - target: {fileID: 7466051590444647597, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
-      propertyPath: wire
-      value: 
-      objectReference: {fileID: 869273320}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
     - target: {fileID: 7466051589885330270, guid: ca9dad657395bf94eb68b5e50fae4445,
         type: 3}
       propertyPath: wire
       value: 
       objectReference: {fileID: 869273320}
+    - target: {fileID: 7466051589885330270, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: vibrate.actionPath
+      value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7466051589049753254, guid: ca9dad657395bf94eb68b5e50fae4445, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ca9dad657395bf94eb68b5e50fae4445, type: 3}
@@ -14865,7 +14975,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleport: {fileID: 1289074403}
   wire: {fileID: 869273320}
-  steamCamera: {fileID: 1081111993}
 --- !u!4 &1796731928 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1367181874151850143, guid: ebb12edd44411ea46b349547c10caefc,
@@ -15943,7 +16052,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 107946, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.x
