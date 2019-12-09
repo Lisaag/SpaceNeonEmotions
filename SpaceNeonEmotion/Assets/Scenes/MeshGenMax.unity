@@ -794,7 +794,7 @@ PrefabInstance:
     - target: {fileID: 5706153219235535368, guid: 9c13b8049b2a7204f82c3ac907c5dbf3,
         type: 3}
       propertyPath: curveCount
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5706153219235535368, guid: 9c13b8049b2a7204f82c3ac907c5dbf3,
         type: 3}

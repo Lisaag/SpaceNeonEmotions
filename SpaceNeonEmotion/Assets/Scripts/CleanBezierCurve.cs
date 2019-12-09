@@ -7,41 +7,52 @@ public class CleanBezierCurve : MonoBehaviour
 {
     Mesh mesh;
 
+    [Tooltip("Amount of detail of each curve the wire consists of")]
     [SerializeField]
     int curveDetail = 15;
 
-    [Tooltip("Pleas use even number")]
+    [Tooltip("Amount of curves the wire consists of")]
     [SerializeField]
     int curveCount = 14;
 
+    [Tooltip("The bounds relative to the x-axis within the wire will be generated")]
     [SerializeField]
     float boundsX = 0;
 
+    [Tooltip("The bounds relative to the z-axis within the wire will be generated")]
     [SerializeField]
     float boundsZ = 0;
 
+    [Tooltip("Detail of the circles (the width) of the wire")]
     [SerializeField]
     int cylinderDetail = 0;
 
+    [Tooltip("Radius of the wire")]
     [SerializeField]
     float radius = 0.1f;
 
+    [Tooltip("Object that holds all the wire's checkpoints")]
     [SerializeField]
     GameObject checkpointsParent = null;
 
+    [Tooltip("Object with collider that detects whether the player has finished the wire")]
     [SerializeField]
     GameObject wireEnding = null;
 
+    [Tooltip("The amount every point of the curve will be offset relative to the y-axis")]
     [SerializeField]
-    float yStep = 0.0f; //the amount every point will be offset on the y-asix
+    float yStep = 0.0f;
 
+    [Tooltip("Determines the amount of time it takes for the wire to despawn/respawn")]
     [SerializeField]
     float generateSpeed = 0;
 
+    [Tooltip("Determines the rotation of the chakram/checkpoints on the wire")]
     public Vector3[] ringDir;
+
+    [Tooltip("Determines the offset between the wire teleport point and the start&ending point of the wire")]
     public float zOffsetPp = 0;
 
-    //TEMP
     List<Vector3> perpVectors = new List<Vector3>();
 
     List<Vector3> orthogonal = new List<Vector3>();
@@ -50,25 +61,19 @@ public class CleanBezierCurve : MonoBehaviour
 
     List<Vector3> gizzies = new List<Vector3>();
 
-    Vector3 LastPoint = new Vector3(0, 0, 0);
-    ///
+    List<Vector3> curvePoints = new List<Vector3>(); //list containing all the points of the wire's curve
 
-    List<Vector3> curvePoints = new List<Vector3>();
     List<int> triangles = new List<int>();
 
     bool isFirstCurve = true;
-    int wireIndex = 0;
+    int wireIndex = 0; //The index of the wire that is generated
 
-    [SerializeField]
-    GameObject steamCamera;
+    public float playerHeight = 1.0f; //height of the player, used to determine the height of the wire
 
-    public float playerHeight = 1.0f;
-
-    // Start is called before the first frame update
     void Start()
     {
-        curveCount -= curveCount % 2;
-        CalculateWire();
+        curveCount -= curveCount % 2; //to make the curveCount an even number
+        CalculateWire(); //Calculate the first wire of the game
     }
 
     void Update()
@@ -77,18 +82,13 @@ public class CleanBezierCurve : MonoBehaviour
         {
             placeNewWire();
         }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            playerHeight = steamCamera.transform.localPosition.y;
-            Debug.Log("Getting player height... - " + playerHeight);
-        }
     }
 
     public void placeNewWire()
     {
         for (int i = 0; i < checkpointsParent.transform.childCount; i++)
         {
-            checkpointsParent.transform.GetChild(i).transform.GetComponent<MeshRenderer>().enabled = false;
+            checkpointsParent.transform.GetChild(i).transform.GetComponent<MeshRenderer>().enabled = false; //disable checkpoints before removing the wire
         }
         StartCoroutine(RemoveWire());
     }
@@ -97,38 +97,40 @@ public class CleanBezierCurve : MonoBehaviour
     {
         if (triangles.Count == 0)
         {
-            CalculateWire();
+            CalculateWire(); //If the wire is completely removed, calculate a new wire
             yield break;
         }
-        triangles.RemoveRange(triangles.Count - (cylinderDetail) * 6, (cylinderDetail) * 6);
-        mesh.triangles = triangles.ToArray();
+        triangles.RemoveRange(triangles.Count - (cylinderDetail) * 6, (cylinderDetail) * 6); //remove one ring of triangles
+        mesh.triangles = triangles.ToArray(); //update triangle data with the removed triangles
 
         yield return new WaitForSeconds(generateSpeed);
-        StartCoroutine(RemoveWire());
+        StartCoroutine(RemoveWire()); //repeat
     }
 
     void CalculateWire()
     {
+        float wireConstant = 1.0f;
         if (wireIndex == 1)
         {
-            curveCount = 8;
-            yStep = 0.051f * playerHeight;
-            Debug.Log("A" + wireIndex + " - Playerheight: " + playerHeight + " - yStep: " + yStep);
+            curveCount = 7;
+            wireConstant = 0.051f;
         }
-        else if (wireIndex == 2)
+        else if (wireIndex >= 2)
         {
             curveCount = 14;
-            yStep = 0.027f * playerHeight;
-            Debug.Log("B" + wireIndex + " - Playerheight: " + playerHeight + " - yStep: " + yStep);
+            wireConstant = 0.027f;
         }
 
-        Reset();
-        InitializeMesh();
-        CalculateCurve();
-        CreateCircle();
+        yStep = wireConstant * playerHeight;
+
+
+        Reset(); //Remove all data of the previous wire
+        InitializeMesh(); //get all the mesh components
+        CalculateCurve(); //calculate all the points on the curve
+        CreateCircle(); //create circles around the curve points, and add the points of these circles to the vertex array of the mesh
         int triangleIndex = 0;
-        StartCoroutine(WaitDrawTriangle(triangleIndex));
-        PlaceWireEnding();
+        StartCoroutine(WaitDrawTriangle(triangleIndex)); //calculate the triangle data of the mesh
+        PlaceWireEnding(); //Add collision box to the end of the wire, to make it possible to detect when the player has finished the puzzle
         wireIndex++;
     }
 
@@ -139,7 +141,7 @@ public class CleanBezierCurve : MonoBehaviour
 
     void Reset()
     {
-        if (isFirstCurve) return;
+        if (isFirstCurve) return; //if its the first wire, there is no data yet, so return
         if (mesh.vertices.Length != 0) Array.Clear(mesh.vertices, 0, mesh.vertices.Length);
         if (mesh.normals.Length != 0) Array.Clear(mesh.normals, 0, mesh.vertices.Length);
         if (mesh.triangles.Length != 0) Array.Clear(mesh.triangles, 0, mesh.vertices.Length);
@@ -161,15 +163,16 @@ public class CleanBezierCurve : MonoBehaviour
 
     void PlaceCheckPoints()
     {
-        ringDir = new Vector3[checkpointsParent.transform.childCount];
-        int wireDivisions = checkpointsParent.transform.childCount + 1;
+        ringDir = new Vector3[checkpointsParent.transform.childCount]; //the direction the checkpoint should face = the next curve point
+        int wireDivisions = checkpointsParent.transform.childCount + 1; //wire gets divided to the amount of checkpoints to determine the positions
 
         for (int i = 0; i < checkpointsParent.transform.childCount; i++)
         {
-            checkpointsParent.transform.GetChild(i).transform.localPosition = curvePoints[(curvePoints.Count / wireDivisions) * (i + 1)] * this.transform.localScale.y + this.transform.position;
-            ringDir[i] = curvePoints[(curvePoints.Count / wireDivisions) * (i + 1) + 1] * this.transform.localScale.y + this.transform.position;
+            checkpointsParent.transform.GetChild(i).transform.localPosition =
+                curvePoints[(curvePoints.Count / wireDivisions) * (i + 1)] * transform.localScale.y + transform.position; //position of checkpoint
+            ringDir[i] = curvePoints[(curvePoints.Count / wireDivisions) * (i + 1) + 1] * transform.localScale.y + transform.position;
 
-            Vector3 relativePos = ringDir[i] - checkpointsParent.transform.GetChild(i).position;
+            Vector3 relativePos = ringDir[i] - checkpointsParent.transform.GetChild(i).position; //direction to face
 
             Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
             checkpointsParent.transform.GetChild(i).rotation = rotation;
@@ -179,13 +182,11 @@ public class CleanBezierCurve : MonoBehaviour
 
     IEnumerator WaitDrawTriangle(int i)
     {
-        if ((i == (curveDetail * 2) - 3 && isFirstCurve) || (i == (mesh.vertices.Length / cylinderDetail) - curveDetail + 2 && !isFirstCurve))
+        if ((i == ((mesh.vertices.Length - cylinderDetail) / cylinderDetail)))
         {
             GetComponent<MeshCollider>().sharedMesh = mesh;
             isFirstCurve = false;
             PlaceCheckPoints();
-            Debug.Log("Done generating triangles");
-
             yield break;
         }
 
@@ -196,7 +197,7 @@ public class CleanBezierCurve : MonoBehaviour
             triangles.Add(1 + j + (i * cylinderDetail));
 
 
-            if (j == cylinderDetail - 1)
+            if (j == cylinderDetail - 1) //Last triangle should be connected to first triangle again bc its a cylinder shape
             {
                 triangles.Add(0 + j + (i * cylinderDetail));
                 triangles.Add(1 + j + (i * cylinderDetail));
@@ -212,7 +213,6 @@ public class CleanBezierCurve : MonoBehaviour
         }
 
         mesh.triangles = triangles.ToArray();
-
 
         yield return new WaitForSeconds(generateSpeed);
 
@@ -320,24 +320,24 @@ public class CleanBezierCurve : MonoBehaviour
 
     void CalculateCurve()
     {
-        float tStep = 1.0f / (curveDetail - 1); //the amount that the position on the curve will go up each iteration
-        float y = 0;
-        int zDir = -1;
-        float yOffset = 1;
+        float tStep = 1.0f / (curveDetail - 1); //this number determines the point on the curve
+        float y = 0; //Y position of point on the curve
+        int zDir = -1; //Determines on which side of the teleport point the curve is
+        float yOffset = 1; //Determines whether the wire goes up or down;
 
-        Vector2 ContrPtMinMaxOffset = new Vector2(1.0f, 1.5f);
+        Vector2 ContrPtMinMaxOffset = new Vector2(1.0f, 1.5f); //minimal & maximum offset of the controllpoints relative to the points
 
         Vector3 FirstPoint = new Vector3(0, 0, 0); ;
         Vector3 SecondPoint = new Vector3(0, 0, 0);
-        Vector3 FirstControlPoint = new Vector3(0, 0, 0); ;
+        Vector3 FirstControlPoint = new Vector3(0, 0, 0);
         Vector3 SecondControlPoint = new Vector3(0, 0, 0);
         Vector3 lastPointDir = new Vector3(0, 0, 0);
 
-        bool wireMiddle = false;
+        bool wireMiddle = false; //set to true when the curve in exactly the middle of the wire is being calculated (the highest curve of the wire)
 
         Vector3 curvePoint;
 
-        if (isFirstCurve)
+        if (isFirstCurve) //Code for the arch-shaped first curve
         {
             float t = 0;
 
@@ -354,6 +354,8 @@ public class CleanBezierCurve : MonoBehaviour
             return;
         }
 
+        float smallOffset = 0.005f;
+
         for (int j = 0; j < curveCount; j++)
         {
             Vector3 ControlPointOffset = new Vector3(RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y),
@@ -361,15 +363,13 @@ public class CleanBezierCurve : MonoBehaviour
 
             if (j == 0) //The points of the first curve of the wire
             {
-                FirstPoint = new Vector3(0, -0.5f, zDir * zOffsetPp);
-                SecondPoint = new Vector3(0, 0, zDir * zOffsetPp);
+                FirstPoint = new Vector3(0, 0, zDir * zOffsetPp);
+                SecondPoint = new Vector3(smallOffset, 0, zDir * zOffsetPp);
 
-                FirstControlPoint = new Vector3(0, 0, zDir * zOffsetPp);
+                float controlPointOffset = smallOffset / 3.0f;
 
-                ControlPointOffset = new Vector3(RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y),
-                    0, RandomTwoRanges(-ContrPtMinMaxOffset.x, -ContrPtMinMaxOffset.y, ContrPtMinMaxOffset.x, ContrPtMinMaxOffset.y)); //Create new Random Value
-
-                SecondControlPoint = new Vector3(0, 0, zDir * zOffsetPp);
+                FirstControlPoint = new Vector3(controlPointOffset, 0, zDir * zOffsetPp);
+                SecondControlPoint = new Vector3(controlPointOffset * 2.0f, 0, zDir * zOffsetPp);
             }
             else if (j >= curveCount - 3)
             {
@@ -381,7 +381,7 @@ public class CleanBezierCurve : MonoBehaviour
                 SecondPoint = FirstPoint;
                 SecondPoint.z += 0.005f;
                 SecondControlPoint = SecondPoint;
-                SecondControlPoint.z -= 0.0045f;
+                SecondControlPoint.z -= 0.005f;
 
             }
             else
@@ -467,12 +467,12 @@ public class CleanBezierCurve : MonoBehaviour
             return UnityEngine.Random.Range(SecondMin, SecondMax);
     }
 
+
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        for(int i = 0; i < ringDir.Length; i++)
+        for(int i = 0; i < mesh.vertices.Length; i++)
         {
-            Gizmos.DrawSphere(ringDir[i], 0.01f);
+            Gizmos.DrawSphere(mesh.vertices[i], 0.01f);
         }
     }
 }
