@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: HexgonSphereMat
-  m_Shader: {fileID: 4800000, guid: b4be715c4d59dca47a1e3b8972f963d3, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 6294aa49c01e93d4f8d3ad01aa5c2227,
+    type: 3}
   m_ShaderKeywords: F_OFF
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -19,6 +20,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_15EB2040:
+        m_Texture: {fileID: 2800000, guid: afc0fc49a01ba96488231e6ce671cdd0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -57,6 +62,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - F: 0
+    - Vector1_E6584967: 5
     - _Alpha: 1.04
     - _BumpScale: 1
     - _ChromaticAberration: 0.3
@@ -101,6 +107,8 @@ Material:
     - _x: 0.063
     - _y: 0.122
     m_Colors:
+    - Vector2_6A352D78: {r: 5, g: 5, b: 0, a: 0}
+    - Vector2_F4134384: {r: 1, g: 1, b: 0, a: 0}
     - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     - _Color0: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
