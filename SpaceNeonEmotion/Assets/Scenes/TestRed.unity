@@ -13395,6 +13395,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2135624897131870642, guid: e029e9a24e4258444bde0db836069e1f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 03a88972b3b2769418ff2c5da2a70b47, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e029e9a24e4258444bde0db836069e1f, type: 3}
 --- !u!1 &2088954127
@@ -13648,6 +13653,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EmojiButtons
+      objectReference: {fileID: 0}
+    - target: {fileID: 382293516722403952, guid: db9f7df566f6b904ba0fae2e13e1b925,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 382293516722403953, guid: db9f7df566f6b904ba0fae2e13e1b925,
         type: 3}
