@@ -7,12 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HexgonSphereMat
+  m_Name: HexgonSphereMat 2
   m_Shader: {fileID: -6465566751694194690, guid: e50b04044baa1a3418494dd5a1ba240f,
     type: 3}
   m_ShaderKeywords: F_OFF
   m_LightmapFlags: 0
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_15EB2040:
-        m_Texture: {fileID: 2800000, guid: afc0fc49a01ba96488231e6ce671cdd0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 21655350bcc9f0e47bcbb157a338f894, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_3AB372AD:
@@ -29,7 +29,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_3BB75A0:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 4dbd483a8ad009f4bacc8eb40d48ce57, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_52A7706C:
@@ -123,8 +123,8 @@ Material:
     - _x: 0.063
     - _y: 0.122
     m_Colors:
-    - Color_7EEFC5C4: {r: 1, g: 1, b: 1, a: 0}
-    - Color_A28F8A0B: {r: 0, g: 0.2588235, b: 2, a: 1}
+    - Color_7EEFC5C4: {r: 0.15864186, g: 0.16153538, b: 0.21698111, a: 0}
+    - Color_A28F8A0B: {r: 0.08139272, g: 0.087224945, b: 0.12595078, a: 1}
     - Vector2_287B8453: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_2F5CEB11: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_56DD3998: {r: 0.1, g: 0, b: 0, a: 0}
@@ -132,7 +132,7 @@ Material:
     - Vector2_6A352D78: {r: 5, g: 5, b: 0, a: 0}
     - Vector2_79582C83: {r: 10, g: 10, b: 0, a: 0}
     - Vector2_ABC08625: {r: 1, g: 1, b: 0, a: 0}
-    - Vector2_BDC17776: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_BDC17776: {r: 5, g: 5, b: 0, a: 0}
     - Vector2_F4134384: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_F587DCF9: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
