@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Temp
-  m_Shader: {fileID: 4800000, guid: 4da52af06ab7e8b40af46db0614b0d8f, type: 3}
+  m_Shader: {fileID: 15301, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,12 +19,20 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_3AB372AD:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_52A7706C:
+        m_Texture: {fileID: 2800000, guid: 21655350bcc9f0e47bcbb157a338f894, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BlendMask:
         m_Texture: {fileID: 2800000, guid: 574fd0294efa6304dbf471acb4dc554b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: c15e73c1607746341bcb9a93b64e0336, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -44,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 90734498e62f9d14b891d73c93f13b4f, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -64,6 +72,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_197C8084: 1
+    - Vector1_5CFAA014: 0.1
+    - Vector1_DB6293F: 2
     - _Alpha: 0.424
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -81,9 +92,15 @@ Material:
     - _Speed: 0.1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WireThickness: 100
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.39587042, g: 0.48075336, b: 0.6037736, a: 1}
+    - Color_A28F8A0B: {r: 0, g: 0.2588235, b: 2, a: 1}
+    - Vector2_56DD3998: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - Vector2_584B85B: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_79582C83: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_F587DCF9: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - _Color: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
     - _Direction: {r: 1, g: -1, b: 0, a: 0}
     - _DirectionLeft: {r: -1, g: -1, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

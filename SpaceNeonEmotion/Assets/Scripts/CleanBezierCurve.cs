@@ -60,7 +60,7 @@ public class CleanBezierCurve : MonoBehaviour
     int wireIndex = 0;
 
     [SerializeField]
-    GameObject steamCamera;
+    GameObject steamCamera = null;
 
     public float playerHeight = 1.0f;
 
@@ -79,6 +79,7 @@ public class CleanBezierCurve : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
+           
             playerHeight = steamCamera.transform.localPosition.y;
             Debug.Log("Getting player height... - " + playerHeight);
         }

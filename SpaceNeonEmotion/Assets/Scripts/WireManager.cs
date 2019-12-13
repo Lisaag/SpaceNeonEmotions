@@ -6,12 +6,12 @@ using Valve.VR.InteractionSystem;
 public class WireManager : MonoBehaviour
 {
     [SerializeField]
-    Teleport teleport;
+    Teleport teleport = null;
 
     [SerializeField]
-    GameObject wire;
+    GameObject wire = null;
 
-    GameObject steamCamera;
+    GameObject steamCamera = null;
     bool isMeasured = false;
 
     void Update()
