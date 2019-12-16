@@ -1466,15 +1466,15 @@ PrefabInstance:
     - target: {fileID: 2325906, guid: 73ac470d3d909d645a6c89a4664b6849, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 510c6e0b8b5c948458c2b4bc3de5a637, type: 2}
     - target: {fileID: 2351396, guid: 73ac470d3d909d645a6c89a4664b6849, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: ac2e4baea8c64ab44b8df1e9a3d82f71, type: 2}
     - target: {fileID: 2356592, guid: 73ac470d3d909d645a6c89a4664b6849, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 510c6e0b8b5c948458c2b4bc3de5a637, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73ac470d3d909d645a6c89a4664b6849, type: 3}
 --- !u!4 &361319175 stripped
@@ -3078,6 +3078,26 @@ PrefabInstance:
       propertyPath: sphereLoc
       value: 
       objectReference: {fileID: 1182977458}
+    - target: {fileID: 8206699792431285551, guid: efb4b0544fb83aa4484d9f801d454924,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b4966ca154cbff248b2528b5d05f1554, type: 2}
+    - target: {fileID: 5040257145728567317, guid: efb4b0544fb83aa4484d9f801d454924,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b4966ca154cbff248b2528b5d05f1554, type: 2}
+    - target: {fileID: 5561689468145556479, guid: efb4b0544fb83aa4484d9f801d454924,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b4966ca154cbff248b2528b5d05f1554, type: 2}
+    - target: {fileID: 7962410127886868490, guid: efb4b0544fb83aa4484d9f801d454924,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b4966ca154cbff248b2528b5d05f1554, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb4b0544fb83aa4484d9f801d454924, type: 3}
 --- !u!1 &999572757
@@ -5100,12 +5120,12 @@ PrefabInstance:
     - target: {fileID: 8896380079682959822, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3511970112045880969, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1306225327032863, guid: 705dbb54ea020a344bacb54bdd71f20c, type: 3}
       propertyPath: m_Layer
@@ -12604,7 +12624,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: dc410427225ea0d43be79ff94571e011, type: 2}
+      objectReference: {fileID: 2100000, guid: 060787665d722314792bad78269ec34d, type: 2}
     - target: {fileID: 8016283752802573161, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
       propertyPath: m_Layer
@@ -15136,7 +15156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0727c98d3f6633743b8546f6cfd6ec59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 2061769408}
   portal: {fileID: 6153355034823468345, guid: fa06017e74f977940a2f10fe28118e56, type: 3}
   firstRoomParent: {fileID: 620409796}
   shapes:
@@ -15916,6 +15936,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e029e9a24e4258444bde0db836069e1f, type: 3}
+--- !u!1 &2061769408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 107946, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 175843391}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2087315095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3655407068963065453, guid: f23fcc4f23f62274eac3f0585a43cac8,
