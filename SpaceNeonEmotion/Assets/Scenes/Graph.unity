@@ -355,7 +355,7 @@ MonoBehaviour:
   cylinderPrefab: {fileID: 2650921817356866964, guid: a08f991d03c21414e8a0f15aad86d283,
     type: 3}
   graphPointCount: 20
-  drawSpeed: 0.2
+  drawSpeed: 0.3
   lineCount: 0
 --- !u!1 &2117272030
 GameObject:
