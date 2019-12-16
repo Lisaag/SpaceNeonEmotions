@@ -165,7 +165,6 @@ public class Player : MonoBehaviour
                 i++;
                 }
             }
-        Debug.Log("i = " + i);
             return objs[Random.Range(0, i)];
         //}
     }

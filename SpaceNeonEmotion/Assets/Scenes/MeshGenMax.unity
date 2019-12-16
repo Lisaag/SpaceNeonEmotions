@@ -923,7 +923,7 @@ PrefabInstance:
     - target: {fileID: 5706153219235535368, guid: 9c13b8049b2a7204f82c3ac907c5dbf3,
         type: 3}
       propertyPath: generateSpeed
-      value: 0.01
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 5706153219235535369, guid: 9c13b8049b2a7204f82c3ac907c5dbf3,
         type: 3}
@@ -5171,12 +5171,12 @@ PrefabInstance:
     - target: {fileID: 8896380079682959822, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3511970112045880969, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1306225327032863, guid: 705dbb54ea020a344bacb54bdd71f20c, type: 3}
       propertyPath: m_Layer
@@ -13219,7 +13219,7 @@ PrefabInstance:
     - target: {fileID: 8520764221653783231, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8530274519009024369, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
@@ -13384,7 +13384,7 @@ PrefabInstance:
     - target: {fileID: 8701883971642044739, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8705878271938632832, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
@@ -14704,6 +14704,106 @@ PrefabInstance:
         type: 3}
       propertyPath: vibrate.actionPath
       value: /actions/default/out/Haptic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589026917400, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589032552910, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589096483649, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589234436235, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589393724520, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589452386097, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589479400148, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589490156997, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589885330266, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589913872670, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590036679825, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590213567380, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590304159471, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590324249898, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590444647593, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590635247565, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590658970231, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590672451742, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590817276665, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051590853112821, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_TagString
+      value: ChakramCollider
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7466051589049753254, guid: ca9dad657395bf94eb68b5e50fae4445, type: 3}

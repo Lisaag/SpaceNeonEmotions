@@ -64,7 +64,6 @@ public class GameManager : MonoBehaviour
         SoundManager.instance.PlaySound(doorsMoving, lowerDoor, false, 0);
         moveDoors = true;
         yield return new WaitForSeconds(2f);
-        wire.SetActive(true);
         moveDoors = false;
     }
     private void LateUpdate()
