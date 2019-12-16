@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6019f5dc2ddc718469efda11cf3accd1
+guid: 0e6bdcffeca8cce41a52d51d9958937e
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -12,7 +12,7 @@ ScriptedImporter:
     normals: 1
     tangents: 1
     cameraAspectRatio: 2
-    scaleFactor: 0.1
+    scaleFactor: 0.2
     swapHandedness: 1
     flipFaces: 0
     turnQuadEdges: 0
