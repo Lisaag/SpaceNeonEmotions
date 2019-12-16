@@ -19,19 +19,21 @@ public class BaseLine : MonoBehaviour
     Vector3[] vertices = new Vector3[lineDetail * 2];
     private Mesh mesh;
 
+    private Vector2[] uvs = new Vector2[lineDetail * 2];
+
     private void Start()
     {
         Debug.Log("vertices size: " + vertices.Length);
         mesh = GetComponent<MeshFilter>().mesh;
         CalculateLinePoints();
         DrawTriangles();
+        AddUvs();
     }
 
     void CalculateLinePoints()
     {
         for (int i = 0; i < lineDetail; i++)
         {
-            Debug.Log(i + lineDetail);
             float radius = 5.0f;
             float xPos = this.transform.position.x - radius * Mathf.Sin((Mathf.PI / lineDetail) * i);
             float zPos = this.transform.position.z - radius * Mathf.Cos((Mathf.PI / lineDetail) * i);
@@ -70,5 +72,20 @@ public class BaseLine : MonoBehaviour
         }
 
         mesh.triangles = triangles.ToArray();
+    }
+
+    void AddUvs()
+    {
+        float uvStep = 1.0f / (lineDetail - 1);
+        Debug.Log("uvstep: " + uvStep);
+
+        for(int i = 0; i < lineDetail; i++)
+        {
+            uvs[i] = new Vector2(0, i * uvStep);
+            uvs[i + lineDetail] = new Vector2(1, i * uvStep);
+            Debug.Log("uv: " + (i * uvStep));
+        }
+
+        mesh.uv = uvs;
     }
 }

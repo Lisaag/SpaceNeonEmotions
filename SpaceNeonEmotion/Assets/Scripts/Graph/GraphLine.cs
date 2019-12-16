@@ -46,7 +46,6 @@ public class GraphLine : MonoBehaviour
 
             if (graph.lineCount < graph.graphPointCount - 1)
             {
-                Debug.Log(graph.lineCount);
                 graph.DrawLines(graph.lineCount);
             }
         }
