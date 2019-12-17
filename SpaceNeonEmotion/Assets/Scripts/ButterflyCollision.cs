@@ -9,8 +9,10 @@ public class ButterflyCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Butterfly"))
+        if (other.CompareTag("Butterfly"))
         {
+            Debug.Log("decgf");
+
             if (!audioSource.isPlaying)
                 SoundManager.instance.PlaySound(audioSource, other.gameObject, false, 0);
         }

@@ -12,7 +12,7 @@ ScriptedImporter:
     normals: 1
     tangents: 1
     cameraAspectRatio: 2
-    scaleFactor: 0.2
+    scaleFactor: 0.01
     swapHandedness: 1
     flipFaces: 0
     turnQuadEdges: 0
