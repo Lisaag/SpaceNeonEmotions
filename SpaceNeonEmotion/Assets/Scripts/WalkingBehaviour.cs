@@ -51,17 +51,18 @@ public class WalkingBehaviour : MonoBehaviour
             Vector3 tempTrans =lookatGizmo.attachedObject.transform.position;
             tempTrans.y = this.transform.position.y;
             transform.LookAt(tempTrans);
+            animator.SetTrigger("Pickup");
             lookatGizmo.attachedObject.GetComponent<HologramShapes>().Delocate(pickupLocation.gameObject);
-            AIManager.Instance.MoveRobotToDropoff();
+            StartCoroutine(AIManager.Instance.MoveRobotToDropoff(AIManager.Instance.WaitTimeBetweenMove));
             return;
         }
 
         if (lookatGizmo.isDropoffLocation)
         {
             pickupLocation.GetComponentInChildren<HologramShapes>().LetGo();
-            StartCoroutine(AIManager.Instance.MoveRobotToRandom(5f));
+            StartCoroutine(AIManager.Instance.MoveRobotToRandom(AIManager.Instance.WaitTimeBetweenMove));
             return;
         }
-        StartCoroutine(AIManager.Instance.MoveRobotToRandom(1f));
+        AIManager.Instance.MoveRobot(AIManager.Instance.WaitTimeBetweenMove);
     }
 }

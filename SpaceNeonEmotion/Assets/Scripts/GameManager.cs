@@ -33,6 +33,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool isShapePlaced()
+    {
+        if (trianglePlaced || cubePlaced || spherePlaced)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     private void Start()
     {
         neonMat.SetColor("_EmissionColor", new Color(0, 255, 255));
@@ -40,7 +51,8 @@ public class GameManager : MonoBehaviour
         if (SoundManager.instance.baseHeartrate != 0)
         {
             baselineHeartrate = SoundManager.instance.baseHeartrate;
-        } else
+        }
+        else
         {
             baselineHeartrate = 80;
         }

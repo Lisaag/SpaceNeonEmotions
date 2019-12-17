@@ -14,6 +14,7 @@ public class AIManager : MonoBehaviour
     [SerializeField] private GameObject robot;
     public List<GameObject> movementPositions = new List<GameObject>();
     public List<GameObject> shapePositions = new List<GameObject>();
+    public float WaitTimeBetweenMove;
 
     private AIBehaviour aiBehaviour;
 
@@ -63,21 +64,30 @@ public class AIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             aiBehaviour.walkingBehaviour.StopMoving();
-            GameObject temp = GetRandomPlacedShape();
-            if (temp != null)
-            {
-                aiBehaviour.GoToPosition(GetRandomPlacedShape());
-            }
+            MoveRobot(WaitTimeBetweenMove);
         }
     }
 
-    public void MoveRobotToDropoff()
+    public void MoveRobot(float timeToWait)
     {
+        if (GameManager.Instance.isShapePlaced())
+        {
+            StartCoroutine(MoveRobotToShape(timeToWait));
+        }
+        else
+        {
+            StartCoroutine(MoveRobotToRandom(timeToWait));
+        }
+    }
+    public IEnumerator MoveRobotToDropoff(float timeToWait)
+    {
+        yield return new WaitForSeconds(timeToWait);
         aiBehaviour.GoToPosition(dropoffLocation);
     }
 
-    public void MoveRobotToShape()
+    public IEnumerator MoveRobotToShape(float timeToWait)
     {
+        yield return new WaitForSeconds(timeToWait);
         aiBehaviour.GoToPosition(GetRandomPlacedShape());
     }
 
