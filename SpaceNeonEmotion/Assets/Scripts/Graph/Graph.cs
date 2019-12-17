@@ -30,8 +30,8 @@ public class Graph : MonoBehaviour
 
     void Start()
     {
-        graphPoints = new GameObject[graphPointCount];
-        graphPointPositions = new Vector3[graphPointCount];
+        //graphPoints = new GameObject[graphPointCount];
+        //graphPointPositions = new Vector3[graphPointCount];
 
         gameManager = gameManagerObjects.GetComponent<GameManager>();
 
@@ -42,6 +42,12 @@ public class Graph : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
+            StopAllCoroutines();
+
+            graphPoints = new GameObject[heartrateValues.Count];
+            graphPointPositions = new Vector3[heartrateValues.Count];
+            graphPointCount = heartrateValues.Count;
+
             int index = 0;
             StartCoroutine(DrawGraphPoints(index));
         }
@@ -49,10 +55,10 @@ public class Graph : MonoBehaviour
 
     IEnumerator ReadHeartRate()
     {
+        yield return new WaitForSeconds(15);
+
+        //Debug.Log("heartrate: " + gameManager.heartrate);
         heartrateValues.Add(gameManager.heartrate);
-
-        yield return new WaitForSeconds(5);
-
         StartCoroutine(ReadHeartRate());
     }
 
@@ -64,12 +70,13 @@ public class Graph : MonoBehaviour
             yield break;
         }
 
+        Debug.Log("theta: " + (Mathf.Sin((Mathf.PI / graphPointCount) * index)));
         graphPoints[index] = Instantiate(graphPoint, transform);
         float radius = 5.0f;
         float xPos = this.transform.position.x - radius * Mathf.Sin((Mathf.PI / graphPointCount) * index);
         float zPos = this.transform.position.z - radius * Mathf.Cos((Mathf.PI / graphPointCount) * index);
 
-        float offsetY = heartrateValues[index] * 0.1f;
+        float offsetY = heartrateValues[index] * 0.02f;
 
         graphPoints[index].transform.localPosition = new Vector3(xPos, offsetY, zPos);
         graphPointPositions[index] = graphPoints[index].transform.position;
