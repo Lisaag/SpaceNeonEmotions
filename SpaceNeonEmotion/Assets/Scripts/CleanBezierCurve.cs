@@ -64,6 +64,8 @@ public class CleanBezierCurve : MonoBehaviour
 
     public float playerHeight = 1.0f;
 
+    private bool finishedWire = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -86,11 +88,15 @@ public class CleanBezierCurve : MonoBehaviour
 
     public void placeNewWire()
     {
-        for (int i = 0; i < checkpointsParent.transform.childCount; i++)
+        if (!finishedWire)
         {
-            checkpointsParent.transform.GetChild(i).transform.GetComponent<MeshRenderer>().enabled = false;
+            finishedWire = true;
+            for (int i = 0; i < checkpointsParent.transform.childCount; i++)
+            {
+                checkpointsParent.transform.GetChild(i).transform.GetComponent<MeshRenderer>().enabled = false;
+            }
+            StartCoroutine(RemoveWire());
         }
-        StartCoroutine(RemoveWire());
     }
 
     IEnumerator RemoveWire()
@@ -129,6 +135,7 @@ public class CleanBezierCurve : MonoBehaviour
         int triangleIndex = 0;
         StartCoroutine(WaitDrawTriangle(triangleIndex));
         PlaceWireEnding();
+        finishedWire = false;
         wireIndex++;
     }
 

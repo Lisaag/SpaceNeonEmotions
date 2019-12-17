@@ -14,10 +14,7 @@ TagManager:
   - Checkpoint
   - WirePoint
   - WireEnding
-  - FxTemporaire
-  - Fire
-  - projectile
-  - GraphPoint
+  - ChakramCollider
   layers:
   - Default
   - TransparentFX
