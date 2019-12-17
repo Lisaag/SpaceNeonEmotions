@@ -14,9 +14,12 @@ public class SurveyManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
-            foreach (GameObject g in disableObjects)
+            if(disableObjects.Count != 0)
             {
-                g.SetActive(false);
+                foreach (GameObject g in disableObjects)
+                {
+                    g.SetActive(false);
+                }
             }
             buttons.SetActive(true);
         }
