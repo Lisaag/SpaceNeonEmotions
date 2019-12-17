@@ -66,6 +66,7 @@ public class HologramShapes : MonoBehaviour
 
         this.transform.parent = null;
         this.GetComponent<Rigidbody>().isKinematic = false;
+        this.GetComponent<Rigidbody>().drag = 0f;
         this.GetComponent<Rigidbody>().useGravity = true;
         this.GetComponent<Interactable>().enabled = true;
         this.GetComponent<Throwable>().attachmentFlags = Hand.AttachmentFlags.ParentToHand | Hand.AttachmentFlags.DetachFromOtherHand | Hand.AttachmentFlags.TurnOnKinematic;
