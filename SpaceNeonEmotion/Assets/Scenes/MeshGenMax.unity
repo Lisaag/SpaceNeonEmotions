@@ -481,7 +481,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b700a48a83832b440a7749522e94fb8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isButtonPosition: 1
+  isShapeLocation: 1
+  isDropoffLocation: 0
   attachedObject: {fileID: 1084939335}
   attachedHologramLoc: {fileID: 1182977458}
 --- !u!1 &119806005
@@ -757,7 +758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2155,6 +2156,58 @@ Transform:
   m_Father: {fileID: 690378688}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &738130073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 738130075}
+  - component: {fileID: 738130074}
+  m_Layer: 0
+  m_Name: AIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &738130074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738130073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00d4910da86be747a64847049d514ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movPosParent: {fileID: 588997009}
+  shapePosParent: {fileID: 1493604105}
+  dropoffLocation: {fileID: 876680465}
+  robot: {fileID: 933487710}
+  movementPositions: []
+  shapePositions: []
+  WaitTimeBetweenMove: 20
+  movementSpeed: 2
+  turningSpeed: 120
+--- !u!4 &738130075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738130073}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.42801812, y: 1.6960517, z: 6.2797008}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &738785660 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 940674521898290773, guid: 118005e03f5f17744aaa2104c0059e23,
@@ -2759,7 +2812,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b700a48a83832b440a7749522e94fb8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isButtonPosition: 0
+  isShapeLocation: 0
+  isDropoffLocation: 0
   attachedObject: {fileID: 0}
   attachedHologramLoc: {fileID: 0}
 --- !u!4 &874956114
@@ -2819,9 +2873,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b700a48a83832b440a7749522e94fb8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isButtonPosition: 0
+  isShapeLocation: 0
+  isDropoffLocation: 1
   attachedObject: {fileID: 1045512164}
   attachedHologramLoc: {fileID: 0}
+--- !u!1 &885430780 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4131890902667477247, guid: 705dbb54ea020a344bacb54bdd71f20c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1440529949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &885430782
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885430780}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d6869d0ccf66ee242a932387de5a8d8a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &893113991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5387984761154810403, guid: efb4b0544fb83aa4484d9f801d454924,
@@ -2854,12 +2934,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1614234459}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &909626493 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8896380079682959822, guid: 705dbb54ea020a344bacb54bdd71f20c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1440529949}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &933487710 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: e029e9a24e4258444bde0db836069e1f,
@@ -2873,7 +2947,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933487710}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 861e1e88d30679349ac7163b7ad4f07b, type: 3}
   m_Name: 
@@ -2898,12 +2972,42 @@ MonoBehaviour:
   isRotating: 0
   hasRotated: 0
   toGameObject: {fileID: 0}
+--- !u!114 &933487712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933487710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1deba386ae9d1c7488ac30826965a80c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 0
+  moveTowardsObject: {fileID: 0}
+  pickupLocation: {fileID: 971285096}
 --- !u!4 &933487713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: e029e9a24e4258444bde0db836069e1f,
     type: 3}
   m_PrefabInstance: {fileID: 2038896540}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &933487714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933487710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 088e7c7db6a1ee040a5efd2af396ad61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotator: {fileID: 1800631900}
+  rotatorBehaviour: {fileID: 0}
+  walkingBehaviour: {fileID: 0}
 --- !u!4 &934186973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 475244, guid: 7a135b1a2cb9c8f488d4dd00c55ab283,
@@ -2972,7 +3076,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b700a48a83832b440a7749522e94fb8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isButtonPosition: 1
+  isShapeLocation: 1
+  isDropoffLocation: 0
   attachedObject: {fileID: 9792513}
   attachedHologramLoc: {fileID: 999572757}
 --- !u!1 &963636784
@@ -3457,7 +3562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b700a48a83832b440a7749522e94fb8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isButtonPosition: 1
+  isShapeLocation: 1
+  isDropoffLocation: 0
   attachedObject: {fileID: 1233883640}
   attachedHologramLoc: {fileID: 947693118}
 --- !u!1 &1045512164
@@ -3891,7 +3997,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b700a48a83832b440a7749522e94fb8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isButtonPosition: 0
+  isShapeLocation: 0
+  isDropoffLocation: 0
   attachedObject: {fileID: 0}
   attachedHologramLoc: {fileID: 0}
 --- !u!1001 &1102543760
@@ -4203,12 +4310,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1156130372 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3511970112045880969, guid: 705dbb54ea020a344bacb54bdd71f20c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1440529949}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1182977458
 GameObject:
   m_ObjectHideFlags: 0
@@ -4460,7 +4561,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b700a48a83832b440a7749522e94fb8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isButtonPosition: 0
+  isShapeLocation: 0
+  isDropoffLocation: 0
   attachedObject: {fileID: 0}
   attachedHologramLoc: {fileID: 0}
 --- !u!4 &1219415156 stripped
@@ -4857,7 +4959,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b700a48a83832b440a7749522e94fb8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isButtonPosition: 0
+  isShapeLocation: 0
+  isDropoffLocation: 0
   attachedObject: {fileID: 0}
   attachedHologramLoc: {fileID: 0}
 --- !u!1001 &1369045103
@@ -9876,6 +9979,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 2.48
       objectReference: {fileID: 0}
+    - target: {fileID: 5111421269365297272, guid: 705dbb54ea020a344bacb54bdd71f20c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1883289
+      objectReference: {fileID: 0}
     - target: {fileID: 5113380604566774267, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
       propertyPath: m_Layer
@@ -12889,7 +12997,17 @@ PrefabInstance:
     - target: {fileID: 8222995499706586879, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.619539
+      value: 11.61954
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222995499706586879, guid: 705dbb54ea020a344bacb54bdd71f20c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.9799504
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222995499706586879, guid: 705dbb54ea020a344bacb54bdd71f20c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.2313831
       objectReference: {fileID: 0}
     - target: {fileID: 8226063678396286616, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
@@ -13875,6 +13993,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2339184760055141638, guid: 705dbb54ea020a344bacb54bdd71f20c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 705dbb54ea020a344bacb54bdd71f20c, type: 3}
@@ -15324,6 +15447,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1800631901}
+  - component: {fileID: 1800631903}
+  - component: {fileID: 1800631902}
   m_Layer: 0
   m_Name: RotatorObject
   m_TagString: Untagged
@@ -15345,6 +15470,37 @@ Transform:
   m_Father: {fileID: 933487713}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1800631902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800631900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2671e6c0f08d5d348bc461ee2f9a2d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &1800631903
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800631900}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1830985552
 GameObject:
   m_ObjectHideFlags: 0
@@ -15431,11 +15587,9 @@ MonoBehaviour:
   cubePlaced: 0
   trianglePlaced: 0
   spherePlaced: 0
-  moveDoors: 0
   heartrate: 0
   doorsMoving: {fileID: 1836489214}
-  upperDoor: {fileID: 909626493}
-  lowerDoor: {fileID: 1156130372}
+  doors: {fileID: 885430780}
   wire: {fileID: 869273320}
 --- !u!4 &1836489213
 Transform:
@@ -15705,7 +15859,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b700a48a83832b440a7749522e94fb8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isButtonPosition: 0
+  isShapeLocation: 0
+  isDropoffLocation: 0
   attachedObject: {fileID: 0}
   attachedHologramLoc: {fileID: 0}
 --- !u!4 &1899252387
@@ -15954,7 +16109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b700a48a83832b440a7749522e94fb8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isButtonPosition: 0
+  isShapeLocation: 0
+  isDropoffLocation: 0
   attachedObject: {fileID: 0}
   attachedHologramLoc: {fileID: 0}
 --- !u!1 &2027165104
@@ -16128,7 +16284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b700a48a83832b440a7749522e94fb8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isButtonPosition: 0
+  isShapeLocation: 0
+  isDropoffLocation: 0
   attachedObject: {fileID: 0}
   attachedHologramLoc: {fileID: 0}
 --- !u!4 &2088954129
@@ -16222,7 +16379,7 @@ PrefabInstance:
       objectReference: {fileID: 1799086697}
     - target: {fileID: 11445746, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
       propertyPath: portalSpawnPercentageChance
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11445746, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
       propertyPath: showHint

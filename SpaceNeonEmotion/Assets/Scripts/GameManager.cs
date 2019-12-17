@@ -67,12 +67,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G)){
+            CloseDoors();
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            StartCoroutine(StartMoveDoors());
+        }
+    }
+
     IEnumerator StartMoveDoors()
     {
         SoundManager.instance.PlaySound(doorsMoving, doors, false, 0);
-        doors.GetComponent<Animation>().Play();
+        doors.GetComponent<Animator>().SetFloat("speed", 1f);
+        doors.GetComponent<Animator>().SetTrigger("OpenDoors");
         yield return new WaitForSeconds(2f);
         wire.SetActive(true);
+    }
+
+    public void CloseDoors()
+    {
+        SoundManager.instance.PlaySound(doorsMoving, doors, false, 0);
+        doors.GetComponent<Animator>().SetFloat("speed", -1f);
+        doors.GetComponent<Animator>().SetTrigger("OpenDoors");
     }
 
     void Read()
