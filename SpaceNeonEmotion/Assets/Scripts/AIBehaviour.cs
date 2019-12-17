@@ -20,6 +20,11 @@ public class AIBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             walkingBehaviour.StopMoving();
+            rotatorBehaviour.StopRotating();
+            if (this.GetComponent<WalkingBehaviour>().pickupLocation.GetComponentInChildren<HologramShapes>() != null)
+            {
+                this.GetComponent<WalkingBehaviour>().pickupLocation.GetComponentInChildren<HologramShapes>().LetGo();
+            }
         }
     }
     public void GoToPosition(GameObject go)

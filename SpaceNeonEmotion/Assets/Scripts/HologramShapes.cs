@@ -34,13 +34,6 @@ public class HologramShapes : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            LetGo();
-        }
-    }
     private void SetLocation(GameObject colObj)
     {
         this.GetComponent<Interactable>().enabled = false;
@@ -49,6 +42,7 @@ public class HologramShapes : MonoBehaviour
         this.GetComponent<Rigidbody>().isKinematic = true;
         this.transform.position = colObj.transform.position;
         this.gameObject.AddComponent<CubeRotator>();
+        colObj.gameObject.SetActive(false);
         GameManager.Instance.CheckPlacement();
         SoundManager.instance.PlaySound(clip, gameObject, false, 0);
     }
@@ -91,7 +85,6 @@ public class HologramShapes : MonoBehaviour
         }
         this.transform.parent = obj.transform;
         this.transform.position = obj.transform.position;
-        CubeRotator rotator = this.GetComponent<CubeRotator>();
-        rotator.enabled = !rotator.enabled;
+        Destroy(this.GetComponent<CubeRotator>());
     }
 }

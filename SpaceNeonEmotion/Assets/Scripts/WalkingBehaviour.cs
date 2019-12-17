@@ -7,7 +7,7 @@ public class WalkingBehaviour : MonoBehaviour
 {
     [SerializeField]private bool isMoving;
     [SerializeField]private GameObject moveTowardsObject;
-    [SerializeField] private GameObject pickupLocation;
+    [SerializeField]public GameObject pickupLocation;
     private Animator animator;
     bool isWaiting;
     public bool IsMoving { get { return isMoving; } }
