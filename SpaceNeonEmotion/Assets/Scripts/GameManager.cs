@@ -80,7 +80,6 @@ public class GameManager : MonoBehaviour
     void Read()
     {
         reader = XYStreamReader.FromFile("");
-        print("Read...");
         reader.Read();
         reader.Dispose();
         heartrate = reader.heartrate;
@@ -111,6 +110,5 @@ public class GameManager : MonoBehaviour
                 hologramMat.SetFloat("_ScanSpeed", 2f);
             }
         }
-        Debug.Log(reader.heartrate);
     }
 }
