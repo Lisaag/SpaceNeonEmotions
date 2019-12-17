@@ -11,7 +11,6 @@ public class WireManager : MonoBehaviour
     [SerializeField]
     GameObject wire;
 
-    [SerializeField]
     GameObject steamCamera;
     bool isMeasured = false;
 
@@ -19,6 +18,8 @@ public class WireManager : MonoBehaviour
     {
         if (teleport.isOnWirePoint && !isMeasured)
         {
+            steamCamera = GameObject.Find("Player").GetComponentInChildren<Camera>().gameObject;
+ 
             Debug.Log("WireManager() camera height: " + steamCamera.transform.localPosition.y);
             wire.GetComponent<CleanBezierCurve>().playerHeight = steamCamera.transform.localPosition.y;
             wire.SetActive(true);

@@ -50,7 +50,7 @@ public class CheckPoint : MonoBehaviour
 
     public void MoveRingToStartPoint()
     {
-        if (transform.parent.GetComponent<Hand>())
+        if (transform.parent != null && transform.parent.GetComponent<Hand>())
         {
             transform.parent.GetComponent<Hand>().DetachObject(gameObject);
         }
