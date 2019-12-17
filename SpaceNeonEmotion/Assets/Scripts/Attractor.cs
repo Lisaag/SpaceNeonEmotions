@@ -32,18 +32,18 @@ public class Attractor : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (CheckTags(other))
+        if (CheckTags(other) && other.transform.parent == null)
             this.forcefield.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (CheckTags(other))
+        if (CheckTags(other) && other.transform.parent == null)
             this.forcefield.SetActive(false);
     }
     private void OnTriggerStay(Collider other)
     {
-        if (CheckTags(other))
+        if (CheckTags(other) && other.transform.parent == null)
             Attract(other.gameObject.GetComponent<Rigidbody>());
     }
     //private void OnEnable()

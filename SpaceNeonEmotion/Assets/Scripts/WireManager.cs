@@ -23,6 +23,7 @@ public class WireManager : MonoBehaviour
             Debug.Log("WireManager() camera height: " + steamCamera.transform.localPosition.y);
             wire.GetComponent<CleanBezierCurve>().playerHeight = steamCamera.transform.localPosition.y;
             wire.SetActive(true);
+            GameManager.Instance.CloseDoors();
             isMeasured = true;
         }
     }

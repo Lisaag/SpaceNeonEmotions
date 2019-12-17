@@ -14,16 +14,13 @@ public class GameManager : MonoBehaviour
     public bool cubePlaced;
     public bool trianglePlaced;
     public bool spherePlaced;
-    public bool moveDoors;
+
     XYStreamReader reader;
     public int heartrate;
 
     public AudioSource doorsMoving;
-
-    public GameObject upperDoor;
-    public GameObject lowerDoor;
+    public GameObject doors;
     public GameObject wire;
-    // Start is called before the first frame update
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -36,6 +33,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool isShapePlaced()
+    {
+        if (trianglePlaced || cubePlaced || spherePlaced)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     private void Start()
     {
         neonMat.SetColor("_EmissionColor", new Color(0, 255, 255));
@@ -43,12 +51,13 @@ public class GameManager : MonoBehaviour
         if (SoundManager.instance.baseHeartrate != 0)
         {
             baselineHeartrate = SoundManager.instance.baseHeartrate;
-        } else
+        }
+        else
         {
             baselineHeartrate = 80;
         }
 
-        InvokeRepeating("Read", 1.0f, 1.0f);
+        //InvokeRepeating("Read", 1.0f, 1.0f);
     }
     public void CheckPlacement()
     {
@@ -58,28 +67,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G)){
+            CloseDoors();
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            StartCoroutine(StartMoveDoors());
+        }
+    }
+
     IEnumerator StartMoveDoors()
     {
-        SoundManager.instance.PlaySound(doorsMoving, upperDoor, false, 0);
-        SoundManager.instance.PlaySound(doorsMoving, lowerDoor, false, 0);
-        moveDoors = true;
+        SoundManager.instance.PlaySound(doorsMoving, doors, false, 0);
+        doors.GetComponent<Animator>().SetFloat("speed", 1f);
+        doors.GetComponent<Animator>().SetTrigger("OpenDoors");
         yield return new WaitForSeconds(2f);
-        moveDoors = false;
+        wire.SetActive(true);
     }
-    private void LateUpdate()
+
+    public void CloseDoors()
     {
-        if (moveDoors)
-        {
-            Vector3 upperPos = upperDoor.transform.position;
-            upperDoor.transform.position = new Vector3(upperPos.x, upperPos.y + (1f * Time.deltaTime), upperPos.z);
-            Vector3 lowerPos = lowerDoor.transform.position;
-            lowerDoor.transform.position = new Vector3(lowerPos.x, lowerPos.y - (1f * Time.deltaTime), lowerPos.z);
-        }
+        SoundManager.instance.PlaySound(doorsMoving, doors, false, 0);
+        doors.GetComponent<Animator>().SetFloat("speed", -1f);
+        doors.GetComponent<Animator>().SetTrigger("OpenDoors");
     }
 
     void Read()
     {
         reader = XYStreamReader.FromFile("");
+        print("Read...");
         reader.Read();
         reader.Dispose();
         heartrate = reader.heartrate;
@@ -110,5 +128,6 @@ public class GameManager : MonoBehaviour
                 hologramMat.SetFloat("_ScanSpeed", 2f);
             }
         }
+        Debug.Log(reader.heartrate);
     }
 }

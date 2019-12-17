@@ -100,7 +100,8 @@ public class Player : MonoBehaviour
                         newObj.GetComponent<HologramShapes>().triangleLoc = shapePositions[1].GetComponent<DrawGizmo>().attachedHologramLoc;
                         newObj.GetComponent<HologramShapes>().sphereLoc = shapePositions[2].GetComponent<DrawGizmo>().attachedHologramLoc;
                         PortalManager._instance.shapes[1] = newObj; //triangle - cube = sphere 
-                    } else if (tempObj.CompareTag("HologramSphere"))
+                    }
+                    else if (tempObj.CompareTag("HologramSphere"))
                     {
                         Debug.Log("Instantiating" + tempObj.transform.position);
                         GameObject newObj = Instantiate(spherePrefab, tempObj.transform.position, tempObj.transform.rotation, go.transform);
@@ -109,7 +110,8 @@ public class Player : MonoBehaviour
                         newObj.GetComponent<HologramShapes>().triangleLoc = shapePositions[1].GetComponent<DrawGizmo>().attachedHologramLoc;
                         newObj.GetComponent<HologramShapes>().sphereLoc = shapePositions[2].GetComponent<DrawGizmo>().attachedHologramLoc;
                         PortalManager._instance.shapes[2] = newObj;
-                    } else if (tempObj.CompareTag("HologramTriangle"))
+                    }
+                    else if (tempObj.CompareTag("HologramTriangle"))
                     {
                         Debug.Log("Instantiating" + tempObj.transform.position);
                         GameObject newObj = Instantiate(trianglePrefab, tempObj.transform.position, tempObj.transform.rotation, go.transform);
@@ -121,7 +123,7 @@ public class Player : MonoBehaviour
                     }
                     droppingOff = false;
                 }
-                if (go.GetComponent<DrawGizmo>().isButtonPosition)
+                if (go.GetComponent<DrawGizmo>().isShapeLocation)
                 {
                     //animator.SetTrigger("PressButton");
                     if (go.GetComponent<DrawGizmo>().attachedObject != null)
@@ -151,21 +153,22 @@ public class Player : MonoBehaviour
         isRotating = true;
         isMoving = true;
     }
-  
+
     GameObject CheckShapePlacement()
     {
         //if (GameManager.Instance.cubePlaced || GameManager.Instance.spherePlaced || GameManager.Instance.trianglePlaced) {
         List<GameObject> objs = new List<GameObject>();
-            int i = 0;
-            foreach (GameObject obj in shapePositions)
+        int i = 0;
+        foreach (GameObject obj in shapePositions)
+        {
+            if (obj.GetComponent<DrawGizmo>().attachedHologramLoc.gameObject.active == false)
             {
-                if (obj.GetComponent<DrawGizmo>().attachedHologramLoc.gameObject.active == false)
-                {
                 objs.Add(obj);
                 i++;
-                }
             }
-            return objs[Random.Range(0, i)];
+        }
+        Debug.Log("i = " + i);
+        return objs[Random.Range(0, i)];
         //}
     }
     void LateUpdate()
