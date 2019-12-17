@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DrawGizmo : MonoBehaviour
 {
-    public bool isButtonPosition;
+    public bool isShapeLocation;
+    public bool isDropoffLocation;
     public GameObject attachedObject;
     public GameObject attachedHologramLoc;
     private void OnDrawGizmos()

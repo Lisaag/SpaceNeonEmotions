@@ -16,7 +16,6 @@ public class AIManager : MonoBehaviour
     public List<GameObject> shapePositions = new List<GameObject>();
 
     private AIBehaviour aiBehaviour;
-    //private Animator
 
     public float movementSpeed = 1f;
     public float turningSpeed = 60f;
@@ -45,18 +44,57 @@ public class AIManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(GoToRandomMovePosition());
+        StartCoroutine(MoveRobotToRandom(0f));
     }
 
-    IEnumerator GoToRandomMovePosition()
+    public IEnumerator MoveRobotToRandom(float timeToWait)
     {
+        yield return new WaitForSeconds(timeToWait);
         GameObject go = movementPositions[UnityEngine.Random.Range(0, shapePositions.Count)];
-        while (go.transform.position == transform.position)
+        while (go.transform.position == robot.transform.position)
         {
             go = movementPositions[UnityEngine.Random.Range(0, shapePositions.Count)];
         }
         aiBehaviour.GoToPosition(go);
-        yield return new WaitForSeconds(10f);
-        StartCoroutine(GoToRandomMovePosition());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            aiBehaviour.walkingBehaviour.StopMoving();
+            GameObject temp = GetRandomPlacedShape();
+            if (temp != null)
+            {
+                aiBehaviour.GoToPosition(GetRandomPlacedShape());
+            }
+        }
+    }
+
+    public void MoveRobotToDropoff()
+    {
+        aiBehaviour.GoToPosition(dropoffLocation);
+    }
+
+    public void MoveRobotToShape()
+    {
+        aiBehaviour.GoToPosition(GetRandomPlacedShape());
+    }
+
+    public GameObject GetRandomPlacedShape()
+    {
+        List<GameObject> placedShapes = new List<GameObject>();
+        foreach (GameObject obj in shapePositions)
+        {
+            if (obj.GetComponent<DrawGizmo>().attachedHologramLoc.activeInHierarchy == false)
+            {
+                placedShapes.Add(obj);
+            }
+        }
+        if (placedShapes.Count != 0)
+        {
+            return placedShapes[UnityEngine.Random.Range(0, placedShapes.Count)];
+        }
+        return null;
     }
 }

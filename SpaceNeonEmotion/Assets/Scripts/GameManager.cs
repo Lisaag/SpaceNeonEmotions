@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public bool cubePlaced;
     public bool trianglePlaced;
     public bool spherePlaced;
+
     XYStreamReader reader;
     public int heartrate;
 

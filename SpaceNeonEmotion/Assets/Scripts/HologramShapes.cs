@@ -10,7 +10,7 @@ public class HologramShapes : MonoBehaviour
     public GameObject triangleLoc;
     public GameObject sphereLoc;
     public AudioSource clip;
-    //public GameObject forcefieldSphere;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("CubeLocation") && this.transform.CompareTag("HologramCube"))
@@ -34,16 +34,6 @@ public class HologramShapes : MonoBehaviour
         }
     }
 
-    //public void enableSphere()
-    //{
-    //    forcefieldSphere.SetActive(true);
-    //}
-
-    //public void disableSphere()
-    //{
-    //    forcefieldSphere.SetActive(false);
-    //}
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.U))
@@ -53,24 +43,17 @@ public class HologramShapes : MonoBehaviour
     }
     private void SetLocation(GameObject colObj)
     {
-        Destroy(this.GetComponent<Throwable>());
-        //Destroy(this.GetComponent<Interactable>());//.enabled = false;
         this.GetComponent<Interactable>().enabled = false;
-        colObj.gameObject.SetActive(false);
+        this.GetComponent<Throwable>().attachmentFlags = Hand.AttachmentFlags.TurnOnKinematic;
         this.transform.rotation = colObj.gameObject.transform.rotation;
         this.GetComponent<Rigidbody>().isKinematic = true;
         this.transform.position = colObj.transform.position;
-        gameObject.AddComponent<CubeRotator>();
+        this.gameObject.AddComponent<CubeRotator>();
         GameManager.Instance.CheckPlacement();
         SoundManager.instance.PlaySound(clip, gameObject, false, 0);
     }
     public void LetGo()
     {
-        //this.transform.parent = null;
-        //this.GetComponent<Rigidbody>().isKinematic = false;
-        //this.GetComponent<Rigidbody>().useGravity = true;
-        //this.GetComponent<Rigidbody>().drag = 0f;
-
         if (this.CompareTag("HologramCube"))
         {
             cubeLoc.gameObject.SetActive(true);
@@ -86,7 +69,12 @@ public class HologramShapes : MonoBehaviour
             sphereLoc.gameObject.SetActive(true);
             sphereLoc.GetComponentInChildren<Attractor>().forcefield.SetActive(false);
         }
-        Destroy(this.gameObject);
+
+        this.transform.parent = null;
+        this.GetComponent<Rigidbody>().isKinematic = false;
+        this.GetComponent<Rigidbody>().useGravity = true;
+        this.GetComponent<Interactable>().enabled = true;
+        this.GetComponent<Throwable>().attachmentFlags = Hand.AttachmentFlags.ParentToHand | Hand.AttachmentFlags.DetachFromOtherHand | Hand.AttachmentFlags.TurnOnKinematic;
     }
 
     public void Delocate(GameObject obj)
@@ -103,7 +91,7 @@ public class HologramShapes : MonoBehaviour
         }
         this.transform.parent = obj.transform;
         this.transform.position = obj.transform.position;
-        Destroy(this.GetComponent<CubeRotator>());
-
+        CubeRotator rotator = this.GetComponent<CubeRotator>();
+        rotator.enabled = !rotator.enabled;
     }
 }
