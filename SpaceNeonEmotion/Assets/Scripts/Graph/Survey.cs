@@ -43,16 +43,9 @@ public class Survey : MonoBehaviour
         if (interactable.isHovering && !isPressed)
         {
             isPressed = true;
-            audioSource.Play();
+            //audioSource.Play();
             StartCoroutine(WaitAndDisable());
-            if (SceneManager.GetActiveScene().name == "TestRed")
-            {
-                buttonPresses.redRoom.Add(buttonIndex);
-            }
-            else
-            {
-                buttonPresses.blueRoom.Add(buttonIndex);
-            }
+            buttonPresses.surveyResults.Add(buttonIndex);
         }
     }
 

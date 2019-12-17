@@ -238,7 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 7450862063815585231}
   interactable: {fileID: 7450862063815585229}
-  buttonIndex: 1
+  buttonIndex: 3
   buttonPresses: {fileID: 11400000, guid: 64bc15f594ed59a4fb99ab6b34fee2be, type: 2}
   grabPinch:
     actionPath: /actions/default/in/GrabPinch
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 7450862064472633838}
   interactable: {fileID: 7450862064472633836}
-  buttonIndex: 1
+  buttonIndex: 4
   buttonPresses: {fileID: 11400000, guid: 64bc15f594ed59a4fb99ab6b34fee2be, type: 2}
   grabPinch:
     actionPath: /actions/default/in/GrabPinch
@@ -1059,7 +1059,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 7450862064691510362}
   interactable: {fileID: 7450862064691510360}
-  buttonIndex: 1
+  buttonIndex: 2
   buttonPresses: {fileID: 11400000, guid: 64bc15f594ed59a4fb99ab6b34fee2be, type: 2}
   grabPinch:
     actionPath: /actions/default/in/GrabPinch
@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 7450862064982152122}
   interactable: {fileID: 7450862064982152120}
-  buttonIndex: 1
+  buttonIndex: 5
   buttonPresses: {fileID: 11400000, guid: 64bc15f594ed59a4fb99ab6b34fee2be, type: 2}
   grabPinch:
     actionPath: /actions/default/in/GrabPinch

@@ -15,6 +15,12 @@ public class Graph : MonoBehaviour
     [SerializeField]
     float drawSpeed;
 
+    [SerializeField]
+    GameObject gameManagerObjects;
+
+    GameManager gameManager;
+    private List<int> heartrateValues = new List<int>();
+
     private GameObject[] graphPoints;
     private Vector3[] graphPointPositions;
 
@@ -27,13 +33,32 @@ public class Graph : MonoBehaviour
         graphPoints = new GameObject[graphPointCount];
         graphPointPositions = new Vector3[graphPointCount];
 
-        int index = 0;
-        StartCoroutine(DrawGraphPoints(index));
+        gameManager = gameManagerObjects.GetComponent<GameManager>();
+
+        StartCoroutine(ReadHeartRate());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            int index = 0;
+            StartCoroutine(DrawGraphPoints(index));
+        }
+    }
+
+    IEnumerator ReadHeartRate()
+    {
+        heartrateValues.Add(gameManager.heartrate);
+
+        yield return new WaitForSeconds(5);
+
+        StartCoroutine(ReadHeartRate());
     }
 
     IEnumerator DrawGraphPoints(int index)
     {
-        if (index == graphPointCount)
+        if (index == heartrateValues.Count)
         {
             DrawLines(0);
             yield break;
@@ -44,7 +69,7 @@ public class Graph : MonoBehaviour
         float xPos = this.transform.position.x - radius * Mathf.Sin((Mathf.PI / graphPointCount) * index);
         float zPos = this.transform.position.z - radius * Mathf.Cos((Mathf.PI / graphPointCount) * index);
 
-        float offsetY = Random.Range(0, 6.0f);
+        float offsetY = heartrateValues[index] * 0.1f;
 
         graphPoints[index].transform.localPosition = new Vector3(xPos, offsetY, zPos);
         graphPointPositions[index] = graphPoints[index].transform.position;
@@ -57,9 +82,9 @@ public class Graph : MonoBehaviour
 
     public void DrawLines(int index)
     {
-        cylinderModel = Instantiate(cylinderPrefab, transform);
+        cylinderModel = Instantiate(cylinderPrefab, this.transform);
 
-        cylinderModel.transform.position = graphPoints[index].transform.localPosition;
+        cylinderModel.transform.position = graphPoints[index].transform.position;
         Vector3 dir = graphPoints[index + 1].transform.position - graphPoints[index].transform.position;
         Quaternion rot = Quaternion.LookRotation(dir);
         cylinderModel.transform.rotation = rot;
