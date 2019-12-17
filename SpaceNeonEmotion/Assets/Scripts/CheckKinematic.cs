@@ -7,6 +7,7 @@ public class CheckKinematic : MonoBehaviour
     private Rigidbody rb;
     public TutorialManager tut;
     bool hasBeenKin = false;
+    bool hasPlayed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,18 @@ public class CheckKinematic : MonoBehaviour
         {
             if (hasBeenKin)
             {
-                tut.NextPhase();
+                if (!hasPlayed)
+                {
+                    tut.StopAllHints();
+                    SoundManager.instance.PlaySound(tut.done, tut.gameObject, false, 0);
+                    hasPlayed = true;
+                }
+
+                if (!tut.done.isPlaying && hasPlayed)
+                {
+                    tut.NextPhase();
+                }
+
             }
         }
     }

@@ -58,8 +58,21 @@ public class SoundManager : MonoBehaviourExtensionCoroutines
             clipInfoObject.clipObject.transform.parent = gameObject.transform;
         }
 
-        AudioSource soundHolderClip = clipInfoObject.clipObject.AddComponent<AudioSource>();
-        soundHolderClip = clip;
+        AudioSource soundHolderClip;
+        soundHolderClip = clipInfoObject.clipObject.GetComponent<AudioSource>();
+
+        if (soundHolderClip != null)
+        {
+            soundHolderClip.clip = clip.clip;
+            soundHolderClip.loop = clip.loop;
+        }
+        else
+        {
+            soundHolderClip = clipInfoObject.clipObject.AddComponent<AudioSource>();
+            soundHolderClip.clip = clip.clip;
+            soundHolderClip.loop = clip.loop;
+        }
+
         if (!soundHolderClip.isPlaying)
             soundHolderClip.PlayOneShot(soundHolderClip.clip);
     }

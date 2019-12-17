@@ -126,14 +126,13 @@ public class TutorialManager : MonoBehaviour
                     break;
                 case 3:
                     StopAllHints();
-                    SoundManager.instance.PlaySound(done, gameObject, false, 0);
                     StartCoroutine(SwapScene());
                     break;
             }
         }
     }
 
-    private void StopAllHints()
+    public void StopAllHints()
     {
         if (introducion.isPlaying)
             introducion.Stop();
@@ -149,15 +148,12 @@ public class TutorialManager : MonoBehaviour
 
         if (pickUp.isPlaying)
             pickUp.Stop();
-
-        if (done.isPlaying)
-            done.Stop();
     }
 
     private IEnumerator SwapScene()
     {
         SoundManager.instance.baseHeartrate = GameManager._instance.heartrate;
-        yield return new WaitForSeconds(done.clip.length + 1);
         SceneManager.LoadScene(playScene);
+        return null;
     }
 }
