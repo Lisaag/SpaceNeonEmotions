@@ -61,17 +61,13 @@ public class SoundManager : MonoBehaviourExtensionCoroutines
         AudioSource soundHolderClip;
         soundHolderClip = clipInfoObject.clipObject.GetComponent<AudioSource>();
 
-        if (soundHolderClip != null)
-        {
-            soundHolderClip.clip = clip.clip;
-            soundHolderClip.loop = clip.loop;
-        }
-        else
+        if (soundHolderClip == null)
         {
             soundHolderClip = clipInfoObject.clipObject.AddComponent<AudioSource>();
-            soundHolderClip.clip = clip.clip;
-            soundHolderClip.loop = clip.loop;
         }
+
+        soundHolderClip.clip = clip.clip;
+        soundHolderClip.loop = clip.loop;
 
         if (!soundHolderClip.isPlaying)
             soundHolderClip.PlayOneShot(soundHolderClip.clip);
