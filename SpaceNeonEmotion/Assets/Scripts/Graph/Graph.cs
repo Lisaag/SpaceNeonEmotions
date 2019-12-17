@@ -60,7 +60,6 @@ public class Graph : MonoBehaviour
         cylinderModel = Instantiate(cylinderPrefab, transform);
 
         cylinderModel.transform.position = graphPoints[index].transform.localPosition;
-        Debug.Log("Moving cylinder to: " + cylinderModel.transform.localPosition);
         Vector3 dir = graphPoints[index + 1].transform.position - graphPoints[index].transform.position;
         Quaternion rot = Quaternion.LookRotation(dir);
         cylinderModel.transform.rotation = rot;
