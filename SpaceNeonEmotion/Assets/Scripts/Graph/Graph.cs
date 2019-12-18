@@ -18,6 +18,9 @@ public class Graph : MonoBehaviour
     [SerializeField]
     GameObject gameManagerObjects;
 
+    [SerializeField]
+    GameObject baseLine;
+
     GameManager gameManager;
     private List<int> heartrateValues = new List<int>();
 
@@ -30,9 +33,6 @@ public class Graph : MonoBehaviour
 
     void Start()
     {
-        //graphPoints = new GameObject[graphPointCount];
-        //graphPointPositions = new Vector3[graphPointCount];
-
         gameManager = gameManagerObjects.GetComponent<GameManager>();
 
         StartCoroutine(ReadHeartRate());
@@ -44,6 +44,7 @@ public class Graph : MonoBehaviour
         {
             StopAllCoroutines();
 
+            baseLine.SetActive(true);
             graphPoints = new GameObject[heartrateValues.Count];
             graphPointPositions = new Vector3[heartrateValues.Count];
             graphPointCount = heartrateValues.Count;
@@ -55,7 +56,7 @@ public class Graph : MonoBehaviour
 
     IEnumerator ReadHeartRate()
     {
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(20);
 
         //Debug.Log("heartrate: " + gameManager.heartrate);
         heartrateValues.Add(gameManager.heartrate);
@@ -76,6 +77,7 @@ public class Graph : MonoBehaviour
         float xPos = this.transform.position.x - radius * Mathf.Sin((Mathf.PI / graphPointCount) * index);
         float zPos = this.transform.position.z - radius * Mathf.Cos((Mathf.PI / graphPointCount) * index);
 
+        //float offsetY = Random.Range(0, 5.0f);
         float offsetY = heartrateValues[index] * 0.02f;
 
         graphPoints[index].transform.localPosition = new Vector3(xPos, offsetY, zPos);

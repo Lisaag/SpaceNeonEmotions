@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8967704085085995304
 Transform:
   m_ObjectHideFlags: 0
@@ -144,4 +144,6 @@ MonoBehaviour:
     type: 3}
   graphPointCount: 20
   drawSpeed: 0.3
+  gameManagerObjects: {fileID: 0}
+  baseLine: {fileID: 8967704085085995305}
   lineCount: 0
