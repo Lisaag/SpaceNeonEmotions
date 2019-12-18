@@ -57,13 +57,11 @@ public class Flock : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         foreach (FlockAgent agent in agents)
         {
             List<Transform> context = GetNearbyObjects(agent);
-
-            //agent.GetComponent<Renderer>().material.color = Color.Lerp(Color.white, Color.red, context.Count / 6f);
 
             Vector3 move = behaviour.CalculateMove(agent, context, this);
             move *= driveFactor;
