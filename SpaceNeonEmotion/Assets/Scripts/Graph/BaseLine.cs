@@ -23,7 +23,6 @@ public class BaseLine : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("vertices size: " + vertices.Length);
         mesh = GetComponent<MeshFilter>().mesh;
         CalculateLinePoints();
         DrawTriangles();
@@ -77,13 +76,11 @@ public class BaseLine : MonoBehaviour
     void AddUvs()
     {
         float uvStep = 1.0f / (lineDetail - 1);
-        Debug.Log("uvstep: " + uvStep);
 
         for(int i = 0; i < lineDetail; i++)
         {
             uvs[i] = new Vector2(0, i * uvStep);
             uvs[i + lineDetail] = new Vector2(1, i * uvStep);
-            Debug.Log("uv: " + (i * uvStep));
         }
 
         mesh.uv = uvs;
