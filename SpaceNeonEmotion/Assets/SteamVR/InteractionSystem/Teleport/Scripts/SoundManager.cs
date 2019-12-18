@@ -61,11 +61,17 @@ public class SoundManager : MonoBehaviourExtensionCoroutines
         AudioSource soundHolderClip;
         soundHolderClip = clipInfoObject.clipObject.GetComponent<AudioSource>();
 
-        if (soundHolderClip == null)
+        if (soundHolderClip == null || soundHolderClip.gameObject.GetComponent<HologramShapes>() != null)
         {
-            soundHolderClip = clipInfoObject.clipObject.AddComponent<AudioSource>();
+            if (!soundHolderClip.isPlaying)
+            {
+                soundHolderClip = clipInfoObject.clipObject.AddComponent<AudioSource>();
+                soundHolderClip.spatialBlend = 1f;
+                Debug.Log("Added");
+            }
         }
 
+        soundHolderClip.volume = clipInfoObject.clip.volume;
         soundHolderClip.clip = clip.clip;
         soundHolderClip.loop = clip.loop;
 

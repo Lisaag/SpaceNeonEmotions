@@ -4890,7 +4890,7 @@ MonoBehaviour:
   minZ: 5
   maxZ: 10
   roofY: 3.09
-  floorY: 0.15
+  floorY: 0
   roofOffset: 1.8
   respawnInterval: 3
   minRespawnTime: 1

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 442086}
   - component: {fileID: 3312206}
   - component: {fileID: 2325906}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: move_location_icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 491388}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: teleport_marker_lookat_joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 22482520}
   - component: {fileID: 22232488}
   - component: {fileID: 11474080}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: teleport_marker_canvas_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 428928}
   - component: {fileID: 11120990}
   - component: {fileID: 11479906}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TeleportPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 474966}
   - component: {fileID: 3392662}
   - component: {fileID: 2351396}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: switch_scenes_icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 435704}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: teleport_marker_icons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 3364936}
   - component: {fileID: 2356592}
   - component: {fileID: 13593758}
-  m_Layer: 21
+  m_Layer: 10
   m_Name: teleport_marker_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 22366542}
   - component: {fileID: 11493574}
   - component: {fileID: 11474098}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: teleport_marker_canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 470848}
   - component: {fileID: 3338870}
   - component: {fileID: 2375100}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: locked_icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

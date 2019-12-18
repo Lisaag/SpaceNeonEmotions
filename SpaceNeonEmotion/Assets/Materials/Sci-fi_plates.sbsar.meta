@@ -27,23 +27,11 @@ ScriptedImporter:
       texEnvs:
       - name: _BaseMap
         texture: {instanceID: 0}
-        scale: {x: 5, y: 5}
+        scale: {x: 10, y: 10}
         offset: {x: 0, y: 0}
       - name: _BumpMap
         texture: {fileID: 1094067237248865867, guid: 4938b5664a7c29f418215fd0fda12a42,
           type: 3}
-        scale: {x: 1, y: 1}
-        offset: {x: 0, y: 0}
-      - name: _DetailAlbedoMap
-        texture: {instanceID: 0}
-        scale: {x: 1, y: 1}
-        offset: {x: 0, y: 0}
-      - name: _DetailMask
-        texture: {instanceID: 0}
-        scale: {x: 1, y: 1}
-        offset: {x: 0, y: 0}
-      - name: _DetailNormalMap
-        texture: {instanceID: 0}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _EmissionMap
@@ -53,7 +41,7 @@ ScriptedImporter:
       - name: _MainTex
         texture: {fileID: 7405913467005568198, guid: 4938b5664a7c29f418215fd0fda12a42,
           type: 3}
-        scale: {x: 5, y: 5}
+        scale: {x: 10, y: 10}
         offset: {x: 0, y: 0}
       - name: _MetallicGlossMap
         texture: {fileID: -7060370247521463616, guid: 4938b5664a7c29f418215fd0fda12a42,
@@ -63,10 +51,6 @@ ScriptedImporter:
       - name: _OcclusionMap
         texture: {fileID: -5163828207590200022, guid: 4938b5664a7c29f418215fd0fda12a42,
           type: 3}
-        scale: {x: 1, y: 1}
-        offset: {x: 0, y: 0}
-      - name: _ParallaxMap
-        texture: {instanceID: 0}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _SpecGlossMap
@@ -84,8 +68,6 @@ ScriptedImporter:
         float: 2
       - name: _Cutoff
         float: 0.5
-      - name: _DetailNormalMapScale
-        float: 1
       - name: _DstBlend
         float: 0
       - name: _EnvironmentReflections
@@ -98,12 +80,8 @@ ScriptedImporter:
         float: 1
       - name: _Metallic
         float: 0
-      - name: _Mode
-        float: 0
       - name: _OcclusionStrength
         float: 1
-      - name: _Parallax
-        float: 0.02
       - name: _QueueOffset
         float: 0
       - name: _ReceiveShadows
@@ -118,15 +96,13 @@ ScriptedImporter:
         float: 1
       - name: _Surface
         float: 0
-      - name: _UVSec
-        float: 0
       - name: _WorkflowMode
         float: 1
       - name: _ZWrite
         float: 1
       colors:
       - name: _BaseColor
-        color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+        color: {r: 0.40156642, g: 0.5286517, b: 0.6037736, a: 1}
       - name: _Color
         color: {r: 1, g: 1, b: 1, a: 1}
       - name: _EmissionColor
