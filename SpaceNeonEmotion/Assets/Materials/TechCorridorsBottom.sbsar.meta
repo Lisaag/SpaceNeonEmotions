@@ -19,12 +19,12 @@ ScriptedImporter:
     shaderName: Lightweight Render Pipeline/Lit
     materialProperties:
       shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-      shaderKeywords: _MAINTEX _METALLICGLOSSMAP _NORMALMAP _OCCLUSIONMAP _SPECULAR_SETUP
+      shaderKeywords: _MAINTEX _METALLICGLOSSMAP _METALLICSPECGLOSSMAP _NORMALMAP
+        _OCCLUSIONMAP
       lightmapFlags: 4
       texEnvs:
       - name: _BaseMap
-        texture: {fileID: 3185087803222245055, guid: 86bfc8c8365ff074e85033f8ef195759,
-          type: 3}
+        texture: {instanceID: 0}
         scale: {x: 2, y: 2}
         offset: {x: -0.05, y: -0.58}
       - name: _BumpMap
@@ -95,7 +95,7 @@ ScriptedImporter:
       - name: _Surface
         float: 0
       - name: _WorkflowMode
-        float: 0
+        float: 1
       - name: _ZWrite
         float: 1
       colors:

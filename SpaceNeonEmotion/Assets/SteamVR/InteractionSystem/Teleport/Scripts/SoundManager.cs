@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,30 +52,23 @@ public class SoundManager : MonoBehaviourExtensionCoroutines
         var clip = clipInfoObject.clip;
         clip.loop = clipInfoObject.loop;
 
-        if (clipInfoObject.clipObject == null)
+        GameObject soundPlayer = new GameObject("SoundPlayer");
+
+        soundPlayer.transform.parent = clipInfoObject.clipObject.transform;
+
+        soundPlayer.transform.localRotation = new Quaternion(0, 0, 0, 1);
+        soundPlayer.transform.localScale = Vector3.zero;
+        soundPlayer.transform.localPosition = Vector3.zero;
+
+        AudioSource soundHolderClip = clip;
+
+        if (clipInfoObject.clipObject.GetComponentInChildren<AudioSource>() == null)
         {
-            clipInfoObject.clipObject = new GameObject("SoundPlayer");
-            clipInfoObject.clipObject.transform.parent = gameObject.transform;
+            soundHolderClip = soundPlayer.AddComponent<AudioSource>();
         }
 
-        AudioSource soundHolderClip;
-        soundHolderClip = clipInfoObject.clipObject.GetComponent<AudioSource>();
+        soundHolderClip.PlayOneShot(soundHolderClip.clip);
+        Destroy(soundPlayer, soundHolderClip.clip.length + 1);
 
-        if (soundHolderClip == null || soundHolderClip.gameObject.GetComponent<HologramShapes>() != null)
-        {
-            if (!soundHolderClip.isPlaying)
-            {
-                soundHolderClip = clipInfoObject.clipObject.AddComponent<AudioSource>();
-                soundHolderClip.spatialBlend = 1f;
-                Debug.Log("Added");
-            }
-        }
-
-        soundHolderClip.volume = clipInfoObject.clip.volume;
-        soundHolderClip.clip = clip.clip;
-        soundHolderClip.loop = clip.loop;
-
-        if (!soundHolderClip.isPlaying)
-            soundHolderClip.PlayOneShot(soundHolderClip.clip);
     }
 }
