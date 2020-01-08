@@ -37,7 +37,7 @@ public class HologramShapes : MonoBehaviour
     private void SetLocation(GameObject colObj)
     {
         this.GetComponent<Interactable>().enabled = false;
-        this.GetComponent<Throwable>().attachmentFlags = Hand.AttachmentFlags.TurnOnKinematic;
+        this.GetComponent<Throwable>().attachmentFlags = Hand.AttachmentFlags.DetachFromOtherHand;
         this.transform.rotation = colObj.gameObject.transform.rotation;
         this.GetComponent<Rigidbody>().isKinematic = true;
         this.transform.position = colObj.transform.position;
@@ -86,7 +86,6 @@ public class HologramShapes : MonoBehaviour
         this.GetComponent<Interactable>().enabled = true;
         this.GetComponent<Throwable>().attachmentFlags = Hand.AttachmentFlags.ParentToHand | Hand.AttachmentFlags.DetachFromOtherHand | Hand.AttachmentFlags.TurnOnKinematic;
     }
-
     public void Delocate(GameObject obj)
     {
         if (this.CompareTag("HologramTriangle"))
