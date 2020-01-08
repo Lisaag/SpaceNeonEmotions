@@ -23,6 +23,9 @@ public class Survey : MonoBehaviour
     [SerializeField]
     SteamVR_Action_Boolean grabPinch;
 
+    [SerializeField]
+    SurveyManager surveyManager;
+
     SteamVR_Input_Sources inputSource = SteamVR_Input_Sources.Any;
 
 
@@ -53,5 +56,6 @@ public class Survey : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         transform.parent.gameObject.SetActive(false);
+        StartCoroutine(surveyManager.ActivateSurvey());
     }
 }

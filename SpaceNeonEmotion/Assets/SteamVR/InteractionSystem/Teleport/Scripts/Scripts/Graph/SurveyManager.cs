@@ -5,23 +5,21 @@ using UnityEngine;
 public class SurveyManager : MonoBehaviour
 {
     [SerializeField]
-    List<GameObject> disableObjects = new List<GameObject>();
+    float respawnTime;
 
     [SerializeField]
     GameObject buttons;
 
-    void Update()
+    void Start()
     {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            if(disableObjects.Count != 0)
-            {
-                foreach (GameObject g in disableObjects)
-                {
-                    g.SetActive(false);
-                }
-            }
-            buttons.SetActive(true);
-        }
+        buttons.SetActive(true);
+    }
+
+
+    public IEnumerator ActivateSurvey()
+    {
+        yield return new WaitForSeconds(respawnTime);
+
+        buttons.SetActive(true);
     }
 }

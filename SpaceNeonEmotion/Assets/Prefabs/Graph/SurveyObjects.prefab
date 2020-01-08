@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba140e4e3121a684fb44c7e903e78770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableObjects: []
+  respawnTime: 60
   buttons: {fileID: 7450862063884783086}
 --- !u!1 &7450862063472247752
 GameObject:
@@ -243,6 +243,7 @@ MonoBehaviour:
   grabPinch:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
+  surveyManager: {fileID: 8511800030131607777}
 --- !u!82 &7450862063815585231
 AudioSource:
   m_ObjectHideFlags: 0
@@ -540,6 +541,7 @@ MonoBehaviour:
   grabPinch:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
+  surveyManager: {fileID: 8511800030131607777}
 --- !u!82 &7450862064472633838
 AudioSource:
   m_ObjectHideFlags: 0
@@ -802,6 +804,7 @@ MonoBehaviour:
   grabPinch:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
+  surveyManager: {fileID: 8511800030131607777}
 --- !u!82 &7450862064647820632
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1064,6 +1067,7 @@ MonoBehaviour:
   grabPinch:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
+  surveyManager: {fileID: 8511800030131607777}
 --- !u!82 &7450862064691510362
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1326,6 +1330,7 @@ MonoBehaviour:
   grabPinch:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
+  surveyManager: {fileID: 8511800030131607777}
 --- !u!82 &7450862064982152122
 AudioSource:
   m_ObjectHideFlags: 0
