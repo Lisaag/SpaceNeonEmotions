@@ -56,6 +56,7 @@ public class Survey : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         transform.parent.gameObject.SetActive(false);
-        StartCoroutine(surveyManager.ActivateSurvey());
+        surveyManager.CallActivateSurvey();
+        isPressed = false;
     }
 }

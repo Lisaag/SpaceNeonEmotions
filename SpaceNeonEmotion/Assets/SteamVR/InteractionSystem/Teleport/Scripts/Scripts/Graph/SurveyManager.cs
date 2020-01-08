@@ -15,8 +15,12 @@ public class SurveyManager : MonoBehaviour
         buttons.SetActive(true);
     }
 
+    public void CallActivateSurvey()
+    {
+        StartCoroutine(ActivateSurvey());
+    }
 
-    public IEnumerator ActivateSurvey()
+    IEnumerator ActivateSurvey()
     {
         yield return new WaitForSeconds(respawnTime);
 

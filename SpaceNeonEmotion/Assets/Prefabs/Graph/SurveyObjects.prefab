@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba140e4e3121a684fb44c7e903e78770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnTime: 60
+  respawnTime: 5
   buttons: {fileID: 7450862063884783086}
 --- !u!1 &7450862063472247752
 GameObject:
