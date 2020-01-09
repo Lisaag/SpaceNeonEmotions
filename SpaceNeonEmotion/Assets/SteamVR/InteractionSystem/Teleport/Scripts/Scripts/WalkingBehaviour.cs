@@ -60,7 +60,7 @@ public class WalkingBehaviour : MonoBehaviour
         if (lookatGizmo.isDropoffLocation)
         {
             pickupLocation.GetComponentInChildren<HologramShapes>().LetGo();
-            StartCoroutine(AIManager.Instance.MoveRobotToRandom(AIManager.Instance.WaitTimeBetweenMove));
+            AIManager.Instance.MoveRobot(AIManager.Instance.WaitTimeBetweenMove);
             return;
         }
         AIManager.Instance.MoveRobot(AIManager.Instance.WaitTimeBetweenMove);
