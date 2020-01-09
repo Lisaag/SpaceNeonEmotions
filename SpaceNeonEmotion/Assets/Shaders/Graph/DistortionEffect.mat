@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DistortionEffect
+  m_Shader: {fileID: -6465566751694194690, guid: 12a1892ea3106da4aabb93c4643e2545,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_7B0C296A:
+        m_Texture: {fileID: 2800000, guid: a53cf5449d11a15d1100a04b44295342, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_A3D663B8: 0.09
+    m_Colors:
+    - Vector2_1A1B41F5: {r: 0.33, g: 0.38, b: 0, a: 0}
+    - Vector2_60076353: {r: 0.1, g: 0.1, b: 0.1, a: 0}
+    - Vector2_9AA3B13E: {r: 2, g: 2, b: 2, a: 0}
