@@ -16,13 +16,19 @@ public class Graph : MonoBehaviour
     float drawSpeed;
 
     [SerializeField]
-    GameObject gameManagerObjects;
+    GameObject gameManagerObjects = null;
 
     [SerializeField]
-    GameObject baseLine;
+    GameObject baseLine = null;
 
     [SerializeField]
-    float saveHeartRateTime;
+    float saveHeartRateTime = 0.0f;
+
+    [SerializeField]
+    GameObject[] surveyButtons = null;
+
+    [SerializeField]
+    SurveyManager surveyManager = null;
 
     GameManager gameManager;
     private List<int> heartrateValues = new List<int>();
@@ -34,10 +40,11 @@ public class Graph : MonoBehaviour
 
     public int lineCount = 0;
 
+    float timeElapsed = 0.0f;
+
     void Start()
     {
         gameManager = gameManagerObjects.GetComponent<GameManager>();
-
         StartCoroutine(ReadHeartRate());
     }
 
@@ -45,6 +52,8 @@ public class Graph : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
+            timeElapsed = Time.time;
+
             StopAllCoroutines();
 
             baseLine.SetActive(true);
@@ -54,6 +63,11 @@ public class Graph : MonoBehaviour
 
             int index = 0;
             StartCoroutine(DrawGraphPoints(index));
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            Debug.Log("TIME: " + Time.time);
         }
     }
 
@@ -102,5 +116,24 @@ public class Graph : MonoBehaviour
         Vector3 temp = cylinderModel.transform.rotation.eulerAngles;
         temp.x += 90.0f;
         cylinderModel.transform.rotation = Quaternion.Euler(temp);
+    }
+
+    public void PlaceSurveyResults()
+    {
+        if (surveyManager.surveyData.Count != 0)
+        {
+            for (int i = 0; i < surveyManager.surveyData.Count; i++)
+            {
+                Debug.Log(timeElapsed);
+                float radius = 5.0f;
+                float xPos = this.transform.position.x - radius * Mathf.Sin((Mathf.PI / timeElapsed) * surveyManager.surveyData[i].Item2);
+                float zPos = this.transform.position.z - radius * Mathf.Cos((Mathf.PI / timeElapsed) * surveyManager.surveyData[i].Item2);
+
+                GameObject sb = Instantiate(surveyButtons[surveyManager.surveyData[i].Item1], transform);
+
+                sb.transform.localPosition = new Vector3(xPos, this.transform.position.y, zPos);
+
+            }
+        }
     }
 }

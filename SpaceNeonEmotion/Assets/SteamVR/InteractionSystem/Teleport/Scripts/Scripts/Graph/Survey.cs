@@ -28,11 +28,8 @@ public class Survey : MonoBehaviour
 
     SteamVR_Input_Sources inputSource = SteamVR_Input_Sources.Any;
 
-
-
     private bool isPressed;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (grabPinch != null)
@@ -46,6 +43,7 @@ public class Survey : MonoBehaviour
         if (interactable.isHovering && !isPressed)
         {
             isPressed = true;
+            surveyManager.surveyData.Add(new Tuple<int, float>(buttonIndex, Time.time));
             //audioSource.Play();
             StartCoroutine(WaitAndDisable());
             buttonPresses.surveyResults.Add(buttonIndex);

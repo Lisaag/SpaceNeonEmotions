@@ -5,15 +5,7 @@ using UnityEngine;
 public class GraphLine : MonoBehaviour
 {
     [SerializeField]
-    MeshRenderer meshRenderer;
-
-    [SerializeField]
-    MeshFilter meshFilter;
-
-    [SerializeField]
     float drawSpeed;
-
-    Mesh mesh;
 
     Graph graph;
 
@@ -23,7 +15,6 @@ public class GraphLine : MonoBehaviour
     void Start()
     {
         graph = this.GetComponentInParent<Graph>();
-        mesh = meshFilter.mesh;
     }
 
     void FixedUpdate()
@@ -49,6 +40,12 @@ public class GraphLine : MonoBehaviour
             if (graph.lineCount < graph.graphPointCount - 1)
             {
                 graph.DrawLines(graph.lineCount);
+            }
+            else
+            {
+                Debug.Log("Done drawing!");
+                //call emoji thing spawn function
+                graph.PlaceSurveyResults();
             }
         }
     }
