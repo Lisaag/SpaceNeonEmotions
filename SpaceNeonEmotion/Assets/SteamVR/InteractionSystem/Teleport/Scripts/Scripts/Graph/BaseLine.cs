@@ -34,8 +34,8 @@ public class BaseLine : MonoBehaviour
         for (int i = 0; i < lineDetail; i++)
         {
             float radius = 5.0f;
-            float xPos = this.transform.position.x - radius * Mathf.Sin((Mathf.PI / lineDetail) * i);
-            float zPos = this.transform.position.z - radius * Mathf.Cos((Mathf.PI / lineDetail) * i);
+            float xPos = this.transform.position.x - radius * Mathf.Sin((Mathf.PI / (lineDetail - 1)) * i);
+            float zPos = this.transform.position.z - radius * Mathf.Cos((Mathf.PI / (lineDetail - 1)) * i);
             linePoints.Add(new Vector3(xPos, lineHeight, zPos));
             vertices[i] = new Vector3(xPos, lineHeight, zPos);
             vertices[i + lineDetail] = new Vector3(xPos, lineHeight - lineThickness, zPos);
