@@ -90,7 +90,6 @@ public class Graph : MonoBehaviour
             yield break;
         }
 
-        Debug.Log("theta: " + (Mathf.Sin((Mathf.PI / graphPointCount) * index)));
         graphPoints[index] = Instantiate(graphPoint, transform);
         float radius = 5.0f;
         float xPos = this.transform.position.x - radius * Mathf.Sin((Mathf.PI / (graphPointCount - 1.0f)) * index);
@@ -127,7 +126,7 @@ public class Graph : MonoBehaviour
         {
             for (int i = 0; i < surveyManager.surveyData.Count; i++)
             {
-                Debug.Log(timeElapsed);
+                Debug.Log("Surveydata index: " + surveyManager.surveyData.Count);
                 float radius = 5.0f;
                 float xPos = this.transform.position.x - radius * Mathf.Sin((Mathf.PI / timeElapsed) * surveyManager.surveyData[i].Item2);
                 float zPos = this.transform.position.z - radius * Mathf.Cos((Mathf.PI / timeElapsed) * surveyManager.surveyData[i].Item2);

@@ -28,7 +28,7 @@ public class Survey : MonoBehaviour
 
     SteamVR_Input_Sources inputSource = SteamVR_Input_Sources.Any;
 
-    private bool isPressed;
+    //private bool isPressed;
 
     void Start()
     {
@@ -38,12 +38,24 @@ public class Survey : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (interactable.isHovering)
+        {
+            Debug.Log("sloep");
+        }
+    }
+
     private void OnTriggerPressedOrReleased(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource, bool newState)
     {
-        if (interactable.isHovering && !isPressed)
+        Debug.Log(surveyManager.isPressed);
+
+        if (interactable.isHovering && !surveyManager.isPressed)
         {
-            isPressed = true;
-            surveyManager.surveyData.Add(new Tuple<int, float>(buttonIndex, Time.time));
+            surveyManager.isPressed = true;
+            //interactable.isHovering = false;
+            Debug.Log("Add survey data to tuple" + this.buttonIndex);
+            surveyManager.surveyData.Add(new Tuple<int, float>(buttonIndex - 1, Time.time));
             //audioSource.Play();
             StartCoroutine(WaitAndDisable());
             buttonPresses.surveyResults.Add(buttonIndex);
@@ -53,8 +65,8 @@ public class Survey : MonoBehaviour
     private IEnumerator WaitAndDisable()
     {
         yield return new WaitForSeconds(0.5f);
-        transform.parent.gameObject.SetActive(false);
+        surveyManager.DisableButtons(false);
+        //transform.parent.gameObject.SetActive(false);
         surveyManager.CallActivateSurvey();
-        isPressed = false;
     }
 }

@@ -27907,7 +27907,7 @@ PrefabInstance:
     - target: {fileID: 8967704086210949012, guid: 38d8d3b8261b286448541e61fad15884,
         type: 3}
       propertyPath: saveHeartRateTime
-      value: 0.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8967704086210949012, guid: 38d8d3b8261b286448541e61fad15884,
         type: 3}
@@ -29316,7 +29316,7 @@ PrefabInstance:
     - target: {fileID: 8511800030131607777, guid: 5c49e2f57a8f6b749a0a49a6c3f050d3,
         type: 3}
       propertyPath: respawnTime
-      value: 60
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7450862063472247759, guid: 5c49e2f57a8f6b749a0a49a6c3f050d3,
         type: 3}

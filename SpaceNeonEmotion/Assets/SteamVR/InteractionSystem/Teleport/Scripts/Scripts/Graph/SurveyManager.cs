@@ -11,6 +11,8 @@ public class SurveyManager : MonoBehaviour
     [SerializeField]
     GameObject buttons;
 
+    public bool isPressed = false;
+
     public List<Tuple<int, float>> surveyData = new List<Tuple<int, float>>();
 
 
@@ -23,8 +25,9 @@ public class SurveyManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            surveyData.Add(new Tuple<int, float>(1, Time.time));
+            //surveyData.Add(new Tuple<int, float>(1, Time.time));
         }
+
     }
 
     public void CallActivateSurvey()
@@ -35,7 +38,17 @@ public class SurveyManager : MonoBehaviour
     IEnumerator ActivateSurvey()
     {
         yield return new WaitForSeconds(respawnTime);
+        DisableButtons(true);
+        //buttons.SetActive(true);
+        isPressed = false;
+    }
 
-        buttons.SetActive(true);
+    public void DisableButtons(bool isActive)
+    {
+        foreach (Transform t in buttons.transform)
+        {
+            t.gameObject.GetComponent<MeshRenderer>().enabled = isActive;
+            t.gameObject.GetComponent<BoxCollider>().enabled = isActive;
+        }
     }
 }
