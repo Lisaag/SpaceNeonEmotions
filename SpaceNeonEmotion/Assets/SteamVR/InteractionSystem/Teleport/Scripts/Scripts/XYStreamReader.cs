@@ -52,4 +52,11 @@ public class XYStreamReader : IDisposable
 
         return new XYStreamReader(stream);
     }
+    public static void Reset()
+    {
+        using (StreamWriter streamwriter = new StreamWriter("Assets/Resources/sample.txt"))
+        {
+            streamwriter.Write("0");
+        }
+    }
 }
