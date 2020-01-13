@@ -32,7 +32,7 @@ public class FlockAgent : MonoBehaviour
         vel = velocity;
         transform.LookAt(transform.position + velocity);
 
-        if (!audio.isPlaying)
+        if (audio != null && !audio.isPlaying)
             SoundManager.instance.PlaySound(audio, gameObject, true, 0);
     }
 
