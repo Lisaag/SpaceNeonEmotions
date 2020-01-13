@@ -10,6 +10,9 @@ public class WorldTimer : MonoBehaviour
     [SerializeField]
     GameObject[] digitalNumbers = null;
 
+    [SerializeField]
+    List<GameObject> removeObjects = new List<GameObject>();
+
     float totalSeconds = 0;
     float currentTime = 0;
     int currentTimeInt = 0;
@@ -28,6 +31,14 @@ public class WorldTimer : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            foreach(GameObject o in removeObjects)
+            {
+                o.SetActive(false);
+            }
+        }
+
         currentTime -= 1 * Time.deltaTime;
         currentTimeInt = (int)currentTime;
         int currentTimeSeconds = (int)(currentTime % secondsInMinute);
