@@ -13,6 +13,9 @@ public class WorldTimer : MonoBehaviour
     [SerializeField]
     List<GameObject> removeObjects = new List<GameObject>();
 
+    [SerializeField]
+    Graph graph = null;
+
     float totalSeconds = 0;
     float currentTime = 0;
     int currentTimeInt = 0;
@@ -23,6 +26,8 @@ public class WorldTimer : MonoBehaviour
     int previousTimeSeconds = 0;
     int previousTimeMinutes = 0;
 
+    private bool timeIsUp = false;
+
     void Start()
     {
         totalSeconds = timeMinutes * secondsInMinute;
@@ -31,20 +36,28 @@ public class WorldTimer : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            foreach(GameObject o in removeObjects)
-            {
-                o.SetActive(false);
-            }
-        }
+        if (timeIsUp) return;
 
         currentTime -= 1 * Time.deltaTime;
         currentTimeInt = (int)currentTime;
         int currentTimeSeconds = (int)(currentTime % secondsInMinute);
         int currentTimeMinutes = (int)((currentTime - currentTimeSeconds) / secondsInMinute);
 
-        if (!firstTimeDisplay || currentTimeMinutes < previousTimeMinutes || currentTimeSeconds < previousTimeSeconds)
+        if(currentTimeSeconds <= 0 && currentTimeMinutes <= 0)
+        {
+            foreach (GameObject o in removeObjects)
+            {
+                o.SetActive(false);
+                graph.DrawGraph();
+                CreateNumbers(-1, digitalNumbers[0]);
+                CreateNumbers(-1, digitalNumbers[1]);
+                CreateNumbers(-1, digitalNumbers[2]);
+                CreateNumbers(-1, digitalNumbers[3]);
+            }
+            timeIsUp = true;
+        }
+
+        else if (!firstTimeDisplay || currentTimeMinutes < previousTimeMinutes || currentTimeSeconds < previousTimeSeconds)
         {
             int firstDigitSeconds = (currentTimeSeconds / 10) % 10;
             int secondDigitSeconds = currentTimeSeconds % 10;
@@ -59,6 +72,8 @@ public class WorldTimer : MonoBehaviour
             previousTimeMinutes = currentTimeMinutes;
             previousTimeSeconds = currentTimeSeconds;
             firstTimeDisplay = true;
+
+            
         }
     }
 

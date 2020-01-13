@@ -51,27 +51,19 @@ public class Graph : MonoBehaviour
         StartCoroutine(ReadHeartRate());
     }
 
-    private void Update()
+    public void DrawGraph()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            timeElapsed = Time.time;
+        timeElapsed = Time.time;
 
-            StopAllCoroutines();
+        StopAllCoroutines();
 
-            baseLine.SetActive(true);
-            graphPoints = new GameObject[heartrateValues.Count];
-            graphPointPositions = new Vector3[heartrateValues.Count];
-            graphPointCount = heartrateValues.Count;
+        baseLine.SetActive(true);
+        graphPoints = new GameObject[heartrateValues.Count];
+        graphPointPositions = new Vector3[heartrateValues.Count];
+        graphPointCount = heartrateValues.Count;
 
-            int index = 0;
-            StartCoroutine(DrawGraphPoints(index));
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            Debug.Log("TIME: " + Time.time);
-        }
+        int index = 0;
+        StartCoroutine(DrawGraphPoints(index));
     }
 
     IEnumerator ReadHeartRate()
