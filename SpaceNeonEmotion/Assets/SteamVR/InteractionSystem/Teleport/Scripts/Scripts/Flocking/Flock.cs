@@ -15,13 +15,15 @@ public class Flock : MonoBehaviour
     public int startingCount = 250;
     const float agentDensity = 0.58f;
 
-    [Range(1f, 25)]
+    [Range(0f, 25)]
     public float driveFactor = 10f;
+
+    public bool changeSpeedOverTime = true;
 
     public int minDriveFactor = 1;
     public int maxDriveFactor = 25;
 
-    [Range(1f, 100)]
+    [Range(0f, 100)]
     public float maxSpeed = 5f;
     [Range(1f, 10f)]
     public float neighbourRadius = 1.5f;
@@ -53,7 +55,8 @@ public class Flock : MonoBehaviour
             agents.Add(newAgent);
         }
 
-        StartCoroutine(ChangeSpeed());
+        if (changeSpeedOverTime)
+            StartCoroutine(ChangeSpeed());
     }
 
     // Update is called once per frame
