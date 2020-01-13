@@ -4043,7 +4043,7 @@ PrefabInstance:
     - target: {fileID: 1743323106626587924, guid: b340d818fe02bb94188a0958a9b1fb8f,
         type: 3}
       propertyPath: driveFactor
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1743323106626587924, guid: b340d818fe02bb94188a0958a9b1fb8f,
         type: 3}
@@ -4053,7 +4053,12 @@ PrefabInstance:
     - target: {fileID: 1743323106626587924, guid: b340d818fe02bb94188a0958a9b1fb8f,
         type: 3}
       propertyPath: maxSpeedChangeInterval
-      value: 3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1743323106626587924, guid: b340d818fe02bb94188a0958a9b1fb8f,
+        type: 3}
+      propertyPath: changeSpeedOverTime
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1743323106626587927, guid: b340d818fe02bb94188a0958a9b1fb8f,
         type: 3}

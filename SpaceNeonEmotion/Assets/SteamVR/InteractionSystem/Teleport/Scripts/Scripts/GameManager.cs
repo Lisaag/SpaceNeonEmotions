@@ -112,8 +112,8 @@ public class GameManager : MonoBehaviour
         {
             if (heartrate != 0)
             {
-                heartAnim.SetFloat("Heartrate", (float)heartrate / 120f);
-                heartAnim2.SetFloat("Heartrate", (float)heartrate / 120f);
+                heartAnim.SetFloat("Heartrate", ((float)heartrate / 60f) /2f);
+                heartAnim2.SetFloat("Heartrate", ((float)heartrate / 60f) /2f);
             }
             //if (heartrate <= baselineHeartrate)
             //{
