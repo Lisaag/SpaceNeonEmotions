@@ -11,6 +11,9 @@ public class SurveyManager : MonoBehaviour
     [SerializeField]
     GameObject buttons;
 
+    [SerializeField]
+    AudioSource fillInSurveySound;
+
     public bool isPressed = false;
 
     public List<Tuple<int, float>> surveyData = new List<Tuple<int, float>>();
@@ -19,6 +22,9 @@ public class SurveyManager : MonoBehaviour
     void Start()
     {
         buttons.SetActive(true);
+        fillInSurveySound.loop = true;
+
+        StartCoroutine(ActivateSurvey());
     }
 
     void Update()
@@ -39,7 +45,6 @@ public class SurveyManager : MonoBehaviour
     {
         yield return new WaitForSeconds(respawnTime);
         DisableButtons(true);
-        //buttons.SetActive(true);
         isPressed = false;
     }
 
@@ -50,5 +55,8 @@ public class SurveyManager : MonoBehaviour
             t.gameObject.GetComponent<MeshRenderer>().enabled = isActive;
             t.gameObject.GetComponent<BoxCollider>().enabled = isActive;
         }
+
+        if (isActive) fillInSurveySound.Play();
+        else fillInSurveySound.Stop();
     }
 }

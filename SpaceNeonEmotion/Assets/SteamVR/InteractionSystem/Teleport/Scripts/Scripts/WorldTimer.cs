@@ -16,6 +16,13 @@ public class WorldTimer : MonoBehaviour
     [SerializeField]
     Graph graph = null;
 
+    [SerializeField]
+    AudioSource timeIsUpSound;
+    [SerializeField]
+    AudioSource seeResultsSound;
+    [SerializeField]
+    AudioSource oneMinuteLeftSound;
+
     float totalSeconds = 0;
     float currentTime = 0;
     int currentTimeInt = 0;
@@ -43,7 +50,7 @@ public class WorldTimer : MonoBehaviour
         int currentTimeSeconds = (int)(currentTime % secondsInMinute);
         int currentTimeMinutes = (int)((currentTime - currentTimeSeconds) / secondsInMinute);
 
-        if(currentTimeSeconds <= 0 && currentTimeMinutes <= 0)
+        if (currentTimeSeconds <= 0 && currentTimeMinutes <= 0)
         {
             foreach (GameObject o in removeObjects)
             {
@@ -54,11 +61,19 @@ public class WorldTimer : MonoBehaviour
                 CreateNumbers(-1, digitalNumbers[2]);
                 CreateNumbers(-1, digitalNumbers[3]);
             }
+            timeIsUpSound.Play();
+            seeResultsSound.PlayDelayed(timeIsUpSound.clip.length);
             timeIsUp = true;
         }
 
         else if (!firstTimeDisplay || currentTimeMinutes < previousTimeMinutes || currentTimeSeconds < previousTimeSeconds)
         {
+            if (currentTimeMinutes == 1 && currentTimeSeconds == 0)
+            {
+                Debug.Log("play one minute left");
+                oneMinuteLeftSound.Play();
+            }
+
             int firstDigitSeconds = (currentTimeSeconds / 10) % 10;
             int secondDigitSeconds = currentTimeSeconds % 10;
             int firstDigitMinutes = (currentTimeMinutes / 10) % 10;

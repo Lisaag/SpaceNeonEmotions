@@ -39,8 +39,12 @@ public class RingCollision : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            collisionBehaviour.reachedCheckpoint = true;
-            checkpointId++;
+            Debug.Log("WIRE IS KLAAR");
+            collisionBehaviour.finishedWire = true;
+            checkpointId = -1;
+            cp.MoveRingToStartPoint();
+            wmg.placeNewWire();
+            collisionBehaviour.finishedWire = false;
         }
         else if (Input.GetKeyDown(KeyCode.H))
         {

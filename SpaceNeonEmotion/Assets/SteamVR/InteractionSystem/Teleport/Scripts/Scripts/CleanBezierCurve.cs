@@ -38,6 +38,9 @@ public class CleanBezierCurve : MonoBehaviour
     [SerializeField]
     float generateSpeed = 0;
 
+    [SerializeField]
+    AudioSource youDidItSound;
+
     public Vector3[] ringDir;
     public float zOffsetPp = 0;
 
@@ -126,6 +129,11 @@ public class CleanBezierCurve : MonoBehaviour
             curveCount = 14;
             yStep = 0.027f * playerHeight;
             Debug.Log("B" + wireIndex + " - Playerheight: " + playerHeight + " - yStep: " + yStep);
+        }
+        else if (wireIndex > 2)
+        {
+            youDidItSound.Play();
+            return;
         }
 
         Reset();
