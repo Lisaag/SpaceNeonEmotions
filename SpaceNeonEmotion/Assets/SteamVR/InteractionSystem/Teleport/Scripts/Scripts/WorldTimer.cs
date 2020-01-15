@@ -55,12 +55,13 @@ public class WorldTimer : MonoBehaviour
             foreach (GameObject o in removeObjects)
             {
                 o.SetActive(false);
-                graph.DrawGraph();
                 CreateNumbers(-1, digitalNumbers[0]);
                 CreateNumbers(-1, digitalNumbers[1]);
                 CreateNumbers(-1, digitalNumbers[2]);
                 CreateNumbers(-1, digitalNumbers[3]);
             }
+
+            graph.DrawGraph();
             timeIsUpSound.Play();
             seeResultsSound.PlayDelayed(timeIsUpSound.clip.length);
             timeIsUp = true;

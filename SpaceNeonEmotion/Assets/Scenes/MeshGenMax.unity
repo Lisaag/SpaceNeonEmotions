@@ -27692,7 +27692,7 @@ PrefabInstance:
     - target: {fileID: 8967704086210949012, guid: 38d8d3b8261b286448541e61fad15884,
         type: 3}
       propertyPath: saveHeartRateTime
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8967704086210949012, guid: 38d8d3b8261b286448541e61fad15884,
         type: 3}
