@@ -6,6 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    WorldTimer worldtimer;
+
+    [SerializeField]
+    GameObject survey;
+
+    [SerializeField]
+    Transform newSurveyPosition;
+
     public int baselineHeartrate = 80;
     int heartChange = 10;
     public static GameManager _instance;
@@ -72,6 +81,9 @@ public class GameManager : MonoBehaviour
         if (cubePlaced && spherePlaced && trianglePlaced)
         {
             StartCoroutine(StartMoveDoors());
+            worldtimer.currentTime += 120;
+            survey.transform.position = newSurveyPosition.position;
+            survey.transform.eulerAngles += new Vector3(0, 90, 0);
         }
     }
 
@@ -83,6 +95,9 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             StartCoroutine(StartMoveDoors());
+            worldtimer.currentTime += 120;
+            survey.transform.position = newSurveyPosition.position;
+            survey.transform.eulerAngles += new Vector3(0, 90, 0);
         }
     }
 

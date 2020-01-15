@@ -24,7 +24,7 @@ public class WorldTimer : MonoBehaviour
     AudioSource oneMinuteLeftSound;
 
     float totalSeconds = 0;
-    float currentTime = 0;
+    public float currentTime = 0;
     int currentTimeInt = 0;
 
     int secondsInMinute = 60;

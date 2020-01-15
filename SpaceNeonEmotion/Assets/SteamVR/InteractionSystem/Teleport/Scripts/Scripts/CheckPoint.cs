@@ -54,6 +54,8 @@ public class CheckPoint : MonoBehaviour
         {
             transform.parent.GetComponent<Hand>().DetachObject(gameObject);
         }
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
         this.transform.position = startPos;
         Vector3 rot = new Vector3(0, 0, 0);
         transform.rotation = Quaternion.Euler(rot);

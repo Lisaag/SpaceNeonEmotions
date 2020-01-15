@@ -41,6 +41,12 @@ public class CleanBezierCurve : MonoBehaviour
     [SerializeField]
     AudioSource youDidItSound;
 
+    [SerializeField]
+    AudioSource seeResultsSound;
+
+    [SerializeField]
+    GameObject chakram;
+
     public Vector3[] ringDir;
     public float zOffsetPp = 0;
 
@@ -122,17 +128,17 @@ public class CleanBezierCurve : MonoBehaviour
         {
             curveCount = 8;
             yStep = 0.051f * playerHeight;
-            Debug.Log("A" + wireIndex + " - Playerheight: " + playerHeight + " - yStep: " + yStep);
         }
         else if (wireIndex == 2)
         {
             curveCount = 14;
             yStep = 0.027f * playerHeight;
-            Debug.Log("B" + wireIndex + " - Playerheight: " + playerHeight + " - yStep: " + yStep);
         }
         else if (wireIndex > 2)
         {
             youDidItSound.Play();
+            seeResultsSound.PlayDelayed(youDidItSound.clip.length);
+
             return;
         }
 
@@ -199,6 +205,8 @@ public class CleanBezierCurve : MonoBehaviour
             GetComponent<MeshCollider>().sharedMesh = mesh;
             isFirstCurve = false;
             PlaceCheckPoints();
+            chakram.GetComponent<MeshRenderer>().enabled = true;
+            chakram.GetComponent<BoxCollider>().enabled = true;
             Debug.Log("Done generating triangles");
 
             yield break;
