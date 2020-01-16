@@ -97,6 +97,8 @@ public class CleanBezierCurve : MonoBehaviour
 
     public void placeNewWire()
     {
+        chakram.GetComponent<MeshRenderer>().enabled = false;
+        chakram.GetComponent<BoxCollider>().enabled = false;
         if (!finishedWire)
         {
             finishedWire = true;

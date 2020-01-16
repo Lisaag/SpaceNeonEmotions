@@ -9283,7 +9283,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859229878}
   m_LocalRotation: {x: 0.4764346, y: 0.52250373, z: -0.45288658, w: 0.5430412}
-  m_LocalPosition: {x: -0.63, y: 1.312, z: -4.83}
+  m_LocalPosition: {x: 0.961, y: 1.312, z: -4.83}
   m_LocalScale: {x: 0.4760624, y: 0.47606245, z: 0.47606236}
   m_Children: []
   m_Father: {fileID: 0}
@@ -27261,6 +27261,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: ChakramCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589049753255, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466051589049753255, guid: ca9dad657395bf94eb68b5e50fae4445,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7466051589049753254, guid: ca9dad657395bf94eb68b5e50fae4445, type: 3}

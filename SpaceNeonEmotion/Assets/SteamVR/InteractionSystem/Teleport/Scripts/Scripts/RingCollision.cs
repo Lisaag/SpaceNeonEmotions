@@ -90,6 +90,8 @@ public class RingCollision : MonoBehaviour
                 Pulse(0f, 1f, 100, 40, LeftInputsource);
                 Pulse(0f, 1f, 100, 40, RightInputsource);
 
+                ring.GetComponent<Rigidbody>().useGravity = false;
+
                 cp.MoveRingToCheckpoint(collisionBehaviour.currentCheckpointId);
                 Reset();
             }

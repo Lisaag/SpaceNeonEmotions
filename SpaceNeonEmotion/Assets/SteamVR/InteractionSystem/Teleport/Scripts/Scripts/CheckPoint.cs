@@ -48,6 +48,12 @@ public class CheckPoint : MonoBehaviour
         }
     }
 
+    private void OnAttachedToHand(Hand hand)
+    {
+        GetComponent<Rigidbody>().useGravity = true;
+        print("Attached!");
+    }
+
     public void MoveRingToStartPoint()
     {
         if (transform.parent != null && transform.parent.GetComponent<Hand>())
