@@ -63,8 +63,11 @@ public class GameManager : MonoBehaviour
         XYStreamReader.Reset();
         neonMat.SetColor("_EmissionColor", new Color(0, 255, 255));
         hologramMat.SetFloat("_ScanSpeed", 0f);
-        heartAnim = bigHeart.GetComponent<Animator>();
-        heartAnim2 = bigHeart2.GetComponent<Animator>();
+        if (bigHeart && bigHeart2)
+        {
+            heartAnim = bigHeart.GetComponent<Animator>();
+            heartAnim2 = bigHeart2.GetComponent<Animator>();
+        }
         if (SoundManager.instance.baseHeartrate != 0)
         {
             baselineHeartrate = SoundManager.instance.baseHeartrate;
