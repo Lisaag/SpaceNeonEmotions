@@ -69,8 +69,8 @@ public class Graph : MonoBehaviour
     IEnumerator ReadHeartRate()
     {
         yield return new WaitForSeconds(saveHeartRateTime);
-
-        heartrateValues.Add(gameManager.heartrate);
+        heartrateValues.Add(Random.Range(60, 160));
+        //heartrateValues.Add(gameManager.heartrate);
         StartCoroutine(ReadHeartRate());
     }
 

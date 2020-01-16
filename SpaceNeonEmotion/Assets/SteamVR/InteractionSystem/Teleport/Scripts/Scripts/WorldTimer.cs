@@ -24,7 +24,7 @@ public class WorldTimer : MonoBehaviour
     AudioSource oneMinuteLeftSound;
 
     float totalSeconds = 0;
-    float currentTime = 0;
+    public float currentTime = 0;
     int currentTimeInt = 0;
 
     int secondsInMinute = 60;
@@ -41,6 +41,24 @@ public class WorldTimer : MonoBehaviour
         currentTime = totalSeconds;
     }
 
+    public void Endgame()
+    {
+        Debug.Log("IK OPEN DE DEUREN");
+        StartCoroutine(GameManager.Instance.StartMoveDoors());
+
+        foreach (GameObject o in removeObjects)
+        {
+            o.SetActive(false);
+            CreateNumbers(-1, digitalNumbers[0]);
+            CreateNumbers(-1, digitalNumbers[1]);
+            CreateNumbers(-1, digitalNumbers[2]);
+            CreateNumbers(-1, digitalNumbers[3]);
+        }
+
+        graph.DrawGraph();
+        timeIsUp = true;
+    }
+
     void Update()
     {
         if (timeIsUp) return;
@@ -52,18 +70,9 @@ public class WorldTimer : MonoBehaviour
 
         if (currentTimeSeconds <= 0 && currentTimeMinutes <= 0)
         {
-            foreach (GameObject o in removeObjects)
-            {
-                o.SetActive(false);
-                graph.DrawGraph();
-                CreateNumbers(-1, digitalNumbers[0]);
-                CreateNumbers(-1, digitalNumbers[1]);
-                CreateNumbers(-1, digitalNumbers[2]);
-                CreateNumbers(-1, digitalNumbers[3]);
-            }
             timeIsUpSound.Play();
             seeResultsSound.PlayDelayed(timeIsUpSound.clip.length);
-            timeIsUp = true;
+            Endgame();
         }
 
         else if (!firstTimeDisplay || currentTimeMinutes < previousTimeMinutes || currentTimeSeconds < previousTimeSeconds)
