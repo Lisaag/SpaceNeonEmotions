@@ -47,6 +47,13 @@ public class CheckPoint : MonoBehaviour
             }
         }
     }
+    private void OnDetachedFromHand(Hand hand)
+    {
+        //GetComponent<Rigidbody>().useGravity = true;
+       // GetComponent<Rigidbody>().isKinematic = false;
+
+        //print("Attached!");
+    }
 
     public void MoveRingToStartPoint()
     {
@@ -63,7 +70,10 @@ public class CheckPoint : MonoBehaviour
 
     public void MoveRingToCheckpoint(int id)
     {
-        transform.parent.GetComponent<Hand>().DetachObject(gameObject);
+        if (transform.parent != null && transform.parent.GetComponent<Hand>())
+        {
+            transform.parent.GetComponent<Hand>().DetachObject(gameObject);
+        }
 
         if (id == -1)
         {

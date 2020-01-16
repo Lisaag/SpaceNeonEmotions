@@ -65,6 +65,7 @@ public class RingCollision : MonoBehaviour
             collisionBehaviour.reachedCheckpoint = true;
             checkpointId = other.GetComponent<CheckPointId>().id;
             collisionBehaviour.currentCheckpointId = checkpointId;
+
             // Debug.Log("chackram collided with checkpoint " + checkpointId);
         }
 
@@ -73,7 +74,6 @@ public class RingCollision : MonoBehaviour
         {
             if (!collisionBehaviour.finishedWire)
             {
-                Debug.Log("WIRE IS KLAAR");
                 collisionBehaviour.finishedWire = true;
                 checkpointId = -1;
                 collisionBehaviour.currentCheckpointId = -1;
@@ -87,6 +87,8 @@ public class RingCollision : MonoBehaviour
         {
             if (other.CompareTag("Wire"))
             {
+               // ring.GetComponent<Rigidbody>().useGravity = false;
+                //ring.GetComponent<Rigidbody>().isKinematic = true;
                 Pulse(0f, 1f, 100, 40, LeftInputsource);
                 Pulse(0f, 1f, 100, 40, RightInputsource);
 

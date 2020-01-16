@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(StartMoveDoors());
             worldtimer.currentTime += 120;
             survey.transform.position = newSurveyPosition.position;
-            survey.transform.eulerAngles += new Vector3(0, 90, 0);
+            survey.transform.localEulerAngles = new Vector3(0, 270, 0);
         }
     }
 
@@ -97,11 +97,11 @@ public class GameManager : MonoBehaviour
             StartCoroutine(StartMoveDoors());
             worldtimer.currentTime += 120;
             survey.transform.position = newSurveyPosition.position;
-            survey.transform.eulerAngles += new Vector3(0, 90, 0);
+            survey.transform.eulerAngles += new Vector3(0, 270, 0);
         }
     }
 
-    IEnumerator StartMoveDoors()
+    public IEnumerator StartMoveDoors()
     {
         SoundManager.instance.PlaySound(doorsMoving, doors, false, 0);
         doors.GetComponent<Animator>().SetFloat("speed", 1f);

@@ -47,6 +47,9 @@ public class CleanBezierCurve : MonoBehaviour
     [SerializeField]
     GameObject chakram;
 
+    [SerializeField]
+    WorldTimer worldtimer;
+
     public Vector3[] ringDir;
     public float zOffsetPp = 0;
 
@@ -136,6 +139,7 @@ public class CleanBezierCurve : MonoBehaviour
         }
         else if (wireIndex > 2)
         {
+            worldtimer.Endgame();
             youDidItSound.Play();
             seeResultsSound.PlayDelayed(youDidItSound.clip.length);
 
