@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MeshGenMax.unity
     guid: 4f96066f0e32f1c40a436783998f5f86
+  - enabled: 1
+    path: Assets/Scenes/FinalMenu.unity
+    guid: 72ec8851f2862b34dbf187bc9f306ab0
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: a93ae8390fb1d664b8d7efafea892d20
   m_configObjects: {}
