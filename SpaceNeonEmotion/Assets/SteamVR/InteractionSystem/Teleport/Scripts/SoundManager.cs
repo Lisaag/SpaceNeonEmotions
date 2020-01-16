@@ -27,7 +27,6 @@ public class SoundManager : MonoBehaviourExtensionCoroutines
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
         if (SoundManager.instance == null)
             instance = this;
         else
