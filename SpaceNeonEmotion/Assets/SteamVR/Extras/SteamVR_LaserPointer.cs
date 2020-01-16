@@ -56,6 +56,7 @@ namespace Valve.VR.Extras
                     collider.isTrigger = true;
                 }
                 Rigidbody rigidBody = pointer.AddComponent<Rigidbody>();
+                pointer.AddComponent<LaserBeamCheck>();
                 rigidBody.isKinematic = true;
             }
             else
@@ -81,7 +82,8 @@ namespace Valve.VR.Extras
             if (PointerClick != null)
                 PointerClick(this, e);
 
-            Debug.Log("Clicked");
+            if (GetComponentInChildren<LaserBeamCheck>())
+                GetComponentInChildren<LaserBeamCheck>().collided.GetComponent<MainMenuManager>().LoadScene();
         }
 
         public virtual void OnPointerOut(PointerEventArgs e)
