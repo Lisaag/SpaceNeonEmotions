@@ -4051,7 +4051,7 @@ PrefabInstance:
     - target: {fileID: 1743323106626587925, guid: b340d818fe02bb94188a0958a9b1fb8f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1743323106626587924, guid: b340d818fe02bb94188a0958a9b1fb8f,
         type: 3}
@@ -4066,12 +4066,12 @@ PrefabInstance:
     - target: {fileID: 1743323106626587924, guid: b340d818fe02bb94188a0958a9b1fb8f,
         type: 3}
       propertyPath: startingCount
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1743323106626587924, guid: b340d818fe02bb94188a0958a9b1fb8f,
         type: 3}
       propertyPath: neighbourRadius
-      value: 3
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 1743323106626587924, guid: b340d818fe02bb94188a0958a9b1fb8f,
         type: 3}
@@ -16102,10 +16102,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RemadeRooms
       objectReference: {fileID: 0}
-    - target: {fileID: 1822970514919520110, guid: 705dbb54ea020a344bacb54bdd71f20c,
+    - target: {fileID: 3775994693839768036, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8605882626006257912, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
@@ -16166,6 +16166,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355064857033624378, guid: 705dbb54ea020a344bacb54bdd71f20c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8362629264879512816, guid: 705dbb54ea020a344bacb54bdd71f20c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642520248209205446, guid: 705dbb54ea020a344bacb54bdd71f20c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1822970514919520110, guid: 705dbb54ea020a344bacb54bdd71f20c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3118858783753179972, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
@@ -16292,21 +16312,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4355064857033624378, guid: 705dbb54ea020a344bacb54bdd71f20c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3642520248209205446, guid: 705dbb54ea020a344bacb54bdd71f20c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3775994693839768036, guid: 705dbb54ea020a344bacb54bdd71f20c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3385539632324318748, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
       propertyPath: m_IsActive
@@ -16372,11 +16377,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dc410427225ea0d43be79ff94571e011, type: 2}
-    - target: {fileID: 8362629264879512816, guid: 705dbb54ea020a344bacb54bdd71f20c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9169334793139430772, guid: 705dbb54ea020a344bacb54bdd71f20c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -34305,7 +34305,7 @@ PrefabInstance:
     - target: {fileID: 3656033888959619588, guid: b4dc24701f2345b48ab9238436a4fb42,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 353407962903777303, guid: b4dc24701f2345b48ab9238436a4fb42,
         type: 3}

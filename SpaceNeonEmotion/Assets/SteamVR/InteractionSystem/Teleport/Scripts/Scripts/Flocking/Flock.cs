@@ -11,7 +11,7 @@ public class Flock : MonoBehaviour
     public int minimumSpeedChangeInterval = 3;
     public int maxSpeedChangeInterval = 10;
 
-    [Range(10, 500)]
+    [Range(1, 500)]
     public int startingCount = 250;
     const float agentDensity = 0.58f;
 
