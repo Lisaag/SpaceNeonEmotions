@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Valve.VR.InteractionSystem;
+using Valve.VR;
 
 public class CheckPoint : MonoBehaviour
 {
@@ -11,6 +12,13 @@ public class CheckPoint : MonoBehaviour
 
     [SerializeField]
     GameObject wireStartPoint = null;
+
+    [SerializeField]
+    AudioSource wireTouchSound = null;
+
+    public SteamVR_Input_Sources LeftInputsource = SteamVR_Input_Sources.LeftHand;
+    public SteamVR_Input_Sources RightInputsource = SteamVR_Input_Sources.RightHand;
+    public SteamVR_Action_Vibration vibrate;
 
     Vector3 ringRotatePoint;
     CleanBezierCurve wmg;
@@ -49,10 +57,21 @@ public class CheckPoint : MonoBehaviour
     }
     private void OnDetachedFromHand(Hand hand)
     {
-        //GetComponent<Rigidbody>().useGravity = true;
-       // GetComponent<Rigidbody>().isKinematic = false;
-
+        if (!collisionBehaviour.hasCollided)
+        {
+            GetComponent<Rigidbody>().useGravity = true;
+            GetComponent<Rigidbody>().isKinematic = false;
+        }
         //print("Attached!");
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Wire"))
+        {
+            OnCollisionWithWire();
+            Debug.Log("Ontriggerexit() chakram");
+        }
     }
 
     public void MoveRingToStartPoint()
@@ -66,6 +85,30 @@ public class CheckPoint : MonoBehaviour
         this.transform.position = startPos;
         Vector3 rot = new Vector3(0, 0, 0);
         transform.rotation = Quaternion.Euler(rot);
+    }
+
+    public void OnCollisionWithWire()
+    {
+        Reset();
+
+        wireTouchSound.Play();
+
+        GetComponent<Rigidbody>().useGravity = false;
+        GetComponent<Rigidbody>().isKinematic = true;
+        Pulse(0f, 1f, 100, 40, LeftInputsource);
+        Pulse(0f, 1f, 100, 40, RightInputsource);
+
+        MoveRingToCheckpoint(collisionBehaviour.currentCheckpointId);
+    }
+
+    private void Pulse(float delay, float duration, float frequency, float amplitude, SteamVR_Input_Sources source)
+    {
+        vibrate.Execute(delay, duration, frequency, amplitude, source);
+    }
+
+    void Reset()
+    {
+        collisionBehaviour.hasCollided = true;
     }
 
     public void MoveRingToCheckpoint(int id)

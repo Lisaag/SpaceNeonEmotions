@@ -35,8 +35,6 @@ public class GraphLine : MonoBehaviour
             stopDrawing = true;
             graph.lineCount++;
 
-            Debug.Log("graphpointcount: " + graph.graphPointCount + "graphlinecount: " + graph.lineCount);
-
             if (graph.lineCount < graph.graphPointCount - 1)
             {
                 graph.DrawLines(graph.lineCount);
