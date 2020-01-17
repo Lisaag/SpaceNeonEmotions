@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7518328990745664006}
   - component: {fileID: 4371606062801063071}
   - component: {fileID: 1250229875041772449}
+  - component: {fileID: 1609742471913119795}
   m_Layer: 0
   m_Name: RightWing
   m_TagString: Untagged
@@ -78,6 +79,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1609742471913119795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503570783911117360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0949550efe318c4f8c8d15f63f74855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sinMultiplier: {x: 0, y: 0, z: -45}
+  speed: 5
 --- !u!1 &2390034407836796768
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +104,6 @@ GameObject:
   - component: {fileID: 1688922949459129715}
   - component: {fileID: 2908519938405677240}
   - component: {fileID: 1399235450263340812}
-  - component: {fileID: 7563677601422348731}
   m_Layer: 0
   m_Name: ButterflyFlocking
   m_TagString: Untagged
@@ -138,25 +152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio: {fileID: 0}
---- !u!95 &7563677601422348731
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2390034407836796768}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5a8c8eb8abf037644b68dd2b8216e3e6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2436396049672727184
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +274,7 @@ GameObject:
   - component: {fileID: 708301973691553960}
   - component: {fileID: 1651529062162465047}
   - component: {fileID: 4715141004874193014}
+  - component: {fileID: 723103794179542934}
   m_Layer: 0
   m_Name: LeftWing
   m_TagString: Untagged
@@ -346,3 +342,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &723103794179542934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8051716582583937225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0949550efe318c4f8c8d15f63f74855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sinMultiplier: {x: 0, y: 0, z: 45}
+  speed: 5
