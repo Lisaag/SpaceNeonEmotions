@@ -38,14 +38,6 @@ public class Survey : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (interactable.isHovering)
-        {
-            Debug.Log("sloep");
-        }
-    }
-
     private void OnTriggerPressedOrReleased(SteamVR_Action_Boolean fromAction, SteamVR_Input_Sources fromSource, bool newState)
     {
         Debug.Log(surveyManager.isPressed);

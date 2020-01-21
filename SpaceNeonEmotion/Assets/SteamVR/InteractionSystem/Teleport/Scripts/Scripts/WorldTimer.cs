@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class WorldTimer : MonoBehaviour
@@ -26,8 +25,7 @@ public class WorldTimer : MonoBehaviour
     float totalSeconds = 0;
     public float currentTime = 0;
     int currentTimeInt = 0;
-
-    int secondsInMinute = 60;
+    readonly int secondsInMinute = 60;
 
     bool firstTimeDisplay = false;
     int previousTimeSeconds = 0;
@@ -43,7 +41,6 @@ public class WorldTimer : MonoBehaviour
 
     public void Endgame()
     {
-        Debug.Log("IK OPEN DE DEUREN");
         StartCoroutine(GameManager.Instance.StartMoveDoors());
 
         foreach (GameObject o in removeObjects)
@@ -61,7 +58,10 @@ public class WorldTimer : MonoBehaviour
 
     void Update()
     {
-        if (timeIsUp) return;
+        if (timeIsUp)
+        {
+            return;
+        }
 
         currentTime -= 1 * Time.deltaTime;
         currentTimeInt = (int)currentTime;
@@ -79,7 +79,6 @@ public class WorldTimer : MonoBehaviour
         {
             if (currentTimeMinutes == 1 && currentTimeSeconds == 0)
             {
-                Debug.Log("play one minute left");
                 oneMinuteLeftSound.Play();
             }
 
@@ -97,7 +96,7 @@ public class WorldTimer : MonoBehaviour
             previousTimeSeconds = currentTimeSeconds;
             firstTimeDisplay = true;
 
-            
+
         }
     }
 
@@ -105,7 +104,7 @@ public class WorldTimer : MonoBehaviour
     {
         GameObject[] dnParts = new GameObject[7];
 
-        for(int i = 0; i < dnParts.Length; i++)
+        for (int i = 0; i < dnParts.Length; i++)
         {
             dnParts[i] = dn.transform.GetChild(i).gameObject;
             dnParts[i].SetActive(true);

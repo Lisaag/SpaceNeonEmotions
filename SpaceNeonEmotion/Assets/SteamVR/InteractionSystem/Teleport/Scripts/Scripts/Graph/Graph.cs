@@ -33,6 +33,9 @@ public class Graph : MonoBehaviour
     [SerializeField]
     Transform rotateTowardsPoint = null;
 
+    [SerializeField]
+    float emojiHeight = 0.0f;
+
     GameManager gameManager;
     private List<int> heartrateValues = new List<int>();
 
@@ -126,7 +129,7 @@ public class Graph : MonoBehaviour
                 GameObject sb = Instantiate(surveyButtons[surveyManager.surveyData[i].Item1], transform);
 
                 sb.transform.localPosition = new Vector3(xPos, this.transform.position.y, zPos);
-                sb.transform.localPosition += new Vector3(0.0f, 5.0f, 0.0f);
+                sb.transform.localPosition += new Vector3(0.0f, emojiHeight, 0.0f);
 
                 Quaternion newRotation = Quaternion.LookRotation(rotateTowardsPoint.position - sb.transform.position, Vector3.up);
                 sb.transform.rotation = newRotation;
