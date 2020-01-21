@@ -15,6 +15,7 @@ TagManager:
   - WirePoint
   - WireEnding
   - ChakramCollider
+  - MenuButton
   layers:
   - Default
   - TransparentFX
