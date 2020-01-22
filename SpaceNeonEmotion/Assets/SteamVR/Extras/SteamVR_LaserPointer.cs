@@ -17,6 +17,7 @@ namespace Valve.VR.Extras
         public Color clickColor = Color.green;
         public GameObject holder;
         public GameObject pointer;
+        public Color highlightedButton;
         bool isActive = false;
         public bool addRigidBody = false;
         public Transform reference;
@@ -56,7 +57,8 @@ namespace Valve.VR.Extras
                     collider.isTrigger = true;
                 }
                 Rigidbody rigidBody = pointer.AddComponent<Rigidbody>();
-                pointer.AddComponent<LaserBeamCheck>();
+                LaserBeamCheck menuChecker = pointer.AddComponent<LaserBeamCheck>();
+                menuChecker.highLightedColor = highlightedButton;
                 rigidBody.isKinematic = true;
             }
             else
@@ -83,7 +85,9 @@ namespace Valve.VR.Extras
                 PointerClick(this, e);
 
             if (GetComponentInChildren<LaserBeamCheck>())
-                GetComponentInChildren<LaserBeamCheck>().collided.GetComponent<MainMenuManager>().LoadScene();
+                if (GetComponentInChildren<LaserBeamCheck>().collided)
+                    if (GetComponentInChildren<LaserBeamCheck>().collided.GetComponent<MainMenuManager>())
+                        GetComponentInChildren<LaserBeamCheck>().collided.GetComponent<MainMenuManager>().LoadScene();
         }
 
         public virtual void OnPointerOut(PointerEventArgs e)
