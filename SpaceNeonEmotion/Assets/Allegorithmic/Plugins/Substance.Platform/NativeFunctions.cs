@@ -50,11 +50,11 @@ namespace Substance.Platform
             string buildTarget = "UNKNOWN";
 
 #if (UNITY_STANDALONE)
-                buildTarget = "StandAlone";
+            buildTarget = "StandAlone";
 #elif (UNITY_IOS)
-                buildTarget = "IOS";
+            buildTarget = "IOS";
 #elif (UNITY_ANDROID)
-                buildTarget = "Android";
+            buildTarget = "Android";
 #endif
 
             return buildTarget;
@@ -85,7 +85,8 @@ namespace Substance.Platform
             return format;
         }
 
-        public static void ShowBuildTargetEnvironment()
+#if DEBUG
+        public static void ShowBuildTargetEnvironment() // dev/debug tool
         {
 #if (UNITY_EDITOR)
             Debug.Log("UNITY_EDITOR");
@@ -124,7 +125,7 @@ namespace Substance.Platform
             Debug.Log("ENABLE_IL2CPP");
 #endif
         }
-
+#endif // DEBUG
 
         // ========================================================================================
 
