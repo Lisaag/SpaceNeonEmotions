@@ -5,6 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wire
+  - CubeLocation
+  - SphereLocation
+  - HologramCube
+  - HologramSphere
+  - TriangleLocation
+  - HologramTriangle
+  - Checkpoint
+  - WirePoint
+  - WireEnding
+  - ChakramCollider
   layers:
   - Default
   - TransparentFX
@@ -14,12 +24,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PostProcessing
+  - Forcefield
+  - Teleporting
+  - Obstacle
+  - NoShadows
+  - Walkable
   - 
   - 
   - 

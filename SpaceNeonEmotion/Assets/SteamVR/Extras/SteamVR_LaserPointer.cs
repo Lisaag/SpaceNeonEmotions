@@ -17,6 +17,7 @@ namespace Valve.VR.Extras
         public Color clickColor = Color.green;
         public GameObject holder;
         public GameObject pointer;
+        public Color highlightedButton;
         bool isActive = false;
         public bool addRigidBody = false;
         public Transform reference;
@@ -32,10 +33,10 @@ namespace Valve.VR.Extras
             if (pose == null)
                 pose = this.GetComponent<SteamVR_Behaviour_Pose>();
             if (pose == null)
-                Debug.LogError("No SteamVR_Behaviour_Pose component found on this object");
+                Debug.LogError("No SteamVR_Behaviour_Pose component found on this object", this);
 
             if (interactWithUI == null)
-                Debug.LogError("No ui interaction action has been set on this component.");
+                Debug.LogError("No ui interaction action has been set on this component.", this);
 
 
             holder = new GameObject();
@@ -56,6 +57,8 @@ namespace Valve.VR.Extras
                     collider.isTrigger = true;
                 }
                 Rigidbody rigidBody = pointer.AddComponent<Rigidbody>();
+                LaserBeamCheck menuChecker = pointer.AddComponent<LaserBeamCheck>();
+                menuChecker.highLightedColor = highlightedButton;
                 rigidBody.isKinematic = true;
             }
             else
@@ -80,6 +83,11 @@ namespace Valve.VR.Extras
         {
             if (PointerClick != null)
                 PointerClick(this, e);
+
+            if (GetComponentInChildren<LaserBeamCheck>())
+                if (GetComponentInChildren<LaserBeamCheck>().collided)
+                    if (GetComponentInChildren<LaserBeamCheck>().collided.GetComponent<MainMenuManager>())
+                        GetComponentInChildren<LaserBeamCheck>().collided.GetComponent<MainMenuManager>().LoadScene();
         }
 
         public virtual void OnPointerOut(PointerEventArgs e)
